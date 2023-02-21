@@ -11,6 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This document contains preliminary PCA clustering of the Welltory Health Dataset
 
+Import csvs
+
 ```{r}
 bp <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/blood_pressure.csv")
 hr <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/heart_rate.csv")
@@ -21,4 +23,63 @@ sleep <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/sleep.
 survey <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/surveys.csv")
 wear <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/wearables.csv")
 weather <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/weather.csv")
+```
+
+View csvs
+```{r}
+head(bp, 2)
+summary(bp)
+head(hr, 2)
+summary(hr)
+head(hrv, 2)
+summary(hrv)
+head(p, 10)
+summary(p)
+head(scale, 5)
+head(sleep, 2)
+summary(sleep)
+head(survey, 2)
+summary(survey)
+head(wear, 2)
+summary(wear)
+head(weather, 2)
+summary(weather)
+```
+
+Average across times for each user and choose quantitative variables
+```{r}
+# I have chosen to use only diastolic and systolic for the preliminary run, because the other categories have a lot of missing data
+bp_mean <- aggregate(cbind(diastolic,systolic) ~ user_code, data = bp, FUN = mean, na.rm = TRUE)
+head(bp_mean)
+
+#Removed is_resting data due to categorical nature of the variable
+hr_mean <- aggregate(cbind(heart_rate) ~ user_code, data = hr, FUN = mean, na.rm = TRUE)
+head(hr_mean)
+
+#I have chosen to leave out feelings, mood, and sleep, due to probability of high missingness
+hrv_mean <- aggregate(cbind(bpm, meanrr, mxdmn, sdnn, rmssd, pnn50, mode, amo, lf, hf, vlf, lfhf, total_power) ~ user_code, data = hrv, FUN = mean, na.rm = TRUE)
+head(hrv_mean)
+
+#Removed gender, city, country, because these are not quantitative variables. Also removed symptoms onset for now since we are not visualizing time data.
+p$age_range <- as.factor(p$age_range)
+str(p$age_range)
+p_mean <- aggregate(cbind(height, weight, age_range) ~ user_code, data = p, FUN = mean, na.rm = TRUE)
+head(p_mean,10)
+
+#Did not include information from scales, because this is just a description of the data, not measured observations.
+
+#Used only sleep duration because of the missingness in the other variables
+sleep_mean <- aggregate(sleep_duration ~ user_code, data = sleep, FUN = mean, na.rm = TRUE)
+head(sleep_mean)
+
+#Used only value, because it was the only quantitative variable and served as an indication of covid symptom severity in general
+survey_mean <- aggregate(value ~ user_code, data = survey, FUN = mean, na.rm = TRUE)
+head(survey_mean)
+
+#I did not include wearables data, as the amount of missingness indicated to me that most participants either did not have access to wearable technology or did not wear them often.
+
+weather_mean <- aggregate(cbind(avg_temperature_C, atmospheric_pressure, precip_intensity, humidity, clouds) ~ user_code, data = weather, FUN = mean, na.rm = TRUE)
+head(weather_mean)
+
+
 ```
