@@ -106,17 +106,46 @@ write.csv(ag, "/Users/sophialeeman/Documents/BME 580/BME-580/Aggregate_Data.csv"
 Scaling the data and computing PCA
 ```{r}
 ag_scale <- ag[ -c(1) ]
-pca <- prcomp(ag_scale, scale=TRUE)
+pca <- prcomp(ag_scale, center = TRUE, scale=TRUE)
 pca
 ```
 Let's see the results!
 ```{r}
-graph <- fviz_eig(pca, addlabels = T, ncp = 16)
+graph <- fviz_eig(pca, addlabels = T) 
 graph
 ```
 I would chose to use 4 dimensions by analysis of the location of the elbow in the graph.
+```{r}
+varPercent <- pca$sdev^2/sum(pca$sdev^2)*100
+cumVar <- sum(varPercent[1:4])
+cumVar
+```
+This accounts for 77% of the variance.
+
+Display the most important features
+```{r}
+loadings <- pca$rotation
+loadings <- as.data.frame(loadings[,1:4])
+loadings  %>% arrange(desc(.372*abs(PC1)+.177*abs(PC2)+.153*abs(PC3)+.07*abs(PC4)))
+
+```
+
+```{r}
+fviz_pca_ind(pca,
+             col.ind = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     
+             )
+```
 
 Visualize dimensions
 ```{r}
 fviz_pca_biplot(pca)
+```
+```{r}
+fviz_pca_var(pca,
+             col.var = "contrib", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE   
+             )
 ```
