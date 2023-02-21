@@ -85,11 +85,15 @@ head(weather_mean)
 ```
 Aggregate the datasets by user
 ```{r}
+
+#Discluded sleep mean, because this significantly reduced the number of participants 
+
 ag <- merge(bp_mean, hr_mean, by = "user_code")
 ag <- merge(ag, hrv_mean, by = "user_code")
 ag <- merge(ag, p_mean, by = "user_code")
-ag <- merge(ag, sleep_mean, by = "user_code")
 ag <- merge(ag, survey_mean, by = "user_code")
 ag <- merge(ag, weather_mean, by = "user_code")
 ag
+
+write.csv(ag, "/Users/sophialeeman/Documents/BME 580/BME-580/Aggregate_Data.csv", row.names=FALSE)
 ```
