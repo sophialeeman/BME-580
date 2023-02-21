@@ -9,6 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r}
+library(factoextra)
+library(tidyverse)
+library(corrplot)
+```
+
 This document contains preliminary PCA clustering of the Welltory Health Dataset
 
 Import csvs
@@ -103,3 +109,9 @@ ag_scale <- ag[ -c(1) ]
 pca <- prcomp(ag_scale, scale=TRUE)
 pca
 ```
+Let's see the results!
+```{r}
+graph <- fviz_eig(pca, addlabels = T, ncp = 16)
+graph
+```
+I chose to use 4 dimensions by analysis of the location of the elbow in the graph.
