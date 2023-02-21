@@ -1,0 +1,24 @@
+---
+title: "PCA"
+author: "Sophia Leeman"
+date: "2023-02-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This document contains preliminary PCA clustering of the Welltory Health Dataset
+
+```{r}
+bp <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/blood_pressure.csv")
+hr <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/heart_rate.csv")
+hrv <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/hrv_measurements.csv")
+p <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/participants.csv")
+scale <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/scales_description.csv")
+sleep <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/sleep.csv")
+survey <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/surveys.csv")
+wear <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/wearables.csv")
+weather <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/weather.csv")
+```
