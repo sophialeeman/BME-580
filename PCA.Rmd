@@ -114,4 +114,9 @@ Let's see the results!
 graph <- fviz_eig(pca, addlabels = T, ncp = 16)
 graph
 ```
-I chose to use 4 dimensions by analysis of the location of the elbow in the graph.
+I would chose to use 4 dimensions by analysis of the location of the elbow in the graph.
+
+Visualize dimensions
+```{r}
+fviz_pca_biplot(pca)
+```
