@@ -83,3 +83,13 @@ head(weather_mean)
 
 
 ```
+Aggregate the datasets by user
+```{r}
+ag <- merge(bp_mean, hr_mean, by = "user_code")
+ag <- merge(ag, hrv_mean, by = "user_code")
+ag <- merge(ag, p_mean, by = "user_code")
+ag <- merge(ag, sleep_mean, by = "user_code")
+ag <- merge(ag, survey_mean, by = "user_code")
+ag <- merge(ag, weather_mean, by = "user_code")
+ag
+```
