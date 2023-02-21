@@ -97,3 +97,11 @@ ag
 
 write.csv(ag, "/Users/sophialeeman/Documents/BME 580/BME-580/Aggregate_Data.csv", row.names=FALSE)
 ```
+Scaling the data
+```{r}
+ag_scale <- ag[ -c(1) ]
+for(i in 1:ncol(ag_scale)) {      
+  ag_scale[ , i] <- ag_scale[ , i]/sd(ag_scale[ , i])
+}
+ag_scale
+```
