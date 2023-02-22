@@ -14,7 +14,7 @@ data <- read.csv("/Users/sophialeeman/Documents/BME 580/BME-580/Aggregate_Data.c
 data <- data[,2:ncol(data)]
 ```
 
-```{r}
+```{r, fig.align = "center", fig.height = 8, fig.width = 8,out.width = "8.5in"}
 C = cor(data)
 corrplot(C)
 ```
