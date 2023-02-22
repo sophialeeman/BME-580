@@ -1,0 +1,66 @@
+---
+title: "bloodpressure"
+output: html_document
+date: "2023-02-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(psych) # Contains the winsor function and other helpful statistical tools
+library(tidyverse) # Remember from last homework that dplyr is included in tidyverse
+library(gridExtra)
+library(corrplot)
+library(patchwork)
+```
+```{r}
+health <- read.csv("C:/Users/tulip/BME 580/blood_pressure.csv",
+         header = TRUE, stringsAsFactors = TRUE)
+head(health,10)
+```
+
+```{r}
+mean_bp <- aggregate(cbind(systolic, diastolic) ~ user_code, data = health, mean)
+boxplot(mean_bp[,2:3], main="Systolic and Diastolic Blood Pressure by Subject",
+        names=c("Systolic", "Diastolic"), col=c("lightblue", "pink"))
+```
+```{r}
+
+grouped_bp_data <- group_by(health, user_code)
+
+ggplot(grouped_bp_data, aes(x = , y = value, fill = variable)) +
+  geom_boxplot() +
+  facet_wrap(~ subject, ncol = 5)
+
+mean_bp_data <- aggregate(cbind(systolic, diastolic) ~ user_code + time, data = health, mean)
+
+ggplot(mean_bp_data, aes(x = user_code, y = systolic, color = user_code)) +
+  geom_line() +
+  labs(x = "Subject", y = "Mean Systolic", title = "Average Systolic over Subject") +
+  theme_bw()
+
+ggplot(mean_bp_data, aes(x = user_code, y = diastolic, color = user_code)) +
+  geom_line() +
+  labs(x = "Subject", y = "Mean Diastolic", title = "Average Diastolic over Subject") +
+  theme_bw()
+```
+
+```{r}
+
+userone= filter(health, user_code == "01bad5a519")
+ggplot(userone, aes(x = measurement_datetime)) +
+  geom_point(aes(y = systolic), color = "red") +
+  geom_point(aes(y = diastolic), color = "blue")
+
+usertwo= filter(health, user_code == "0d297d2410")
+ggplot(usertwo, aes(x = measurement_datetime)) +
+  geom_point(aes(y = systolic), color = "red") +
+  geom_point(aes(y = diastolic), color = "blue")
+
+userthree= filter(health, user_code == "1b9321b648")
+ggplot(userthree, aes(x = measurement_datetime)) +
+  geom_point(aes(y = systolic), color = "red") +
+  geom_point(aes(y = diastolic), color = "blue")
+
+
+```
