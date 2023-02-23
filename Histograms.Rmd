@@ -1,0 +1,32 @@
+---
+title: "Histograms"
+author: "Sophia Leeman"
+date: "2023-02-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+data <- read.csv("/Users/sophialeeman/Documents/BME 580/BME-580/Aggregate_Data.csv")
+data <- data[,2:ncol(data)]
+```
+
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = precip_intensity)) + geom_histogram()
+```
+
+```{r}
+weather <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/weather.csv")
+weather
+rain <- ggplot(weather, aes(x = precip_intensity)) + geom_histogram()
+humid <- ggplot(weather, aes(x = humidity)) + geom_histogram()
+cloud <- ggplot(weather, aes(x = clouds)) + geom_histogram()
+
+library(patchwork)
+rain/humid/cloud
+
+```
