@@ -22,9 +22,9 @@ ggplot(data, aes(x = precip_intensity)) + geom_histogram()
 ```{r}
 weather <- read.csv("/Users/sophialeeman/Documents/BME 580/hrv-covid19/data/weather.csv")
 weather
-rain <- ggplot(weather, aes(x = precip_intensity)) + geom_histogram()
-humid <- ggplot(weather, aes(x = humidity)) + geom_histogram()
-cloud <- ggplot(weather, aes(x = clouds)) + geom_histogram()
+rain <- ggplot(weather, aes(x = precip_intensity)) + geom_histogram() + theme(text = element_text(size = 15))  
+humid <- ggplot(weather, aes(x = humidity)) + geom_histogram() + theme(text = element_text(size = 15)) 
+cloud <- ggplot(weather, aes(x = clouds)) + geom_histogram() + theme(text = element_text(size = 15)) 
 
 library(patchwork)
 rain/humid/cloud
