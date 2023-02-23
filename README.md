@@ -1,11 +1,11 @@
 # Impact of Weather Conditions on Reported SARS-COV-2 Symptom Severity
 Data Analysis Project for BME 580
 
-*Members*: Shatorupa Ghosh, Sophia Leeman, Isabella Wang
+**Members**: Shatorupa Ghosh, Sophia Leeman, Isabella Wang
 
 ## Research Question and Hypothesis
-*Question*: Do changes in rain, cloud cover, temperature, and air pollution affect reported CoV-2 symptom severity?
-Hypothesis: Increased rain, cloud cover, extreme temperatures, and air pollution worsens reported CoV-2 symptom severity.
+**Question**: Do changes in rain, cloud cover, temperature, and air pollution affect reported CoV-2 symptom severity?
+**Hypothesis**: Increased rain, cloud cover, extreme temperatures, and air pollution worsens reported CoV-2 symptom severity.
 
 ## Significance and Impact
 The CoV-2 pandemic has had a widespread impact on the well-being of individuals worldwide. Exploring the interaction between environmental conditions, possible mental health concerns, and CoV-2 symptoms is a promising study area. Insights can help healthcare providers better understand the pandemic's impact on physical and mental health and develop effective strategies to mitigate the impact. Moreover, environmental factors such as air pollution and extreme temperatures can significantly impact the severity of CoV-2 (Wu, 2020). Thus, exploring the interplay between environmental conditions, mental health, and CoV-2 symptoms will be critical to understanding the holistic impact of the pandemic on individuals' physical and mental health. Results from our study could help providers better identify individuals at high risk for severe CoV-2 symptoms or mental health conditions. For instance, identifying individuals more susceptible to severe CoV-2 symptoms due to pre-existing mental health conditions or environmental exposures can help healthcare providers prioritize these individuals for early vaccination and appropriate medical care. 
