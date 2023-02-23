@@ -139,13 +139,29 @@ fviz_pca_ind(pca,
 ```
 
 Visualize dimensions
-```{r}
+```{r, fig.align = "center", fig.height = 8, fig.width = 8,out.width = "8.5in"}
 fviz_pca_biplot(pca)
 ```
-```{r}
+```{r, fig.align = "center", fig.height = 8, fig.width = 8,out.width = "8.5in"}
 fviz_pca_var(pca,
              col.var = "contrib", 
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE   
              )
+```
+
+```{r}
+library(PCAtest)
+result<-PCAtest(ag_scale, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
+
+#According to PCAtest:
+#"""The first 3 PC axes are significant and account for 70.2% of the total variation
+
+#Variables 2, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, and 21 have significant loadings on PC 1
+#Variables 2, 10, 18, 19, 24, and 25 have significant loadings on PC 2
+#Variables 3, 4, 5, 10, 20, and 23 have significant loadings on PC 3"""
+
+#https://pubmed.ncbi.nlm.nih.gov/35194531/, https://arleyc.github.io/PCAtest/ 
+
+#This would indicate that systolic, mxdmn, sdnn, rmssd, pnn50, amo, lf, hf, vlf, total power, height, and average temperature are most important for the first dimension. Systolic, mode, weight, age range, humidity, and clouds are most important for the second dimension. And heart rate, bpm, meanrr, mode, value, and precipitation intensity are most significant for PC 3. This seems to line up with the PCA by prcomp. 
 ```

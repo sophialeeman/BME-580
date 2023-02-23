@@ -1,0 +1,20 @@
+---
+title: "Hierarchical Clustering"
+author: "Sophia Leeman"
+date: "2023-02-22"
+output: html_document
+---
+Perform Hierarchical Clustering on the dataset cleaned in PCA.rmd
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+data <- read.csv("/Users/sophialeeman/Documents/BME 580/BME-580/Aggregate_Data.csv")
+data
+```
+
+```{r}
+clusters <- hclust(dist(data[,2:ncol(data)]))
+plot(clusters)
+```
