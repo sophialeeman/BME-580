@@ -140,7 +140,10 @@ fviz_pca_ind(pca,
 
 Visualize dimensions
 ```{r, fig.align = "center", fig.height = 8, fig.width = 8,out.width = "8.5in"}
-fviz_pca_biplot(pca)
+fviz_pca_biplot(pca, col.var = "contrib", labelsize = 8, repel = TRUE) +
+    theme(text = element_text(size = 20),
+        axis.title = element_text(size = 20),
+        axis.text = element_text(size = 20))
 ```
 ```{r, fig.align = "center", fig.height = 8, fig.width = 8,out.width = "8.5in"}
 fviz_pca_var(pca,
@@ -153,6 +156,7 @@ fviz_pca_var(pca,
 ```{r}
 library(PCAtest)
 result<-PCAtest(ag_scale, 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
+result
 
 #According to PCAtest:
 #"""The first 3 PC axes are significant and account for 70.2% of the total variation
