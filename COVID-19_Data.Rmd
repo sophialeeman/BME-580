@@ -49,51 +49,20 @@ summary(df)
 ```{r}
 df <- subset(df, select = -c(Country_Region, FIPS, UID, ISO3))
 
-```
-
-```{r}
-
-#There is an issue with singularity of the matrix.
-
-library("dplyr")      
-
-library(corrplot)
-
-C = cor(select_if(df, is.numeric))
-corrplot(C)
+str(df)
 
 ```
-
+https://www.analyticsvidhya.com/blog/2016/03/tutorial-powerful-packages-imputing-missing-values/
 ```{r}
-# check for perfect correlation among variables
-cor_mat <- cor(select_if(df, is.numeric))
-perfect_cor <- which(cor_mat == 1, arr.ind = TRUE)
 
-# remove one of the correlated variables
-if (nrow(perfect_cor) > 0) {
-  # get the variable names that are perfectly correlated
-  var_names <- row.names(cor_mat)[unique(perfect_cor[, 2])]
-  
-  # remove one of the correlated variables
-  df <- df[, !names(df) %in% var_names[2:length(var_names)]]
-  
-  message(paste("The following variables were perfectly correlated and one of them has been removed:", 
-                paste(var_names, collapse = ", ")))
-} else {
-  message("No variables are perfectly correlated.")
-}
+# Load required packages
+install.packages("missForest")
+library(missForest)
+library(dplyr)
 
+# Remove variables with too many missing values
+df <- df[, colMeans(is.na(df)) < 0.5]
 
-#Handle Missingness
-
-library(mice)
-
-# perform multiple imputation with 5 iterations
-imp <- mice(df, m = 5)
-
-# extract the completed datasets
-complete_imp <- complete(imp, "long")
-
-summary(df)
+df <- missForest(select_if(df, is.numeric))
 
 ```
