@@ -1,0 +1,99 @@
+---
+title: "COVID-19 Data"
+author: "Sophia Leeman"
+date: "2023-03-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The following code was created in collaboration with chat GPT:
+```{r}
+setwd("/Users/sophialeeman/Documents/BME 580/BME-580")
+
+#Location of csvs
+csv_dir <- "csse_covid_19_daily_reports_us"
+
+#Initialize dataframe with same headers as csvs
+csv_files <- list.files(csv_dir, pattern=".csv")
+file_path <- file.path(csv_dir, csv_files[1])
+first_csv <- read.csv(file_path, header = TRUE)
+df <- data.frame(matrix(ncol = ncol(first_csv), nrow = 0))
+colnames(df) <- colnames(first_csv)
+
+#Loop through the csvs
+for (file in csv_files) {
+  #Read in file
+  file_path <- file.path(csv_dir, file)
+  data <- read.csv(file_path, header = TRUE)
+  
+#There appears to be unnecessary columns at the end of some csvs but not all csvs. This code is to remove those unnecessary columns.
+  if (ncol(df) > ncol(data)) {
+    df <- df[, 1:ncol(data)]
+  }
+  if (ncol(df) < ncol(data)) {
+    data <- data[, 1:ncol(df)]
+  }
+  
+  #Add to aggregated csv
+  df <- rbind(df, data)
+}
+
+head(df)
+summary(df)
+
+```
+
+```{r}
+df <- subset(df, select = -c(Country_Region, FIPS, UID, ISO3))
+
+```
+
+```{r}
+
+#There is an issue with singularity of the matrix.
+
+library("dplyr")      
+
+library(corrplot)
+
+C = cor(select_if(df, is.numeric))
+corrplot(C)
+
+```
+
+```{r}
+# check for perfect correlation among variables
+cor_mat <- cor(select_if(df, is.numeric))
+perfect_cor <- which(cor_mat == 1, arr.ind = TRUE)
+
+# remove one of the correlated variables
+if (nrow(perfect_cor) > 0) {
+  # get the variable names that are perfectly correlated
+  var_names <- row.names(cor_mat)[unique(perfect_cor[, 2])]
+  
+  # remove one of the correlated variables
+  df <- df[, !names(df) %in% var_names[2:length(var_names)]]
+  
+  message(paste("The following variables were perfectly correlated and one of them has been removed:", 
+                paste(var_names, collapse = ", ")))
+} else {
+  message("No variables are perfectly correlated.")
+}
+
+
+#Handle Missingness
+
+library(mice)
+
+# perform multiple imputation with 5 iterations
+imp <- mice(df, m = 5)
+
+# extract the completed datasets
+complete_imp <- complete(imp, "long")
+
+summary(df)
+
+```
