@@ -63,6 +63,15 @@ library(dplyr)
 # Remove variables with too many missing values
 df <- df[, colMeans(is.na(df)) < 0.5]
 
-df <- missForest(select_if(df, is.numeric))
+mFr <- missForest(select_if(df, is.numeric))
 
+```
+
+```{r}
+library(tidyverse)
+nrmse_result <- mFr$OOBerror
+print(nrmse_result)
+df <- cbind(mFr$ximp, select_if(df, negate(is.numeric)))
+head(df)
+summary(df)
 ```
