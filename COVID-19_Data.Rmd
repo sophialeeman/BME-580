@@ -75,3 +75,7 @@ df <- cbind(mFr$ximp, select_if(df, negate(is.numeric)))
 head(df)
 summary(df)
 ```
+
+```{r}
+write.csv(df, "/Users/sophialeeman/Documents/BME 580/BME-580/Clean_COV.csv", row.names=FALSE)
+```
