@@ -1,0 +1,1765 @@
+TEMP,MONTH,YEAR,STATE
+49.5,JAN,2020,Alabama
+46.6,JAN,2021,Alabama
+43.9,JAN,2022,Alabama
+43.7,JAN,2020,Arizona
+42.6,JAN,2021,Arizona
+43.7,JAN,2022,Arizona
+43.9,JAN,2020,Arkansas
+41.4,JAN,2021,Arkansas
+38.7,JAN,2022,Arkansas
+45.3,JAN,2020,California
+45.5,JAN,2021,California
+46.6,JAN,2022,California
+27.4,JAN,2020,Colorado
+26.7,JAN,2021,Colorado
+26.5,JAN,2022,Colorado
+33,JAN,2020,Connecticut
+29.2,JAN,2021,Connecticut
+24.3,JAN,2022,Connecticut
+40.2,JAN,2020,Delaware
+36.2,JAN,2021,Delaware
+31.6,JAN,2022,Delaware
+61.8,JAN,2020,Florida
+58.7,JAN,2021,Florida
+57.5,JAN,2022,Florida
+51.4,JAN,2020,Georgia
+47.7,JAN,2021,Georgia
+45.8,JAN,2022,Georgia
+27.3,JAN,2020,Idaho
+26.6,JAN,2021,Idaho
+23.7,JAN,2022,Idaho
+31.8,JAN,2020,Illinois
+29.5,JAN,2021,Illinois
+22.2,JAN,2022,Illinois
+34.3,JAN,2020,Indiana
+30.5,JAN,2021,Indiana
+24.3,JAN,2022,Indiana
+23.1,JAN,2020,Iowa
+23.9,JAN,2021,Iowa
+14.8,JAN,2022,Iowa
+34,JAN,2020,Kansas
+34,JAN,2021,Kansas
+29.8,JAN,2022,Kansas
+40.2,JAN,2020,Kentucky
+35.7,JAN,2021,Kentucky
+31.2,JAN,2022,Kentucky
+53.7,JAN,2020,Louisiana
+50.6,JAN,2021,Louisiana
+48.2,JAN,2022,Louisiana
+20.8,JAN,2020,Maine
+21.4,JAN,2021,Maine
+10.9,JAN,2022,Maine
+39.1,JAN,2020,Maryland
+35.4,JAN,2021,Maryland
+31,JAN,2022,Maryland
+32,JAN,2020,Massachusetts
+28.8,JAN,2021,Massachusetts
+23.5,JAN,2022,Massachusetts
+27,JAN,2020,Michigan
+25,JAN,2021,Michigan
+15.4,JAN,2022,Michigan
+14.1,JAN,2020,Minnesota
+18.2,JAN,2021,Minnesota
+3.6,JAN,2022,Minnesota
+50.1,JAN,2020,Mississippi
+46.6,JAN,2021,Mississippi
+44.3,JAN,2022,Mississippi
+34.5,JAN,2020,Missouri
+33.6,JAN,2021,Missouri
+28.4,JAN,2022,Missouri
+23.4,JAN,2020,Montana
+26.7,JAN,2021,Montana
+22.9,JAN,2022,Montana
+27.2,JAN,2020,Nebraska
+29.3,JAN,2021,Nebraska
+25.6,JAN,2022,Nebraska
+35.3,JAN,2020,Nevada
+33.7,JAN,2021,Nevada
+34.2,JAN,2022,Nevada
+25.2,JAN,2020,New Hampshire
+23,JAN,2021,New Hampshire
+14.8,JAN,2022,New Hampshire
+37.3,JAN,2020,New Jersey
+33.7,JAN,2021,New Jersey
+28.5,JAN,2022,New Jersey
+37.1,JAN,2020,New Mexico
+35.1,JAN,2021,New Mexico
+35.7,JAN,2022,New Mexico
+27.7,JAN,2020,New York
+24,JAN,2021,New York
+15.8,JAN,2022,New York
+46,JAN,2020,North Carolina
+40.8,JAN,2021,North Carolina
+38.7,JAN,2022,North Carolina
+12.9,JAN,2020,North Dakota
+21,JAN,2021,North Dakota
+8.6,JAN,2022,North Dakota
+34.9,JAN,2020,Ohio
+30.9,JAN,2021,Ohio
+24,JAN,2022,Ohio
+42.2,JAN,2020,Oklahoma
+39.7,JAN,2021,Oklahoma
+37,JAN,2022,Oklahoma
+34.9,JAN,2020,Oregon
+34.8,JAN,2021,Oregon
+34.8,JAN,2022,Oregon
+32.2,JAN,2020,Pennsylvania
+29.4,JAN,2021,Pennsylvania
+22.5,JAN,2022,Pennsylvania
+35.3,JAN,2020,Rhode Island
+31.3,JAN,2021,Rhode Island
+27,JAN,2022,Rhode Island
+50.3,JAN,2020,South Carolina
+46,JAN,2021,South Carolina
+43.6,JAN,2022,South Carolina
+20.1,JAN,2020,South Dakota
+26.5,JAN,2021,South Dakota
+19.1,JAN,2022,South Dakota
+43,JAN,2020,Tennessee
+39.7,JAN,2021,Tennessee
+35.5,JAN,2022,Tennessee
+50.7,JAN,2020,Texas
+47.3,JAN,2021,Texas
+45.8,JAN,2022,Texas
+28.7,JAN,2020,Utah
+28.1,JAN,2021,Utah
+29.4,JAN,2022,Utah
+23.4,JAN,2020,Vermont
+20.5,JAN,2021,Vermont
+12.1,JAN,2022,Vermont
+40.6,JAN,2020,Virginia
+36.6,JAN,2021,Virginia
+32.9,JAN,2022,Virginia
+34.2,JAN,2020,Washington
+34.6,JAN,2021,Washington
+31.3,JAN,2022,Washington
+37.3,JAN,2020,West Virginia
+32.6,JAN,2021,West Virginia
+27.3,JAN,2022,West Virginia
+21.5,JAN,2020,Wisconsin
+20.3,JAN,2021,Wisconsin
+9.2,JAN,2022,Wisconsin
+23.8,JAN,2020,Wyoming
+23.4,JAN,2021,Wyoming
+23,JAN,2022,Wyoming
+-6.4,JAN,2020,Alaska
+10.6,JAN,2021,Alaska
+3.6,JAN,2022,Alaska
+51,FEB,2020,Alabama
+46.7,FEB,2021,Alabama
+50.1,FEB,2022,Alabama
+45.9,FEB,2020,Arizona
+46.5,FEB,2021,Arizona
+44.2,FEB,2022,Arizona
+44.5,FEB,2020,Arkansas
+34.8,FEB,2021,Arkansas
+42.2,FEB,2022,Arkansas
+49.2,FEB,2020,California
+47.4,FEB,2021,California
+48,FEB,2022,California
+26.4,FEB,2020,Colorado
+24.8,FEB,2021,Colorado
+24.9,FEB,2022,Colorado
+33.9,FEB,2020,Connecticut
+28.5,FEB,2021,Connecticut
+30.8,FEB,2022,Connecticut
+41.9,FEB,2020,Delaware
+35.6,FEB,2021,Delaware
+39.1,FEB,2022,Delaware
+63.6,FEB,2020,Florida
+63.7,FEB,2021,Florida
+63.1,FEB,2022,Florida
+51.9,FEB,2020,Georgia
+49.5,FEB,2021,Georgia
+52.8,FEB,2022,Georgia
+26.2,FEB,2020,Idaho
+25.4,FEB,2021,Idaho
+24.4,FEB,2022,Idaho
+31.9,FEB,2020,Illinois
+20.8,FEB,2021,Illinois
+28,FEB,2022,Illinois
+32.8,FEB,2020,Indiana
+23.7,FEB,2021,Indiana
+29.8,FEB,2022,Indiana
+24.9,FEB,2020,Iowa
+12.5,FEB,2021,Iowa
+21.2,FEB,2022,Iowa
+34.9,FEB,2020,Kansas
+24.1,FEB,2021,Kansas
+31.8,FEB,2022,Kansas
+39.7,FEB,2020,Kentucky
+32.3,FEB,2021,Kentucky
+38.4,FEB,2022,Kentucky
+54,FEB,2020,Louisiana
+47.8,FEB,2021,Louisiana
+51.4,FEB,2022,Louisiana
+20.1,FEB,2020,Maine
+18.5,FEB,2021,Maine
+19.5,FEB,2022,Maine
+41,FEB,2020,Maryland
+34.2,FEB,2021,Maryland
+38.5,FEB,2022,Maryland
+32.4,FEB,2020,Massachusetts
+27.6,FEB,2021,Massachusetts
+30,FEB,2022,Massachusetts
+23.7,FEB,2020,Michigan
+17.4,FEB,2021,Michigan
+19.5,FEB,2022,Michigan
+14,FEB,2020,Minnesota
+6.5,FEB,2021,Minnesota
+6.5,FEB,2022,Minnesota
+51.1,FEB,2020,Mississippi
+44.2,FEB,2021,Mississippi
+49,FEB,2022,Mississippi
+35.4,FEB,2020,Missouri
+24.4,FEB,2021,Missouri
+32.6,FEB,2022,Missouri
+25.6,FEB,2020,Montana
+13.7,FEB,2021,Montana
+22.4,FEB,2022,Montana
+29.6,FEB,2020,Nebraska
+16.5,FEB,2021,Nebraska
+26.8,FEB,2022,Nebraska
+36.3,FEB,2020,Nevada
+35.6,FEB,2021,Nevada
+34.6,FEB,2022,Nevada
+24.2,FEB,2020,New Hampshire
+20.6,FEB,2021,New Hampshire
+23.6,FEB,2022,New Hampshire
+39.1,FEB,2020,New Jersey
+32,FEB,2021,New Jersey
+35.5,FEB,2022,New Jersey
+38.5,FEB,2020,New Mexico
+37.3,FEB,2021,New Mexico
+35.1,FEB,2022,New Mexico
+26.6,FEB,2020,New York
+21.7,FEB,2021,New York
+23.8,FEB,2022,New York
+47,FEB,2020,North Carolina
+42.2,FEB,2021,North Carolina
+46.1,FEB,2022,North Carolina
+17.8,FEB,2020,North Dakota
+5.8,FEB,2021,North Dakota
+9.5,FEB,2022,North Dakota
+32.8,FEB,2020,Ohio
+25.2,FEB,2021,Ohio
+30.8,FEB,2022,Ohio
+41.8,FEB,2020,Oklahoma
+31.3,FEB,2021,Oklahoma
+38.5,FEB,2022,Oklahoma
+35.8,FEB,2020,Oregon
+33.6,FEB,2021,Oregon
+35.8,FEB,2022,Oregon
+33.3,FEB,2020,Pennsylvania
+26.6,FEB,2021,Pennsylvania
+29.7,FEB,2022,Pennsylvania
+35.4,FEB,2020,Rhode Island
+30.9,FEB,2021,Rhode Island
+32.4,FEB,2022,Rhode Island
+50.9,FEB,2020,South Carolina
+47.2,FEB,2021,South Carolina
+51.8,FEB,2022,South Carolina
+23.5,FEB,2020,South Dakota
+12.8,FEB,2021,South Dakota
+20,FEB,2022,South Dakota
+43.3,FEB,2020,Tennessee
+37.4,FEB,2021,Tennessee
+41.8,FEB,2022,Tennessee
+49.4,FEB,2020,Texas
+44,FEB,2021,Texas
+45.9,FEB,2022,Texas
+31.1,FEB,2020,Utah
+32.2,FEB,2021,Utah
+29.5,FEB,2022,Utah
+22.4,FEB,2020,Vermont
+18.8,FEB,2021,Vermont
+21.1,FEB,2022,Vermont
+42.4,FEB,2020,Virginia
+36.6,FEB,2021,Virginia
+40.7,FEB,2022,Virginia
+35.6,FEB,2020,Washington
+31.4,FEB,2021,Washington
+33.7,FEB,2022,Washington
+38,FEB,2020,West Virginia
+31.6,FEB,2021,West Virginia
+35.4,FEB,2022,West Virginia
+19.2,FEB,2020,Wisconsin
+10.7,FEB,2021,Wisconsin
+14.9,FEB,2022,Wisconsin
+20.2,FEB,2020,Wyoming
+17.4,FEB,2021,Wyoming
+20.7,FEB,2022,Wyoming
+1.5,FEB,2020,Alaska
+1,FEB,2021,Alaska
+8.6,FEB,2022,Alaska
+63.5,MAR,2020,Alabama
+59.6,MAR,2021,Alabama
+57.4,MAR,2022,Alabama
+51,MAR,2020,Arizona
+49.4,MAR,2021,Arizona
+51.8,MAR,2022,Arizona
+56.5,MAR,2020,Arkansas
+55.2,MAR,2021,Arkansas
+52.1,MAR,2022,Arkansas
+48,MAR,2020,California
+48.2,MAR,2021,California
+53.1,MAR,2022,California
+38.8,MAR,2020,Colorado
+35.8,MAR,2021,Colorado
+34.9,MAR,2022,Colorado
+41.4,MAR,2020,Connecticut
+39.3,MAR,2021,Connecticut
+39.1,MAR,2022,Connecticut
+49.5,MAR,2020,Delaware
+47.6,MAR,2021,Delaware
+46.9,MAR,2022,Delaware
+71,MAR,2020,Florida
+67.8,MAR,2021,Florida
+68.4,MAR,2022,Florida
+63.1,MAR,2020,Georgia
+59.9,MAR,2021,Georgia
+58.9,MAR,2022,Georgia
+35.1,MAR,2020,Idaho
+34.8,MAR,2021,Idaho
+36.2,MAR,2022,Idaho
+44.4,MAR,2020,Illinois
+46.2,MAR,2021,Illinois
+43.1,MAR,2022,Illinois
+44.6,MAR,2020,Indiana
+45.8,MAR,2021,Indiana
+43.7,MAR,2022,Indiana
+40.3,MAR,2020,Iowa
+42.3,MAR,2021,Iowa
+37,MAR,2022,Iowa
+47.9,MAR,2020,Kansas
+48.1,MAR,2021,Kansas
+44,MAR,2022,Kansas
+51.4,MAR,2020,Kentucky
+50.4,MAR,2021,Kentucky
+49,MAR,2022,Kentucky
+67.3,MAR,2020,Louisiana
+62.2,MAR,2021,Louisiana
+59,MAR,2022,Louisiana
+29.6,MAR,2020,Maine
+29.4,MAR,2021,Maine
+29,MAR,2022,Maine
+49.3,MAR,2020,Maryland
+47.2,MAR,2021,Maryland
+46.6,MAR,2022,Maryland
+40.2,MAR,2020,Massachusetts
+38.3,MAR,2021,Massachusetts
+38.2,MAR,2022,Massachusetts
+35,MAR,2020,Michigan
+36.8,MAR,2021,Michigan
+31,MAR,2022,Michigan
+30.4,MAR,2020,Minnesota
+35.6,MAR,2021,Minnesota
+26.1,MAR,2022,Minnesota
+64.1,MAR,2020,Mississippi
+60,MAR,2021,Mississippi
+57.1,MAR,2022,Mississippi
+48.8,MAR,2020,Missouri
+49.9,MAR,2021,Missouri
+46.2,MAR,2022,Missouri
+31.6,MAR,2020,Montana
+36.1,MAR,2021,Montana
+33.5,MAR,2022,Montana
+41.1,MAR,2020,Nebraska
+42.6,MAR,2021,Nebraska
+38,MAR,2022,Nebraska
+40.5,MAR,2020,Nevada
+39.2,MAR,2021,Nevada
+43.3,MAR,2022,Nevada
+34.2,MAR,2020,New Hampshire
+32.4,MAR,2021,New Hampshire
+32,MAR,2022,New Hampshire
+46.3,MAR,2020,New Jersey
+44,MAR,2021,New Jersey
+43.8,MAR,2022,New Jersey
+48,MAR,2020,New Mexico
+44.8,MAR,2021,New Mexico
+44.6,MAR,2022,New Mexico
+37.2,MAR,2020,New York
+35,MAR,2021,New York
+33.8,MAR,2022,New York
+55.9,MAR,2020,North Carolina
+53.1,MAR,2021,North Carolina
+53.5,MAR,2022,North Carolina
+29.8,MAR,2020,North Dakota
+35.9,MAR,2021,North Dakota
+26.9,MAR,2022,North Dakota
+44.7,MAR,2020,Ohio
+44.8,MAR,2021,Ohio
+43.2,MAR,2022,Ohio
+55.5,MAR,2020,Oklahoma
+53.9,MAR,2021,Oklahoma
+50.4,MAR,2022,Oklahoma
+38.8,MAR,2020,Oregon
+39,MAR,2021,Oregon
+41.8,MAR,2022,Oregon
+42.5,MAR,2020,Pennsylvania
+40.7,MAR,2021,Pennsylvania
+39.4,MAR,2022,Pennsylvania
+42.6,MAR,2020,Rhode Island
+40.2,MAR,2021,Rhode Island
+40.6,MAR,2022,Rhode Island
+60.4,MAR,2020,South Carolina
+57.6,MAR,2021,South Carolina
+57.7,MAR,2022,South Carolina
+36.4,MAR,2020,South Dakota
+39.4,MAR,2021,South Dakota
+33.4,MAR,2022,South Dakota
+54.7,MAR,2020,Tennessee
+53.6,MAR,2021,Tennessee
+51.6,MAR,2022,Tennessee
+63.2,MAR,2020,Texas
+59.4,MAR,2021,Texas
+57.1,MAR,2022,Texas
+40.8,MAR,2020,Utah
+38.4,MAR,2021,Utah
+40.1,MAR,2022,Utah
+33,MAR,2020,Vermont
+30.9,MAR,2021,Vermont
+30.6,MAR,2022,Vermont
+51.7,MAR,2020,Virginia
+48.5,MAR,2021,Virginia
+48.9,MAR,2022,Virginia
+38.3,MAR,2020,Washington
+39.7,MAR,2021,Washington
+41.5,MAR,2022,Washington
+47.8,MAR,2020,West Virginia
+45.8,MAR,2021,West Virginia
+44.6,MAR,2022,West Virginia
+34.3,MAR,2020,Wisconsin
+36.9,MAR,2021,Wisconsin
+29.5,MAR,2022,Wisconsin
+33.1,MAR,2020,Wyoming
+32.2,MAR,2021,Wyoming
+31.9,MAR,2022,Wyoming
+12,MAR,2020,Alaska
+9.1,MAR,2021,Alaska
+16.7,MAR,2022,Alaska
+62,APR,2020,Alabama
+61.6,APR,2021,Alabama
+62.5,APR,2022,Alabama
+59.3,APR,2020,Arizona
+61.2,APR,2021,Arizona
+60.8,APR,2022,Arizona
+58.8,APR,2020,Arkansas
+58.4,APR,2021,Arkansas
+59.8,APR,2022,Arkansas
+56.6,APR,2020,California
+58.2,APR,2021,California
+55.9,APR,2022,California
+43.4,APR,2020,Colorado
+43.1,APR,2021,Colorado
+43.7,APR,2022,Colorado
+44.4,APR,2020,Connecticut
+48.7,APR,2021,Connecticut
+47.7,APR,2022,Connecticut
+51.8,APR,2020,Delaware
+55.3,APR,2021,Delaware
+53.2,APR,2022,Delaware
+73.1,APR,2020,Florida
+69.9,APR,2021,Florida
+71.7,APR,2022,Florida
+63.1,APR,2020,Georgia
+62.1,APR,2021,Georgia
+63,APR,2022,Georgia
+41.6,APR,2020,Idaho
+42,APR,2021,Idaho
+37,APR,2022,Idaho
+49.6,APR,2020,Illinois
+52.5,APR,2021,Illinois
+49.6,APR,2022,Illinois
+48.9,APR,2020,Indiana
+51.9,APR,2021,Indiana
+49.4,APR,2022,Indiana
+46.7,APR,2020,Iowa
+49.3,APR,2021,Iowa
+43.8,APR,2022,Iowa
+52.7,APR,2020,Kansas
+52.5,APR,2021,Kansas
+54.1,APR,2022,Kansas
+52.8,APR,2020,Kentucky
+54.6,APR,2021,Kentucky
+54.4,APR,2022,Kentucky
+66.6,APR,2020,Louisiana
+64.7,APR,2021,Louisiana
+67.5,APR,2022,Louisiana
+37.7,APR,2020,Maine
+43.2,APR,2021,Maine
+40.6,APR,2022,Maine
+51.6,APR,2020,Maryland
+55,APR,2021,Maryland
+53.1,APR,2022,Maryland
+43.1,APR,2020,Massachusetts
+47.8,APR,2021,Massachusetts
+47.1,APR,2022,Massachusetts
+40.2,APR,2020,Michigan
+45.1,APR,2021,Michigan
+40.2,APR,2022,Michigan
+39.4,APR,2020,Minnesota
+42.3,APR,2021,Minnesota
+35.6,APR,2022,Minnesota
+62.9,APR,2020,Mississippi
+61.8,APR,2021,Mississippi
+63.9,APR,2022,Mississippi
+53.1,APR,2020,Missouri
+54.2,APR,2021,Missouri
+53.1,APR,2022,Missouri
+38.3,APR,2020,Montana
+40.5,APR,2021,Montana
+35.1,APR,2022,Montana
+46.1,APR,2020,Nebraska
+47,APR,2021,Nebraska
+46.5,APR,2022,Nebraska
+48.8,APR,2020,Nevada
+49.3,APR,2021,Nevada
+47.2,APR,2022,Nevada
+39.6,APR,2020,New Hampshire
+44,APR,2021,New Hampshire
+42.4,APR,2022,New Hampshire
+48.7,APR,2020,New Jersey
+52.6,APR,2021,New Jersey
+51,APR,2022,New Jersey
+54,APR,2020,New Mexico
+53.2,APR,2021,New Mexico
+55.4,APR,2022,New Mexico
+41.1,APR,2020,New York
+45.7,APR,2021,New York
+43.8,APR,2022,New York
+57.4,APR,2020,North Carolina
+58.6,APR,2021,North Carolina
+58.8,APR,2022,North Carolina
+37.6,APR,2020,North Dakota
+40.7,APR,2021,North Dakota
+33.5,APR,2022,North Dakota
+47.8,APR,2020,Ohio
+51.4,APR,2021,Ohio
+48.7,APR,2022,Ohio
+57.9,APR,2020,Oklahoma
+57.4,APR,2021,Oklahoma
+61.1,APR,2022,Oklahoma
+46.3,APR,2020,Oregon
+46.6,APR,2021,Oregon
+40.2,APR,2022,Oregon
+45.1,APR,2020,Pennsylvania
+49.4,APR,2021,Pennsylvania
+47,APR,2022,Pennsylvania
+44.1,APR,2020,Rhode Island
+48.8,APR,2021,Rhode Island
+48.4,APR,2022,Rhode Island
+62.1,APR,2020,South Carolina
+62,APR,2021,South Carolina
+62.3,APR,2022,South Carolina
+42,APR,2020,South Dakota
+43.6,APR,2021,South Dakota
+39.6,APR,2022,South Dakota
+55.4,APR,2020,Tennessee
+56.2,APR,2021,Tennessee
+56.8,APR,2022,Tennessee
+65.1,APR,2020,Texas
+63.7,APR,2021,Texas
+68.8,APR,2022,Texas
+47.4,APR,2020,Utah
+47.4,APR,2021,Utah
+46.3,APR,2022,Utah
+38.8,APR,2020,Vermont
+43.2,APR,2021,Vermont
+41.3,APR,2022,Vermont
+53.3,APR,2020,Virginia
+55.3,APR,2021,Virginia
+55.2,APR,2022,Virginia
+46,APR,2020,Washington
+46.8,APR,2021,Washington
+40.7,APR,2022,Washington
+48.9,APR,2020,West Virginia
+51.3,APR,2021,West Virginia
+50.8,APR,2022,West Virginia
+40.7,APR,2020,Wisconsin
+45,APR,2021,Wisconsin
+39,APR,2022,Wisconsin
+37.6,APR,2020,Wyoming
+38,APR,2021,Wyoming
+36.1,APR,2022,Wyoming
+27.5,APR,2020,Alaska
+23.9,APR,2021,Alaska
+25.1,APR,2022,Alaska
+68.9,MAY,2020,Alabama
+69.4,MAY,2021,Alabama
+73.5,MAY,2022,Alabama
+70.5,MAY,2020,Arizona
+67.9,MAY,2021,Arizona
+68.6,MAY,2022,Arizona
+66.8,MAY,2020,Arkansas
+66.8,MAY,2021,Arkansas
+71,MAY,2022,Arkansas
+64.6,MAY,2020,California
+64.5,MAY,2021,California
+62.3,MAY,2022,California
+55.6,MAY,2020,Colorado
+52.9,MAY,2021,Colorado
+53.3,MAY,2022,Colorado
+56.4,MAY,2020,Connecticut
+57.8,MAY,2021,Connecticut
+60.8,MAY,2022,Connecticut
+60.6,MAY,2020,Delaware
+63.3,MAY,2021,Delaware
+64.5,MAY,2022,Delaware
+75.8,MAY,2020,Florida
+76.1,MAY,2021,Florida
+77.6,MAY,2022,Florida
+69.4,MAY,2020,Georgia
+69.4,MAY,2021,Georgia
+73.2,MAY,2022,Georgia
+50.6,MAY,2020,Idaho
+49.8,MAY,2021,Idaho
+46.2,MAY,2022,Idaho
+60.6,MAY,2020,Illinois
+61.1,MAY,2021,Illinois
+65.3,MAY,2022,Illinois
+59.7,MAY,2020,Indiana
+59.6,MAY,2021,Indiana
+64.9,MAY,2022,Indiana
+57.6,MAY,2020,Iowa
+59,MAY,2021,Iowa
+61.3,MAY,2022,Iowa
+61.7,MAY,2020,Kansas
+61.9,MAY,2021,Kansas
+64.6,MAY,2022,Kansas
+62.2,MAY,2020,Kentucky
+62.4,MAY,2021,Kentucky
+67.6,MAY,2022,Kentucky
+73,MAY,2020,Louisiana
+72.3,MAY,2021,Louisiana
+77.1,MAY,2022,Louisiana
+51.2,MAY,2020,Maine
+52.4,MAY,2021,Maine
+54.3,MAY,2022,Maine
+60.5,MAY,2020,Maryland
+62.2,MAY,2021,Maryland
+64.6,MAY,2022,Maryland
+56.2,MAY,2020,Massachusetts
+57.6,MAY,2021,Massachusetts
+59.9,MAY,2022,Massachusetts
+53.2,MAY,2020,Michigan
+54,MAY,2021,Michigan
+57.6,MAY,2022,Michigan
+53.5,MAY,2020,Minnesota
+55.1,MAY,2021,Minnesota
+55.4,MAY,2022,Minnesota
+70.3,MAY,2020,Mississippi
+69.9,MAY,2021,Mississippi
+75,MAY,2022,Mississippi
+62,MAY,2020,Missouri
+62.3,MAY,2021,Missouri
+65.9,MAY,2022,Missouri
+50.6,MAY,2020,Montana
+48.6,MAY,2021,Montana
+48.6,MAY,2022,Montana
+56.8,MAY,2020,Nebraska
+57.9,MAY,2021,Nebraska
+58.6,MAY,2022,Nebraska
+58.8,MAY,2020,Nevada
+57.2,MAY,2021,Nevada
+54.4,MAY,2022,Nevada
+53.4,MAY,2020,New Hampshire
+54.5,MAY,2021,New Hampshire
+57.1,MAY,2022,New Hampshire
+59.1,MAY,2020,New Jersey
+60.8,MAY,2021,New Jersey
+63.1,MAY,2022,New Jersey
+65.1,MAY,2020,New Mexico
+62.7,MAY,2021,New Mexico
+64.9,MAY,2022,New Mexico
+54.2,MAY,2020,New York
+54.7,MAY,2021,New York
+58.5,MAY,2022,New York
+63.6,MAY,2020,North Carolina
+65.5,MAY,2021,North Carolina
+68.9,MAY,2022,North Carolina
+52.5,MAY,2020,North Dakota
+52.8,MAY,2021,North Dakota
+52.9,MAY,2022,North Dakota
+58.4,MAY,2020,Ohio
+58.8,MAY,2021,Ohio
+63.8,MAY,2022,Ohio
+67.2,MAY,2020,Oklahoma
+65.9,MAY,2021,Oklahoma
+70.6,MAY,2022,Oklahoma
+52.6,MAY,2020,Oregon
+52,MAY,2021,Oregon
+47.7,MAY,2022,Oregon
+56,MAY,2020,Pennsylvania
+57,MAY,2021,Pennsylvania
+60.5,MAY,2022,Pennsylvania
+56.6,MAY,2020,Rhode Island
+58,MAY,2021,Rhode Island
+60.2,MAY,2022,Rhode Island
+68,MAY,2020,South Carolina
+69.1,MAY,2021,South Carolina
+72.8,MAY,2022,South Carolina
+54.2,MAY,2020,South Dakota
+55,MAY,2021,South Dakota
+55.4,MAY,2022,South Dakota
+64,MAY,2020,Tennessee
+64.1,MAY,2021,Tennessee
+68.9,MAY,2022,Tennessee
+74.6,MAY,2020,Texas
+71.9,MAY,2021,Texas
+77.9,MAY,2022,Texas
+59,MAY,2020,Utah
+57.1,MAY,2021,Utah
+54.7,MAY,2022,Utah
+52.6,MAY,2020,Vermont
+53.3,MAY,2021,Vermont
+56.8,MAY,2022,Vermont
+60.5,MAY,2020,Virginia
+62.3,MAY,2021,Virginia
+65.1,MAY,2022,Virginia
+53.3,MAY,2020,Washington
+52.6,MAY,2021,Washington
+48.4,MAY,2022,Washington
+57.8,MAY,2020,West Virginia
+58.7,MAY,2021,West Virginia
+63,MAY,2022,West Virginia
+54.1,MAY,2020,Wisconsin
+54.9,MAY,2021,Wisconsin
+57.2,MAY,2022,Wisconsin
+50.3,MAY,2020,Wyoming
+48.8,MAY,2021,Wyoming
+46.7,MAY,2022,Wyoming
+43.3,MAY,2020,Alaska
+40.3,MAY,2021,Alaska
+39.9,MAY,2022,Alaska
+76.9,JUN,2020,Alabama
+77,JUN,2021,Alabama
+80.3,JUN,2022,Alabama
+76.8,JUN,2020,Arizona
+80.6,JUN,2021,Arizona
+78.5,JUN,2022,Arizona
+76.4,JUN,2020,Arkansas
+76.9,JUN,2021,Arkansas
+78.2,JUN,2022,Arkansas
+70.4,JUN,2020,California
+74.9,JUN,2021,California
+72.1,JUN,2022,California
+65,JUN,2020,Colorado
+65.7,JUN,2021,Colorado
+64.3,JUN,2022,Colorado
+68.4,JUN,2020,Connecticut
+69.2,JUN,2021,Connecticut
+66.4,JUN,2022,Connecticut
+73.7,JUN,2020,Delaware
+73.8,JUN,2021,Delaware
+71.8,JUN,2022,Delaware
+81,JUN,2020,Florida
+80.7,JUN,2021,Florida
+81.9,JUN,2022,Florida
+76.9,JUN,2020,Georgia
+77,JUN,2021,Georgia
+80.1,JUN,2022,Georgia
+56.2,JUN,2020,Idaho
+65.1,JUN,2021,Idaho
+57.2,JUN,2022,Idaho
+73.6,JUN,2020,Illinois
+74.1,JUN,2021,Illinois
+73.5,JUN,2022,Illinois
+72.1,JUN,2020,Indiana
+72.7,JUN,2021,Indiana
+72.2,JUN,2022,Indiana
+72.9,JUN,2020,Iowa
+73.5,JUN,2021,Iowa
+71.6,JUN,2022,Iowa
+77.7,JUN,2020,Kansas
+75.8,JUN,2021,Kansas
+75.8,JUN,2022,Kansas
+72.6,JUN,2020,Kentucky
+73.4,JUN,2021,Kentucky
+74.1,JUN,2022,Kentucky
+79.7,JUN,2020,Louisiana
+80.4,JUN,2021,Louisiana
+82.7,JUN,2022,Louisiana
+62.5,JUN,2020,Maine
+64.9,JUN,2021,Maine
+60.1,JUN,2022,Maine
+72.7,JUN,2020,Maryland
+73.1,JUN,2021,Maryland
+72.1,JUN,2022,Maryland
+67.6,JUN,2020,Massachusetts
+69.2,JUN,2021,Massachusetts
+65.5,JUN,2022,Massachusetts
+66,JUN,2020,Michigan
+67.8,JUN,2021,Michigan
+65,JUN,2022,Michigan
+67.7,JUN,2020,Minnesota
+69.9,JUN,2021,Minnesota
+66.2,JUN,2022,Minnesota
+78.1,JUN,2020,Mississippi
+78.1,JUN,2021,Mississippi
+81.3,JUN,2022,Mississippi
+75.1,JUN,2020,Missouri
+74.9,JUN,2021,Missouri
+75.3,JUN,2022,Missouri
+59.3,JUN,2020,Montana
+65.3,JUN,2021,Montana
+58.5,JUN,2022,Montana
+73.5,JUN,2020,Nebraska
+72.8,JUN,2021,Nebraska
+71.4,JUN,2022,Nebraska
+65,JUN,2020,Nevada
+72.6,JUN,2021,Nevada
+66.9,JUN,2022,Nevada
+64,JUN,2020,New Hampshire
+66.1,JUN,2021,New Hampshire
+61.7,JUN,2022,New Hampshire
+71.5,JUN,2020,New Jersey
+71.8,JUN,2021,New Jersey
+69.9,JUN,2022,New Jersey
+72.5,JUN,2020,New Mexico
+73.1,JUN,2021,New Mexico
+72.6,JUN,2022,New Mexico
+65.2,JUN,2020,New York
+67.1,JUN,2021,New York
+63.8,JUN,2022,New York
+73.2,JUN,2020,North Carolina
+73.8,JUN,2021,North Carolina
+75.2,JUN,2022,North Carolina
+66.9,JUN,2020,North Dakota
+69.3,JUN,2021,North Dakota
+64.6,JUN,2022,North Dakota
+70.4,JUN,2020,Ohio
+71.5,JUN,2021,Ohio
+70.6,JUN,2022,Ohio
+78.8,JUN,2020,Oklahoma
+77.4,JUN,2021,Oklahoma
+79.5,JUN,2022,Oklahoma
+57.9,JUN,2020,Oregon
+65.2,JUN,2021,Oregon
+58.1,JUN,2022,Oregon
+67.2,JUN,2020,Pennsylvania
+68.6,JUN,2021,Pennsylvania
+67.1,JUN,2022,Pennsylvania
+68.1,JUN,2020,Rhode Island
+69.6,JUN,2021,Rhode Island
+66.3,JUN,2022,Rhode Island
+76.1,JUN,2020,South Carolina
+76.8,JUN,2021,South Carolina
+78.8,JUN,2022,South Carolina
+70.3,JUN,2020,South Dakota
+72.3,JUN,2021,South Dakota
+67.7,JUN,2022,South Dakota
+73.5,JUN,2020,Tennessee
+74,JUN,2021,Tennessee
+75.8,JUN,2022,Tennessee
+80.7,JUN,2020,Texas
+80.3,JUN,2021,Texas
+83.7,JUN,2022,Texas
+65.4,JUN,2020,Utah
+71.9,JUN,2021,Utah
+67.6,JUN,2022,Utah
+62.8,JUN,2020,Vermont
+65.4,JUN,2021,Vermont
+61.2,JUN,2022,Vermont
+71.3,JUN,2020,Virginia
+72,JUN,2021,Virginia
+72.1,JUN,2022,Virginia
+57.9,JUN,2020,Washington
+64.6,JUN,2021,Washington
+57.9,JUN,2022,Washington
+68.1,JUN,2020,West Virginia
+69.2,JUN,2021,West Virginia
+68.8,JUN,2022,West Virginia
+66.5,JUN,2020,Wisconsin
+69.4,JUN,2021,Wisconsin
+65.4,JUN,2022,Wisconsin
+59.7,JUN,2020,Wyoming
+64.9,JUN,2021,Wyoming
+59,JUN,2022,Wyoming
+50.5,JUN,2020,Alaska
+50.9,JUN,2021,Alaska
+52.7,JUN,2022,Alaska
+80.9,JUL,2020,Alabama
+79.3,JUL,2021,Alabama
+81.7,JUL,2022,Alabama
+82.8,JUL,2020,Arizona
+81.5,JUL,2021,Arizona
+82,JUL,2022,Arizona
+81.3,JUL,2020,Arkansas
+79.3,JUL,2021,Arkansas
+84.1,JUL,2022,Arkansas
+76.6,JUL,2020,California
+79.8,JUL,2021,California
+77.6,JUL,2022,California
+69.3,JUL,2020,Colorado
+70,JUL,2021,Colorado
+70.2,JUL,2022,Colorado
+75.6,JUL,2020,Connecticut
+71.1,JUL,2021,Connecticut
+74.3,JUL,2022,Connecticut
+80.7,JUL,2020,Delaware
+77.7,JUL,2021,Delaware
+78.5,JUL,2022,Delaware
+83,JUL,2020,Florida
+81.9,JUL,2021,Florida
+83,JUL,2022,Florida
+81.5,JUL,2020,Georgia
+79.3,JUL,2021,Georgia
+81.2,JUL,2022,Georgia
+64.9,JUL,2020,Idaho
+71.8,JUL,2021,Idaho
+69.5,JUL,2022,Idaho
+77.3,JUL,2020,Illinois
+74.6,JUL,2021,Illinois
+75.8,JUL,2022,Illinois
+76.5,JUL,2020,Indiana
+73.7,JUL,2021,Indiana
+75.2,JUL,2022,Indiana
+75.3,JUL,2020,Iowa
+73.4,JUL,2021,Iowa
+74.2,JUL,2022,Iowa
+79.2,JUL,2020,Kansas
+77.7,JUL,2021,Kansas
+81,JUL,2022,Kansas
+78.7,JUL,2020,Kentucky
+75.9,JUL,2021,Kentucky
+78.3,JUL,2022,Kentucky
+82.8,JUL,2020,Louisiana
+81.8,JUL,2021,Louisiana
+84,JUL,2022,Louisiana
+68.9,JUL,2020,Maine
+63.7,JUL,2021,Maine
+67.7,JUL,2022,Maine
+80.1,JUL,2020,Maryland
+77.2,JUL,2021,Maryland
+77.7,JUL,2022,Maryland
+74.6,JUL,2020,Massachusetts
+69.8,JUL,2021,Massachusetts
+73.3,JUL,2022,Massachusetts
+72.5,JUL,2020,Michigan
+68.7,JUL,2021,Michigan
+69.2,JUL,2022,Michigan
+71.3,JUL,2020,Minnesota
+71.1,JUL,2021,Minnesota
+69.7,JUL,2022,Minnesota
+82.1,JUL,2020,Mississippi
+80.4,JUL,2021,Mississippi
+82.8,JUL,2022,Mississippi
+79.2,JUL,2020,Missouri
+76.7,JUL,2021,Missouri
+79.7,JUL,2022,Missouri
+65.6,JUL,2020,Montana
+72.5,JUL,2021,Montana
+69.1,JUL,2022,Montana
+75.3,JUL,2020,Nebraska
+75,JUL,2021,Nebraska
+76.4,JUL,2022,Nebraska
+74.2,JUL,2020,Nevada
+77.8,JUL,2021,Nevada
+76.2,JUL,2022,Nevada
+71.1,JUL,2020,New Hampshire
+65.6,JUL,2021,New Hampshire
+68.6,JUL,2022,New Hampshire
+78.8,JUL,2020,New Jersey
+75.7,JUL,2021,New Jersey
+77.8,JUL,2022,New Jersey
+76.6,JUL,2020,New Mexico
+73.3,JUL,2021,New Mexico
+76.4,JUL,2022,New Mexico
+72.9,JUL,2020,New York
+67.7,JUL,2021,New York
+69.7,JUL,2022,New York
+79.6,JUL,2020,North Carolina
+77.1,JUL,2021,North Carolina
+79.1,JUL,2022,North Carolina
+70.3,JUL,2020,North Dakota
+73.8,JUL,2021,North Dakota
+70.6,JUL,2022,North Dakota
+76.9,JUL,2020,Ohio
+73,JUL,2021,Ohio
+74.1,JUL,2022,Ohio
+82.6,JUL,2020,Oklahoma
+80,JUL,2021,Oklahoma
+86.6,JUL,2022,Oklahoma
+66,JUL,2020,Oregon
+71.4,JUL,2021,Oregon
+69.6,JUL,2022,Oregon
+74.9,JUL,2020,Pennsylvania
+71.2,JUL,2021,Pennsylvania
+72.4,JUL,2022,Pennsylvania
+75.4,JUL,2020,Rhode Island
+71.2,JUL,2021,Rhode Island
+74.4,JUL,2022,Rhode Island
+81.9,JUL,2020,South Carolina
+79.4,JUL,2021,South Carolina
+81.2,JUL,2022,South Carolina
+73.5,JUL,2020,South Dakota
+75.3,JUL,2021,South Dakota
+74.6,JUL,2022,South Dakota
+79.2,JUL,2020,Tennessee
+77,JUL,2021,Tennessee
+80.1,JUL,2022,Tennessee
+85.2,JUL,2020,Texas
+80.9,JUL,2021,Texas
+87.1,JUL,2022,Texas
+73.7,JUL,2020,Utah
+76.2,JUL,2021,Utah
+75.5,JUL,2022,Utah
+70.9,JUL,2020,Vermont
+64.9,JUL,2021,Vermont
+67.4,JUL,2022,Vermont
+78.7,JUL,2020,Virginia
+75.9,JUL,2021,Virginia
+76.9,JUL,2022,Virginia
+64.8,JUL,2020,Washington
+69.7,JUL,2021,Washington
+68,JUL,2022,Washington
+75.6,JUL,2020,West Virginia
+72.2,JUL,2021,West Virginia
+73,JUL,2022,West Virginia
+71.9,JUL,2020,Wisconsin
+69.4,JUL,2021,Wisconsin
+69.4,JUL,2022,Wisconsin
+66.6,JUL,2020,Wyoming
+70.1,JUL,2021,Wyoming
+68.9,JUL,2022,Wyoming
+53.2,JUL,2020,Alaska
+53.9,JUL,2021,Alaska
+53.4,JUL,2022,Alaska
+80.2,AUG,2020,Alabama
+80,AUG,2021,Alabama
+79.3,AUG,2022,Alabama
+84.1,AUG,2020,Arizona
+79.5,AUG,2021,Arizona
+78.7,AUG,2022,Arizona
+77.8,AUG,2020,Arkansas
+80.7,AUG,2021,Arkansas
+79.4,AUG,2022,Arkansas
+78.9,AUG,2020,California
+77,AUG,2021,California
+78.3,AUG,2022,California
+70.1,AUG,2020,Colorado
+67.4,AUG,2021,Colorado
+67.8,AUG,2022,Colorado
+72.6,AUG,2020,Connecticut
+72.8,AUG,2021,Connecticut
+74.6,AUG,2022,Connecticut
+77.2,AUG,2020,Delaware
+76.9,AUG,2021,Delaware
+77.7,AUG,2022,Delaware
+83.2,AUG,2020,Florida
+82.6,AUG,2021,Florida
+82.8,AUG,2022,Florida
+80.4,AUG,2020,Georgia
+80,AUG,2021,Georgia
+79.5,AUG,2022,Georgia
+67.1,AUG,2020,Idaho
+63.9,AUG,2021,Idaho
+69.4,AUG,2022,Idaho
+72.8,AUG,2020,Illinois
+75.6,AUG,2021,Illinois
+73.6,AUG,2022,Illinois
+72,AUG,2020,Indiana
+75,AUG,2021,Indiana
+72.9,AUG,2022,Indiana
+71.9,AUG,2020,Iowa
+72.9,AUG,2021,Iowa
+72,AUG,2022,Iowa
+76.4,AUG,2020,Kansas
+79.1,AUG,2021,Kansas
+79.1,AUG,2022,Kansas
+74.8,AUG,2020,Kentucky
+76.6,AUG,2021,Kentucky
+75.4,AUG,2022,Kentucky
+82.2,AUG,2020,Louisiana
+82.6,AUG,2021,Louisiana
+81.9,AUG,2022,Louisiana
+65.6,AUG,2020,Maine
+68.2,AUG,2021,Maine
+67.3,AUG,2022,Maine
+76.6,AUG,2020,Maryland
+77.1,AUG,2021,Maryland
+76.6,AUG,2022,Maryland
+71.7,AUG,2020,Massachusetts
+72.7,AUG,2021,Massachusetts
+73.8,AUG,2022,Massachusetts
+68.6,AUG,2020,Michigan
+71,AUG,2021,Michigan
+68.2,AUG,2022,Michigan
+68.2,AUG,2020,Minnesota
+69.4,AUG,2021,Minnesota
+67.3,AUG,2022,Minnesota
+80.2,AUG,2020,Mississippi
+80.8,AUG,2021,Mississippi
+80.2,AUG,2022,Mississippi
+74.2,AUG,2020,Missouri
+77.4,AUG,2021,Missouri
+76.5,AUG,2022,Missouri
+67.4,AUG,2020,Montana
+64.7,AUG,2021,Montana
+69.7,AUG,2022,Montana
+74,AUG,2020,Nebraska
+74.3,AUG,2021,Nebraska
+74.9,AUG,2022,Nebraska
+75.6,AUG,2020,Nevada
+72.4,AUG,2021,Nevada
+74.3,AUG,2022,Nevada
+66.5,AUG,2020,New Hampshire
+69.2,AUG,2021,New Hampshire
+69.7,AUG,2022,New Hampshire
+75.5,AUG,2020,New Jersey
+75.9,AUG,2021,New Jersey
+77.1,AUG,2022,New Jersey
+76.2,AUG,2020,New Mexico
+72.2,AUG,2021,New Mexico
+72,AUG,2022,New Mexico
+68.6,AUG,2020,New York
+70.4,AUG,2021,New York
+70,AUG,2022,New York
+77.5,AUG,2020,North Carolina
+77.8,AUG,2021,North Carolina
+76.6,AUG,2022,North Carolina
+69.2,AUG,2020,North Dakota
+68.9,AUG,2021,North Dakota
+69.4,AUG,2022,North Dakota
+72.2,AUG,2020,Ohio
+74.6,AUG,2021,Ohio
+72.2,AUG,2022,Ohio
+79.4,AUG,2020,Oklahoma
+81.3,AUG,2021,Oklahoma
+82.6,AUG,2022,Oklahoma
+67.2,AUG,2020,Oregon
+66.4,AUG,2021,Oregon
+70.6,AUG,2022,Oregon
+71.6,AUG,2020,Pennsylvania
+72.6,AUG,2021,Pennsylvania
+71.4,AUG,2022,Pennsylvania
+73.8,AUG,2020,Rhode Island
+73.6,AUG,2021,Rhode Island
+75,AUG,2022,Rhode Island
+80.1,AUG,2020,South Carolina
+80.1,AUG,2021,South Carolina
+79,AUG,2022,South Carolina
+72.6,AUG,2020,South Dakota
+72.5,AUG,2021,South Dakota
+73.2,AUG,2022,South Dakota
+76.4,AUG,2020,Tennessee
+77.2,AUG,2021,Tennessee
+76.4,AUG,2022,Tennessee
+84.4,AUG,2020,Texas
+81.9,AUG,2021,Texas
+83.3,AUG,2022,Texas
+75.8,AUG,2020,Utah
+70.9,AUG,2021,Utah
+72.3,AUG,2022,Utah
+65.2,AUG,2020,Vermont
+68.8,AUG,2021,Vermont
+68.3,AUG,2022,Vermont
+75.5,AUG,2020,Virginia
+76.4,AUG,2021,Virginia
+74.7,AUG,2022,Virginia
+65.7,AUG,2020,Washington
+65.8,AUG,2021,Washington
+69.8,AUG,2022,Washington
+72.5,AUG,2020,West Virginia
+73.9,AUG,2021,West Virginia
+71.8,AUG,2022,West Virginia
+68.3,AUG,2020,Wisconsin
+69.2,AUG,2021,Wisconsin
+67.4,AUG,2022,Wisconsin
+67.7,AUG,2020,Wyoming
+64.1,AUG,2021,Wyoming
+67.4,AUG,2022,Wyoming
+52.1,AUG,2020,Alaska
+49.4,AUG,2021,Alaska
+50.1,AUG,2022,Alaska
+74.3,SEP,2020,Alabama
+73.9,SEP,2021,Alabama
+73.8,SEP,2022,Alabama
+75.6,SEP,2020,Arizona
+74.8,SEP,2021,Arizona
+75.6,SEP,2022,Arizona
+71.8,SEP,2020,Arkansas
+74.3,SEP,2021,Arkansas
+73.8,SEP,2022,Arkansas
+74,SEP,2020,California
+72.2,SEP,2021,California
+73.6,SEP,2022,California
+58.8,SEP,2020,Colorado
+62.4,SEP,2021,Colorado
+62.5,SEP,2022,Colorado
+63.5,SEP,2020,Connecticut
+65.2,SEP,2021,Connecticut
+63.7,SEP,2022,Connecticut
+68.7,SEP,2020,Delaware
+70.1,SEP,2021,Delaware
+68.8,SEP,2022,Delaware
+80.6,SEP,2020,Florida
+79.7,SEP,2021,Florida
+79.8,SEP,2022,Florida
+74.3,SEP,2020,Georgia
+73.8,SEP,2021,Georgia
+73.9,SEP,2022,Georgia
+58.7,SEP,2020,Idaho
+57.2,SEP,2021,Idaho
+60.8,SEP,2022,Idaho
+65.6,SEP,2020,Illinois
+69.6,SEP,2021,Illinois
+67,SEP,2022,Illinois
+65.2,SEP,2020,Indiana
+68.4,SEP,2021,Indiana
+66.1,SEP,2022,Indiana
+61.9,SEP,2020,Iowa
+66.6,SEP,2021,Iowa
+65.1,SEP,2022,Iowa
+66.3,SEP,2020,Kansas
+73.3,SEP,2021,Kansas
+71.9,SEP,2022,Kansas
+68.3,SEP,2020,Kentucky
+68.9,SEP,2021,Kentucky
+68.2,SEP,2022,Kentucky
+77.6,SEP,2020,Louisiana
+76.9,SEP,2021,Louisiana
+77.3,SEP,2022,Louisiana
+56.8,SEP,2020,Maine
+59,SEP,2021,Maine
+57.1,SEP,2022,Maine
+67.3,SEP,2020,Maryland
+69.6,SEP,2021,Maryland
+68.4,SEP,2022,Maryland
+62.8,SEP,2020,Massachusetts
+64.8,SEP,2021,Massachusetts
+62.4,SEP,2022,Massachusetts
+58.2,SEP,2020,Michigan
+61.4,SEP,2021,Michigan
+60.9,SEP,2022,Michigan
+56.5,SEP,2020,Minnesota
+61.6,SEP,2021,Minnesota
+60.2,SEP,2022,Minnesota
+75.3,SEP,2020,Mississippi
+74.8,SEP,2021,Mississippi
+75,SEP,2022,Mississippi
+67.3,SEP,2020,Missouri
+71.5,SEP,2021,Missouri
+69.5,SEP,2022,Missouri
+57,SEP,2020,Montana
+58.3,SEP,2021,Montana
+60.7,SEP,2022,Montana
+62.7,SEP,2020,Nebraska
+67.6,SEP,2021,Nebraska
+67.4,SEP,2022,Nebraska
+66.6,SEP,2020,Nevada
+65.5,SEP,2021,Nevada
+67.7,SEP,2022,Nevada
+58.5,SEP,2020,New Hampshire
+60.5,SEP,2021,New Hampshire
+58,SEP,2022,New Hampshire
+66.8,SEP,2020,New Jersey
+68.7,SEP,2021,New Jersey
+67.6,SEP,2022,New Jersey
+65,SEP,2020,New Mexico
+68.3,SEP,2021,New Mexico
+68.2,SEP,2022,New Mexico
+59.6,SEP,2020,New York
+61.7,SEP,2021,New York
+60.5,SEP,2022,New York
+69.7,SEP,2020,North Carolina
+70.6,SEP,2021,North Carolina
+70.4,SEP,2022,North Carolina
+57.1,SEP,2020,North Dakota
+62.2,SEP,2021,North Dakota
+60.9,SEP,2022,North Dakota
+64.7,SEP,2020,Ohio
+66.9,SEP,2021,Ohio
+65.2,SEP,2022,Ohio
+70.3,SEP,2020,Oklahoma
+76.7,SEP,2021,Oklahoma
+75.9,SEP,2022,Oklahoma
+62.6,SEP,2020,Oregon
+59.4,SEP,2021,Oregon
+62.6,SEP,2022,Oregon
+62.1,SEP,2020,Pennsylvania
+64.3,SEP,2021,Pennsylvania
+63,SEP,2022,Pennsylvania
+64.5,SEP,2020,Rhode Island
+66.4,SEP,2021,Rhode Island
+63.6,SEP,2022,Rhode Island
+73.3,SEP,2020,South Carolina
+73.5,SEP,2021,South Carolina
+73.6,SEP,2022,South Carolina
+60.4,SEP,2020,South Dakota
+65,SEP,2021,South Dakota
+65.4,SEP,2022,South Dakota
+69.9,SEP,2020,Tennessee
+69.7,SEP,2021,Tennessee
+69.4,SEP,2022,Tennessee
+74.1,SEP,2020,Texas
+78.2,SEP,2021,Texas
+77.8,SEP,2022,Texas
+63.9,SEP,2020,Utah
+64.4,SEP,2021,Utah
+66.7,SEP,2022,Utah
+57.2,SEP,2020,Vermont
+59.5,SEP,2021,Vermont
+57.6,SEP,2022,Vermont
+66.4,SEP,2020,Virginia
+68.4,SEP,2021,Virginia
+67.8,SEP,2022,Virginia
+61.2,SEP,2020,Washington
+58,SEP,2021,Washington
+61.6,SEP,2022,Washington
+64.2,SEP,2020,West Virginia
+65.5,SEP,2021,West Virginia
+64.2,SEP,2022,West Virginia
+57.3,SEP,2020,Wisconsin
+61.2,SEP,2021,Wisconsin
+60.3,SEP,2022,Wisconsin
+55.5,SEP,2020,Wyoming
+58.1,SEP,2021,Wyoming
+59.7,SEP,2022,Wyoming
+42,SEP,2020,Alaska
+39.4,SEP,2021,Alaska
+42.9,SEP,2022,Alaska
+66.9,OCT,2020,Alabama
+67.3,OCT,2021,Alabama
+61.2,OCT,2022,Alabama
+66.2,OCT,2020,Arizona
+59.9,OCT,2021,Arizona
+61.6,OCT,2022,Arizona
+59.4,OCT,2020,Arkansas
+65.5,OCT,2021,Arkansas
+61.3,OCT,2022,Arkansas
+66.2,OCT,2020,California
+58.2,OCT,2021,California
+64.1,OCT,2022,California
+47.1,OCT,2020,Colorado
+47.8,OCT,2021,Colorado
+47.6,OCT,2022,Colorado
+53.2,OCT,2020,Connecticut
+56.8,OCT,2021,Connecticut
+52.5,OCT,2022,Connecticut
+60,OCT,2020,Delaware
+63.2,OCT,2021,Delaware
+55.3,OCT,2022,Delaware
+77.2,OCT,2020,Florida
+75.3,OCT,2021,Florida
+71.7,OCT,2022,Florida
+68.5,OCT,2020,Georgia
+67.2,OCT,2021,Georgia
+62.1,OCT,2022,Georgia
+45.4,OCT,2020,Idaho
+45.2,OCT,2021,Idaho
+48,OCT,2022,Idaho
+52,OCT,2020,Illinois
+60.2,OCT,2021,Illinois
+53.3,OCT,2022,Illinois
+53.1,OCT,2020,Indiana
+60.2,OCT,2021,Indiana
+53,OCT,2022,Indiana
+46,OCT,2020,Iowa
+55.5,OCT,2021,Iowa
+50.4,OCT,2022,Iowa
+52.6,OCT,2020,Kansas
+59.1,OCT,2021,Kansas
+57.7,OCT,2022,Kansas
+57.8,OCT,2020,Kentucky
+62.4,OCT,2021,Kentucky
+55.1,OCT,2022,Kentucky
+68.2,OCT,2020,Louisiana
+71.7,OCT,2021,Louisiana
+66.4,OCT,2022,Louisiana
+44.7,OCT,2020,Maine
+50.2,OCT,2021,Maine
+49.2,OCT,2022,Maine
+59,OCT,2020,Maryland
+62.9,OCT,2021,Maryland
+54.5,OCT,2022,Maryland
+52.4,OCT,2020,Massachusetts
+56.3,OCT,2021,Massachusetts
+52.5,OCT,2022,Massachusetts
+44.4,OCT,2020,Michigan
+55.2,OCT,2021,Michigan
+48.2,OCT,2022,Michigan
+38.9,OCT,2020,Minnesota
+51.5,OCT,2021,Minnesota
+47,OCT,2022,Minnesota
+65.8,OCT,2020,Mississippi
+68.3,OCT,2021,Mississippi
+63.1,OCT,2022,Mississippi
+53.6,OCT,2020,Missouri
+60.5,OCT,2021,Missouri
+56,OCT,2022,Missouri
+39.3,OCT,2020,Montana
+45.6,OCT,2021,Montana
+47.2,OCT,2022,Montana
+46.4,OCT,2020,Nebraska
+53.2,OCT,2021,Nebraska
+52.2,OCT,2022,Nebraska
+55.3,OCT,2020,Nevada
+49.6,OCT,2021,Nevada
+54.2,OCT,2022,Nevada
+47,OCT,2020,New Hampshire
+52.1,OCT,2021,New Hampshire
+48.6,OCT,2022,New Hampshire
+57,OCT,2020,New Jersey
+61,OCT,2021,New Jersey
+54,OCT,2022,New Jersey
+56.6,OCT,2020,New Mexico
+55.6,OCT,2021,New Mexico
+54,OCT,2022,New Mexico
+49,OCT,2020,New York
+54.8,OCT,2021,New York
+49,OCT,2022,New York
+63,OCT,2020,North Carolina
+64.4,OCT,2021,North Carolina
+57.6,OCT,2022,North Carolina
+37.8,OCT,2020,North Dakota
+48.6,OCT,2021,North Dakota
+46,OCT,2022,North Dakota
+53.5,OCT,2020,Ohio
+60.3,OCT,2021,Ohio
+52.1,OCT,2022,Ohio
+58.3,OCT,2020,Oklahoma
+64.4,OCT,2021,Oklahoma
+62.1,OCT,2022,Oklahoma
+51.3,OCT,2020,Oregon
+47.6,OCT,2021,Oregon
+54.4,OCT,2022,Oregon
+52.2,OCT,2020,Pennsylvania
+57.7,OCT,2021,Pennsylvania
+49.4,OCT,2022,Pennsylvania
+54.6,OCT,2020,Rhode Island
+58.4,OCT,2021,Rhode Island
+54.4,OCT,2022,Rhode Island
+67.4,OCT,2020,South Carolina
+66.8,OCT,2021,South Carolina
+60.8,OCT,2022,South Carolina
+41.2,OCT,2020,South Dakota
+51.2,OCT,2021,South Dakota
+49.4,OCT,2022,South Dakota
+60.4,OCT,2020,Tennessee
+63.4,OCT,2021,Tennessee
+56.3,OCT,2022,Tennessee
+65.9,OCT,2020,Texas
+69.8,OCT,2021,Texas
+66.4,OCT,2022,Texas
+52.8,OCT,2020,Utah
+47.9,OCT,2021,Utah
+51,OCT,2022,Utah
+46.4,OCT,2020,Vermont
+51.6,OCT,2021,Vermont
+47.9,OCT,2022,Vermont
+59,OCT,2020,Virginia
+62.3,OCT,2021,Virginia
+53.8,OCT,2022,Virginia
+48.4,OCT,2020,Washington
+46.6,OCT,2021,Washington
+53.6,OCT,2022,Washington
+55.4,OCT,2020,West Virginia
+59.4,OCT,2021,West Virginia
+50.3,OCT,2022,West Virginia
+41.3,OCT,2020,Wisconsin
+53.5,OCT,2021,Wisconsin
+47.2,OCT,2022,Wisconsin
+41.2,OCT,2020,Wyoming
+43.9,OCT,2021,Wyoming
+44.6,OCT,2022,Wyoming
+28.9,OCT,2020,Alaska
+27.9,OCT,2021,Alaska
+28.6,OCT,2022,Alaska
+58.4,NOV,2020,Alabama
+52.2,NOV,2021,Alabama
+55.4,NOV,2022,Alabama
+53.5,NOV,2020,Arizona
+55.8,NOV,2021,Arizona
+46.1,NOV,2022,Arizona
+54,NOV,2020,Arkansas
+49.4,NOV,2021,Arkansas
+49.8,NOV,2022,Arkansas
+50.9,NOV,2020,California
+54.8,NOV,2021,California
+46.5,NOV,2022,California
+38.5,NOV,2020,Colorado
+40.7,NOV,2021,Colorado
+31.3,NOV,2022,Colorado
+45.4,NOV,2020,Connecticut
+41,NOV,2021,Connecticut
+45.2,NOV,2022,Connecticut
+51.8,NOV,2020,Delaware
+45.1,NOV,2021,Delaware
+49.5,NOV,2022,Delaware
+70.8,NOV,2020,Florida
+63.4,NOV,2021,Florida
+69.7,NOV,2022,Florida
+60.4,NOV,2020,Georgia
+52.7,NOV,2021,Georgia
+57.5,NOV,2022,Georgia
+32.7,NOV,2020,Idaho
+36.7,NOV,2021,Idaho
+26.1,NOV,2022,Idaho
+47.1,NOV,2020,Illinois
+40.9,NOV,2021,Illinois
+43,NOV,2022,Illinois
+46.7,NOV,2020,Indiana
+40,NOV,2021,Indiana
+43.2,NOV,2022,Indiana
+42,NOV,2020,Iowa
+39.2,NOV,2021,Iowa
+37.1,NOV,2022,Iowa
+48.1,NOV,2020,Kansas
+46.7,NOV,2021,Kansas
+41.1,NOV,2022,Kansas
+49.9,NOV,2020,Kentucky
+43.4,NOV,2021,Kentucky
+47,NOV,2022,Kentucky
+61.9,NOV,2020,Louisiana
+56.4,NOV,2021,Louisiana
+58.2,NOV,2022,Louisiana
+37,NOV,2020,Maine
+35.3,NOV,2021,Maine
+37.4,NOV,2022,Maine
+50.9,NOV,2020,Maryland
+44.4,NOV,2021,Maryland
+48.7,NOV,2022,Maryland
+44.7,NOV,2020,Massachusetts
+40.8,NOV,2021,Massachusetts
+44.8,NOV,2022,Massachusetts
+41.1,NOV,2020,Michigan
+36.3,NOV,2021,Michigan
+38.7,NOV,2022,Michigan
+33.9,NOV,2020,Minnesota
+32.2,NOV,2021,Minnesota
+30.1,NOV,2022,Minnesota
+58.4,NOV,2020,Mississippi
+52.7,NOV,2021,Mississippi
+55,NOV,2022,Mississippi
+49.6,NOV,2020,Missouri
+45.5,NOV,2021,Missouri
+44.3,NOV,2022,Missouri
+32.8,NOV,2020,Montana
+36.3,NOV,2021,Montana
+22.6,NOV,2022,Montana
+42.6,NOV,2020,Nebraska
+42.6,NOV,2021,Nebraska
+34.4,NOV,2022,Nebraska
+40.5,NOV,2020,Nevada
+45.2,NOV,2021,Nevada
+34,NOV,2022,Nevada
+38.5,NOV,2020,New Hampshire
+35.9,NOV,2021,New Hampshire
+39.5,NOV,2022,New Hampshire
+49.2,NOV,2020,New Jersey
+43.6,NOV,2021,New Jersey
+47.6,NOV,2022,New Jersey
+47.5,NOV,2020,New Mexico
+47.6,NOV,2021,New Mexico
+40.4,NOV,2022,New Mexico
+41.9,NOV,2020,New York
+37,NOV,2021,New York
+41,NOV,2022,New York
+54.8,NOV,2020,North Carolina
+48.1,NOV,2021,North Carolina
+53.4,NOV,2022,North Carolina
+31.8,NOV,2020,North Dakota
+32.6,NOV,2021,North Dakota
+23.1,NOV,2022,North Dakota
+46.4,NOV,2020,Ohio
+40.5,NOV,2021,Ohio
+44,NOV,2022,Ohio
+53.5,NOV,2020,Oklahoma
+51.2,NOV,2021,Oklahoma
+47.4,NOV,2022,Oklahoma
+38.3,NOV,2020,Oregon
+41.9,NOV,2021,Oregon
+33.2,NOV,2022,Oregon
+44.8,NOV,2020,Pennsylvania
+39,NOV,2021,Pennsylvania
+42.8,NOV,2022,Pennsylvania
+47.5,NOV,2020,Rhode Island
+42.9,NOV,2021,Rhode Island
+46.7,NOV,2022,Rhode Island
+59.3,NOV,2020,South Carolina
+51.6,NOV,2021,South Carolina
+56.9,NOV,2022,South Carolina
+38.6,NOV,2020,South Dakota
+38.2,NOV,2021,South Dakota
+29,NOV,2022,South Dakota
+51.9,NOV,2020,Tennessee
+45.6,NOV,2021,Tennessee
+49,NOV,2022,Tennessee
+60.6,NOV,2020,Texas
+57.3,NOV,2021,Texas
+54,NOV,2022,Texas
+38.8,NOV,2020,Utah
+42.5,NOV,2021,Utah
+32.1,NOV,2022,Utah
+37.9,NOV,2020,Vermont
+34.3,NOV,2021,Vermont
+38.5,NOV,2022,Vermont
+51.3,NOV,2020,Virginia
+44.5,NOV,2021,Virginia
+49,NOV,2022,Virginia
+37.6,NOV,2020,Washington
+39.9,NOV,2021,Washington
+32,NOV,2022,Washington
+47.5,NOV,2020,West Virginia
+40.9,NOV,2021,West Virginia
+45,NOV,2022,West Virginia
+38.6,NOV,2020,Wisconsin
+33.9,NOV,2021,Wisconsin
+35.3,NOV,2022,Wisconsin
+33.1,NOV,2020,Wyoming
+36.6,NOV,2021,Wyoming
+24.7,NOV,2022,Wyoming
+14.5,NOV,2020,Alaska
+4.6,NOV,2021,Alaska
+16.4,NOV,2022,Alaska
+45.9,DEC,2020,Alabama
+56.8,DEC,2021,Alabama
+49.1,DEC,2022,Alabama
+42,DEC,2020,Arizona
+45.6,DEC,2021,Arizona
+42.9,DEC,2022,Arizona
+42.6,DEC,2020,Arkansas
+53.4,DEC,2021,Arkansas
+43.3,DEC,2022,Arkansas
+45.5,DEC,2020,California
+43.5,DEC,2021,California
+43.1,DEC,2022,California
+26.7,DEC,2020,Colorado
+32.4,DEC,2021,Colorado
+25.6,DEC,2022,Colorado
+33.6,DEC,2020,Connecticut
+37,DEC,2021,Connecticut
+33.6,DEC,2022,Connecticut
+39.7,DEC,2020,Delaware
+44,DEC,2021,Delaware
+37.5,DEC,2022,Delaware
+57.6,DEC,2020,Florida
+66.5,DEC,2021,Florida
+61.3,DEC,2022,Florida
+46.4,DEC,2020,Georgia
+56.6,DEC,2021,Georgia
+49,DEC,2022,Georgia
+26.2,DEC,2020,Idaho
+26.5,DEC,2021,Idaho
+22.7,DEC,2022,Idaho
+33,DEC,2020,Illinois
+40.2,DEC,2021,Illinois
+30.3,DEC,2022,Illinois
+33.6,DEC,2020,Indiana
+40.5,DEC,2021,Indiana
+31.7,DEC,2022,Indiana
+27.2,DEC,2020,Iowa
+31.9,DEC,2021,Iowa
+21.3,DEC,2022,Iowa
+35.9,DEC,2020,Kansas
+41.1,DEC,2021,Kansas
+30.7,DEC,2022,Kansas
+37.3,DEC,2020,Kentucky
+47.6,DEC,2021,Kentucky
+37.9,DEC,2022,Kentucky
+50.9,DEC,2020,Louisiana
+62.4,DEC,2021,Louisiana
+54.2,DEC,2022,Louisiana
+27.2,DEC,2020,Maine
+24.5,DEC,2021,Maine
+27.6,DEC,2022,Maine
+38.3,DEC,2020,Maryland
+43.8,DEC,2021,Maryland
+36.5,DEC,2022,Maryland
+33.1,DEC,2020,Massachusetts
+36,DEC,2021,Massachusetts
+33.2,DEC,2022,Massachusetts
+28.6,DEC,2020,Michigan
+30.1,DEC,2021,Michigan
+26.9,DEC,2022,Michigan
+21,DEC,2020,Minnesota
+18.2,DEC,2021,Minnesota
+12.6,DEC,2022,Minnesota
+47,DEC,2020,Mississippi
+58.6,DEC,2021,Mississippi
+50.1,DEC,2022,Mississippi
+36.3,DEC,2020,Missouri
+44.7,DEC,2021,Missouri
+33,DEC,2022,Missouri
+28.5,DEC,2020,Montana
+19.3,DEC,2021,Montana
+14.6,DEC,2022,Montana
+31.3,DEC,2020,Nebraska
+33.8,DEC,2021,Nebraska
+22.6,DEC,2022,Nebraska
+32.4,DEC,2020,Nevada
+32.4,DEC,2021,Nevada
+31.5,DEC,2022,Nevada
+28,DEC,2020,New Hampshire
+28.9,DEC,2021,New Hampshire
+28.4,DEC,2022,New Hampshire
+37,DEC,2020,New Jersey
+41.2,DEC,2021,New Jersey
+35.6,DEC,2022,New Jersey
+35,DEC,2020,New Mexico
+42,DEC,2021,New Mexico
+37.4,DEC,2022,New Mexico
+29.8,DEC,2020,New York
+32.8,DEC,2021,New York
+29,DEC,2022,New York
+42.2,DEC,2020,North Carolina
+50.8,DEC,2021,North Carolina
+41.9,DEC,2022,North Carolina
+23.4,DEC,2020,North Dakota
+14,DEC,2021,North Dakota
+6.7,DEC,2022,North Dakota
+33.6,DEC,2020,Ohio
+40.2,DEC,2021,Ohio
+32.7,DEC,2022,Ohio
+41,DEC,2020,Oklahoma
+50.4,DEC,2021,Oklahoma
+40,DEC,2022,Oklahoma
+34.2,DEC,2020,Oregon
+32.4,DEC,2021,Oregon
+30.3,DEC,2022,Oregon
+32.1,DEC,2020,Pennsylvania
+37.6,DEC,2021,Pennsylvania
+30.6,DEC,2022,Pennsylvania
+35.7,DEC,2020,Rhode Island
+38.6,DEC,2021,Rhode Island
+35.4,DEC,2022,Rhode Island
+45.6,DEC,2020,South Carolina
+54.6,DEC,2021,South Carolina
+46,DEC,2022,South Carolina
+28.3,DEC,2020,South Dakota
+24.5,DEC,2021,South Dakota
+15.1,DEC,2022,South Dakota
+39.5,DEC,2020,Tennessee
+50.4,DEC,2021,Tennessee
+40.9,DEC,2022,Tennessee
+48.5,DEC,2020,Texas
+59.1,DEC,2021,Texas
+49.9,DEC,2022,Texas
+27.2,DEC,2020,Utah
+31.1,DEC,2021,Utah
+28,DEC,2022,Utah
+27.3,DEC,2020,Vermont
+28.2,DEC,2021,Vermont
+27.1,DEC,2022,Vermont
+38.4,DEC,2020,Virginia
+45.8,DEC,2021,Virginia
+37.2,DEC,2022,Virginia
+33.7,DEC,2020,Washington
+29.4,DEC,2021,Washington
+26.3,DEC,2022,Washington
+34.3,DEC,2020,West Virginia
+42.6,DEC,2021,West Virginia
+34.5,DEC,2022,West Virginia
+24.2,DEC,2020,Wisconsin
+24.8,DEC,2021,Wisconsin
+19.1,DEC,2022,Wisconsin
+24.5,DEC,2020,Wyoming
+26.2,DEC,2021,Wyoming
+19,DEC,2022,Wyoming
+10.6,DEC,2020,Alaska
+6.8,DEC,2021,Alaska
+7.5,DEC,2022,Alaska
