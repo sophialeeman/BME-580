@@ -10,6 +10,8 @@ df1 <- read.csv('Final_COV.csv', header = TRUE)
 df2 <- read.csv('Weather/airpress_cleaned.csv', header = TRUE)
 df3 <- read.csv('Weather/humidity_cleaned.csv', header = TRUE)
 df4 <- read.csv('mental_cleaned.csv',header = TRUE)
+df5 <- read.csv('Weather/temp_cleaned_final.csv',header = TRUE)
+df6 <- read.csv('Weather/precip_cleaned_final.csv',header = TRUE)
 
 ```
 
@@ -18,6 +20,8 @@ df1
 df2
 df3
 df4
+df5
+df6
 ```
 
 ```{r}
@@ -40,6 +44,8 @@ head(df1)
 head(df2)
 head(df3)
 df4
+df5
+df6
 ```
 
 
@@ -47,20 +53,21 @@ df4
 merge1 <- merge(df1, df2, by=c('State', 'Year', 'Month'), all=TRUE)
 merge2 <- merge(merge1, df3, by=c('State', 'Year', 'Month'), all=TRUE)
 merge3 <- merge(merge2, df4, by =c('State', 'Year', 'Month'), all=TRUE)
-merge3
-
+merge4 <- merge(merge3, df5, by =c('State', 'Year', 'Month'), all=TRUE)
+merge5 <- merge(merge4, df6, by =c('State', 'Year', 'Month'), all=TRUE)
+merge5
 
 ```
 
 
 ```{r}
 
-merge3 <- merge3[, !(names(merge3) %in% c('Province_State', 'year_month', 'State.Name.x', 'State.Name.y'))]
+merge5 <- merge5[, !(names(merge5) %in% c('Province_State', 'year_month', 'State.Name.x', 'State.Name.y'))]
 
-merge3
-summary(merge3)
-merge3 <- na.omit(merge3)
-merge3
+merge5
+summary(merge5)
+merge5 <- na.omit(merge5)
+merge5
 
-write.csv(merge3, "/Users/sophialeeman/Documents/BME 580/BME-580/All_Data.csv", row.names=FALSE)
+write.csv(merge5, "All_Data.csv", row.names=FALSE)
 ```
