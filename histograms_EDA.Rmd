@@ -103,5 +103,19 @@ depress<- ggplot(depression_avg, aes(x = Value)) +
        x = "Percentage of Depression", 
        y = "Frequency")
 
-grid.arrange(total, deaths, incident, ratio, pressure, humidity, anxiety, depress)
+temp<- ggplot(combined_df, aes(x = Temp)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Avg Temp", 
+       x = "Temperature (F)", 
+       y = "Frequency")
+
+precip<- ggplot(combined_df, aes(x = Precip)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Precipitation", 
+       x = "Precipitation (Inches)", 
+       y = "Frequency")
+
+grid.arrange(total, deaths, incident, ratio, pressure, humidity, anxiety, depress, temp, precip)
 ```
