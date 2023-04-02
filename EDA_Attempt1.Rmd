@@ -1,0 +1,92 @@
+---
+title: "EDA_New"
+output: html_document
+date: "2023-04-02"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+```{r}
+df1 <- read.csv("datasophia.csv")
+df2 <- read.csv("dataisabella.csv")
+df3 <- read.csv("datatuli.csv")
+```
+```{r}
+combined_df <- rbind(df1, df2, df3)
+```
+```{r}
+str(combined_df)
+
+# View the first few rows of the data
+head(combined_df,10)
+
+# View the last few rows of the data
+tail(combined_df,10)
+
+# Summary statistics of the data
+summary(combined_df)
+
+# Check the dimensions of the data
+dim(combined_df)
+```
+```{r}
+# Check for missing values
+sum(is.na(combined_df))
+
+# Remove rows with missing values
+combined_df <- na.omit(combined_df)
+```
+```{r}
+cor(combined_df$Total_Test_Results, combined_df$Humidity)
+
+# Histogram of variables
+ggplot(combined_df, aes(x = Total_Test_Results)) +
+  geom_histogram(binwidth = 1000, fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Total Confirmed COVID-19 Cases", 
+       x = "Total Confirmed COVID-19 Cases", 
+       y = "Frequency")
+
+ggplot(combined_df, aes(x = Deaths)) +
+  geom_histogram(binwidth = 1000, fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Deaths by COVID-19 Cases", 
+       x = "Total Confirmed Deaths", 
+       y = "Frequency")
+
+ggplot(combined_df, aes(x = Value_Anxiety)) +
+  geom_histogram(binwidth = 5, fill = "lightgreen", color = "black") +
+  scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 5)) +
+  labs(title = "Histogram of Percentage of Anxiety", 
+       x = "Percentage of Anxiety", 
+       y = "Frequency")
+
+ggplot(combined_df, aes(x = Value_Depression)) +
+  geom_histogram(binwidth = 5, fill = "lightgreen", color = "black") +
+  scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, by = 5)) +
+  labs(title = "Histogram of Percentage of Depression", 
+       x = "Percentage of Depression", 
+       y = "Frequency")
+
+# Scatterplot of two variables
+ggplot(combined_df, aes(x = Precipitation_mm, y = Value_Anxiety)) +
+  geom_point() +
+  labs(title = "Precipitation vs. Anxiety", 
+       x = "Precipitation (mm)", 
+       y = "Percentage of Anxiety")
+
+ggplot(combined_df, aes(x = Value_Anxiety, y = Total_Test_Results)) +
+  geom_point() +
+  labs(title = "Anxiety vs. COVID-19 Tests", 
+       x = "Percentage of Anxiety", 
+       y = "Total COVID-19 Tests")
+
+ggplot(combined_df, aes(x = Humidity_percentage, y = Confirmed)) +
+  geom_point() +
+  labs(title = "Humidity vs. Confirmed COVID-19 Cases", 
+       x = "Humidity Percentage", 
+       y = "Confirmed COVID-19 Cases")
+```
