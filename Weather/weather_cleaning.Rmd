@@ -27,7 +27,24 @@ temp = data.frame(avg_temp)
 temp = temp %>% dplyr::select(-X)
 
 temp_year_range <- dplyr::filter(temp, grepl('022020|022021|022022', CODE))
-summary(temp_year_range)
+temp_year_range$YEAR <- with(temp_year_range, substr(CODE, 7, 10))
+temp_year_range$STATE <- with(temp_year_range, substr(CODE, 0, 3))
+temp_state <- dplyr::filter(temp_year_range, STATE<'051')
+
+state_name = list('Alabama', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming', 'Alaska')
+
+state_counter = 1
+for (x in 1:49) {
+  temp_state$STATE[state_counter] <- state_name[x]
+  temp_state$STATE[state_counter+1] <- state_name[x]
+  temp_state$STATE[state_counter+2] <- state_name[x]
+  state_counter = state_counter+3
+}
+
+temp_state <- apply(temp_state,2,as.character)
+
+write.csv(temp_state, "temp_cleaned.csv", row.names=FALSE)
+
 ```
 
 ```{r}
@@ -36,6 +53,288 @@ precip_raw$CODE<-as.character(precip_raw$CODE)
 precip = data.frame(precip_raw)
 precip = precip %>% dplyr::select(-X)
 
-precip_year_range <- dplyr::filter(temp, grepl('022020|022021|022022', CODE))
+precip_year_range <- dplyr::filter(precip, grepl('012020|012021|012022', CODE))
 summary(precip_year_range)
+precip_year_range$CODE <- paste("00", precip_year_range$CODE, sep="")
+precip_year_range$YEAR <- with(precip_year_range, substr(CODE, 7, 10))
+precip_year_range$STATE <- with(precip_year_range, substr(CODE, 2, 4))
+precip_state <- dplyr::filter(precip_year_range, STATE<'051')
+precip_state <- head(precip_state,147)
+
+state_name = list('Alabama', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming', 'Alaska')
+
+state_counter = 1
+for (x in 1:49) {
+  precip_state$STATE[state_counter] <- state_name[x]
+  precip_state$STATE[state_counter+1] <- state_name[x]
+  precip_state$STATE[state_counter+2] <- state_name[x]
+  state_counter = state_counter+3
+}
+
+precip_state <- apply(precip_state,2,as.character)
+
+write.csv(precip_state, "precip_cleaned.csv", row.names=FALSE)
+
+```
+
+```{r}
+airpress_20 <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/airpress_2020.csv")
+airpress_20 %>% mutate(YEAR = 2020)
+airpress_21 <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/airpress_2021.csv")
+airpress_21 %>% mutate(YEAR = 2021)
+airpress_22 <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/airpress_2022.csv")
+airpress_22 %>% mutate(YEAR = 2022)
+
+# 2020 Air Pressure
+airpress_20$Date.Local <- as.Date(airpress_20$Date.Local, format = "%m/%d/%y")
+airpress_20$Month <- months(airpress_20$Date.Local)
+airpress_20$Year <- format(airpress_20$Date.Local,format="%y")
+airpress_20_agg = aggregate(Arithmetic.Mean ~ Month + Year + State.Name, airpress_20 , mean)
+print(airpress_20_agg)
+
+arizona = airpress_20_agg[airpress_20_agg$State.Name == "Arizona", ]
+mean_arizona = mean(arizona$Arithmetic.Mean)
+jan = c(Month = "January", Year = "20", State.Name = "Arizona", Arithmetic.Mean = mean_arizona)
+feb = c(Month = "February", Year = "20", State.Name = "Arizona", Arithmetic.Mean = mean_arizona)
+mar = c(Month = "March", Year = "20", State.Name = "Arizona", Arithmetic.Mean = mean_arizona)
+may = c(Month = "May", Year = "20", State.Name = "Arizona", Arithmetic.Mean = mean_arizona)
+june = c(Month = "June", Year = "20", State.Name = "Arizona", Arithmetic.Mean = mean_arizona)
+cleaned_airpress_20 = rbind(airpress_20_agg, jan)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, feb)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, mar)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, may)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, june)
+
+new_york = airpress_20_agg[cleaned_airpress_20$State.Name == "New York", ]
+mean_new_york = mean(new_york$Arithmetic.Mean)
+apr = c(Month = "April", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+may = c(Month = "May", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+june = c(Month = "June", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+july = c(Month = "July", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+aug = c(Month = "Aug", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+sep = c(Month = "September", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+oct = c(Month = "October", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+dec = c(Month = "December", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, apr)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, may)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, june)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, july)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, aug)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, sep)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, oct)
+cleaned_airpress_20 = rbind(cleaned_airpress_20, dec)
+
+
+table(cleaned_airpress_20['State.Name'])
+colnames(cleaned_airpress_20)[4] ="Atmospheric.Pressure"
+cleaned_airpress_20$Year <- 2020
+summary(cleaned_airpress_20)
+
+```
+
+```{r}
+# 2021 Air Pressure
+airpress_21$Date.Local <- as.Date(airpress_21$Date.Local, format = "%m/%d/%y")
+airpress_21$Month <- months(airpress_21$Date.Local)
+airpress_21$Year <- format(airpress_21$Date.Local,format="%y")
+airpress_21_agg = aggregate(Arithmetic.Mean ~ Month + Year + State.Name, airpress_21 , mean)
+print(airpress_21_agg)
+
+alaska = airpress_21_agg[airpress_21_agg$State.Name == "Alaska", ]
+mean_alaska = mean(alaska$Arithmetic.Mean)
+apr = c(Month = "April", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+may = c(Month = "May", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+june = c(Month = "June", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+july = c(Month = "July", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+aug = c(Month = "Aug", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+sep = c(Month = "September", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+oct = c(Month = "October", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+nov = c(Month = "November", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+dec = c(Month = "December", Year = "21", State.Name = "Alaska", Arithmetic.Mean = mean_alaska)
+cleaned_airpress_21 = rbind(airpress_21_agg, apr)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, may)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, june)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, july)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, aug)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, sep)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, oct)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, nov)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, dec)
+
+new_york = airpress_21_agg[cleaned_airpress_21$State.Name == "New York", ]
+mean_new_york = mean(new_york$Arithmetic.Mean)
+jan = c(Month = "January", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+feb = c(Month = "February", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+mar = c(Month = "March", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+july = c(Month = "July", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+aug = c(Month = "Aug", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+sep = c(Month = "September", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+oct = c(Month = "October", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+nov = c(Month = "November", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+dec = c(Month = "December", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, jan)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, feb)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, mar)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, july)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, aug)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, sep)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, oct)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, nov)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, dec)
+
+maine = airpress_21_agg[cleaned_airpress_21$State.Name == "Maine", ]
+mean_maine = mean(maine$Arithmetic.Mean)
+jan = c(Month = "January", Year = "21", State.Name = "Maine", Arithmetic.Mean = mean_maine)
+feb = c(Month = "February", Year = "21", State.Name = "Maine", Arithmetic.Mean = mean_maine)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, jan)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, feb)
+
+minnesota = airpress_21_agg[cleaned_airpress_21$State.Name == "Minnesota", ]
+mean_minnesota = mean(minnesota$Arithmetic.Mean)
+jan = c(Month = "January", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+feb = c(Month = "February", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+mar = c(Month = "March", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+apr = c(Month = "April", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+may = c(Month = "May", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+july = c(Month = "July", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+aug = c(Month = "Aug", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+sep = c(Month = "September", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+oct = c(Month = "October", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+nov = c(Month = "November", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+dec = c(Month = "December", Year = "21", State.Name = "Minnesota", Arithmetic.Mean = mean_minnesota)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, jan)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, feb)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, mar)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, apr)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, may)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, july)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, aug)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, sep)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, oct)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, nov)
+cleaned_airpress_21 = rbind(cleaned_airpress_21, dec)
+
+table(cleaned_airpress_21['State.Name'])
+colnames(cleaned_airpress_21)[4] ="Atmospheric.Pressure"
+cleaned_airpress_21$Year <- 2021
+summary(cleaned_airpress_21)
+```
+
+```{r}
+# 2022 Air Pressure
+airpress_22$Date.Local <- as.Date(airpress_22$Date.Local, format = "%m/%d/%y")
+airpress_22$Month <- months(airpress_22$Date.Local)
+airpress_22$Year <- format(airpress_22$Date.Local,format="%y")
+airpress_22_agg = aggregate(Arithmetic.Mean ~ Month + Year + State.Name, airpress_22 , mean)
+print(airpress_22_agg)
+table(airpress_22_agg['State.Name'])
+
+colnames(airpress_22_agg)[4] = "Atmospheric.Pressure"
+cleaned_airpress_22 <- airpress_22_agg
+cleaned_airpress_22$Year <- 2022
+```
+
+```{r}
+
+humid_20 <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/humidity_2020.csv")
+humid_20 %>% mutate(YEAR = 2020)
+humid_21 <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/humidity_2021.csv")
+humid_21 %>% mutate(YEAR = 2021)
+humid_22 <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/humidity_2022.csv")
+humid_22 %>% mutate(YEAR = 2022)
+
+# 2020 Humidity
+humid_20$Date.Local <- as.Date(humid_20$Date.Local, format = "%m/%d/%y")
+humid_20$Month <- months(humid_20$Date.Local)
+humid_20$Year <- format(humid_20$Date.Local,format="%y")
+humid_20_agg = aggregate(Arithmetic.Mean ~ Month + Year + State.Name, humid_20, mean)
+print(humid_20_agg)
+table(humid_20_agg['State.Name'])
+
+new_york = humid_20_agg[humid_20_agg$State.Name == "New York", ]
+mean_new_york = mean(new_york$Arithmetic.Mean)
+may = c(Month = "May", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+june = c(Month = "June", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+july = c(Month = "July", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+aug = c(Month = "August", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+sep = c(Month = "September", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+oct = c(Month = "October", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+dec = c(Month = "December", Year = "20", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+cleaned_humid_20 = rbind(humid_20_agg, may)
+cleaned_humid_20 = rbind(cleaned_humid_20, june)
+cleaned_humid_20 = rbind(cleaned_humid_20, july)
+cleaned_humid_20 = rbind(cleaned_humid_20, aug)
+cleaned_humid_20 = rbind(cleaned_humid_20, sep)
+cleaned_humid_20 = rbind(cleaned_humid_20, oct)
+cleaned_humid_20 = rbind(cleaned_humid_20, dec)
+
+delaware = humid_20_agg[humid_20_agg$State.Name == "Delaware", ]
+mean_delaware = mean(delaware$Arithmetic.Mean)
+march = c(Month = "March", Year = "20", State.Name = "Delaware", Arithmetic.Mean = mean_delaware)
+cleaned_humid_20 = rbind(cleaned_humid_20, march)
+
+table(cleaned_humid_20['State.Name'])
+colnames(cleaned_humid_20)[4] = "Humidity"
+cleaned_humid_20$Year <- 2020
+summary(cleaned_humid_20)
+```
+
+```{r}
+# 2021 Humidity
+humid_21$Date.Local <- as.Date(humid_21$Date.Local, format = "%m/%d/%y")
+humid_21$Month <- months(humid_21$Date.Local)
+humid_21$Year <- format(humid_21$Date.Local,format="%y")
+humid_21_agg = aggregate(Arithmetic.Mean ~ Month + Year + State.Name, humid_21, mean)
+print(humid_21_agg)
+
+new_york = humid_21_agg[humid_21_agg$State.Name == "New York", ]
+mean_new_york = mean(new_york$Arithmetic.Mean)
+jan = c(Month = "January", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+feb = c(Month = "February", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+mar = c(Month = "March", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+apr = c(Month = "April", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+june = c(Month = "June", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+july = c(Month = "July", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+aug = c(Month = "Aug", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+sep = c(Month = "September", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+oct = c(Month = "October", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+nov = c(Month = "November", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+dec = c(Month = "December", Year = "21", State.Name = "New York", Arithmetic.Mean = mean_new_york)
+cleaned_humid_21 = rbind(humid_21_agg, jan)
+cleaned_humid_21 = rbind(cleaned_humid_21, feb)
+cleaned_humid_21 = rbind(cleaned_humid_21, mar)
+cleaned_humid_21 = rbind(cleaned_humid_21, apr)
+cleaned_humid_21 = rbind(cleaned_humid_21, june)
+cleaned_humid_21 = rbind(cleaned_humid_21, july)
+cleaned_humid_21 = rbind(cleaned_humid_21, aug)
+cleaned_humid_21 = rbind(cleaned_humid_21, sep)
+cleaned_humid_21 = rbind(cleaned_humid_21, oct)
+cleaned_humid_21 = rbind(cleaned_humid_21, nov)
+cleaned_humid_21 = rbind(cleaned_humid_21, dec)
+
+table(cleaned_humid_21['State.Name'])
+colnames(cleaned_humid_21)[4] = "Humidity"
+cleaned_humid_21$Year <- 2021
+summary(cleaned_humid_21)
+```
+
+```{r}
+# 2022 Humidity
+humid_22$Date.Local <- as.Date(humid_22$Date.Local, format = "%m/%d/%y")
+humid_22$Month <- months(humid_22$Date.Local)
+humid_22$Year <- format(humid_22$Date.Local,format="%y")
+humid_22_agg = aggregate(Arithmetic.Mean ~ Month + Year + State.Name, humid_22, mean)
+print(humid_22_agg)
+table(humid_22_agg['State.Name'])
+
+colnames(humid_22_agg)[4] = "Humidity"
+cleaned_humid_22 <- humid_22_agg
+cleaned_humid_22$Year <- 2022
+```
+
+```{r}
+# Combining all years
+
+cleaned_airpress <- rbind(cleaned_airpress_20, cleaned_airpress_21, cleaned_airpress_22)
+cleaned_humid <- rbind(cleaned_humid_20, cleaned_humid_21, cleaned_humid_22)
 ```
