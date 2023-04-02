@@ -9,7 +9,7 @@ output: html_document
 df1 <- read.csv('Final_COV.csv', header = TRUE)
 df2 <- read.csv('Weather/airpress_cleaned.csv', header = TRUE)
 df3 <- read.csv('Weather/humidity_cleaned.csv', header = TRUE)
-df4 <- read.csv('MentalHealth.csv',header = TRUE)
+df4 <- read.csv('mental.csv',header = TRUE)
 
 ```
 
@@ -27,24 +27,27 @@ library(zoo)
 df1$year_month <- as.yearmon(df1$year_month, "%Y-%m")
 df1$Year <- as.integer(df1$year_month)
 df1$Month <- substring(df1$year_month, 1, 3)
+df1$State <- df1$Province_State
 
 df2$Month <- substring(df2$Month, 1, 3)
+df2$State <- df2$State.Name
 df3$Month <- substring(df3$Month, 1, 3)
+df3$State <- df3$State.Name
 df4$Month <- substring(df4$Month, 1, 3)
 
 
 head(df1)
 head(df2)
 head(df3)
-head(df4)
+df4
 ```
 
 
 ```{r}
-
-merged_df <- merge(merge(merge(df1, df2, by=c('Province_State', 'year_month'), all=TRUE),
-                         df3, by=c('State.Name', 'year_month'), all=TRUE),
-                   df4, by=c('State', 'year_month'), all=TRUE)
+merge1 <- merge(df1, df2, by=c('State', 'Year', 'Month'), all=TRUE)
+merge2 <- merge(merge1, df3, by=c('State', 'Year', 'Month'), all=TRUE)
+merge3 <- merge(merge2, df4, by =c('State', 'Year', 'Month'), all=TRUE)
+merge3
 
 
 ```
@@ -55,15 +58,4 @@ merged_df <- merge(merge(merge(df1, df2, by=c('Province_State', 'year_month'), a
 merged_df <- merged_df[, !(names(merged_df) %in% c('State.Name.x', 'State.Name.y', 'Year.x', 'Month.x', 'Year.y', 'Month.y', 'Year', 'Month'))]
 
 
-```
-
-```{r}
-
-colnames(merged_df) <- c('state', 'year_month', 'confirmed_cases', 'deaths')
-
-
-```
-
-```{r}
-merged_df <- merged_df[order(merged_df$year_month, merged_df$state),]
 ```
