@@ -1,0 +1,69 @@
+---
+title: "Combining_CSVs"
+author: "Sophia Leeman"
+date: "2023-04-02"
+output: html_document
+---
+
+```{r}
+df1 <- read.csv('Final_COV.csv', header = TRUE)
+df2 <- read.csv('Weather/airpress_cleaned.csv', header = TRUE)
+df3 <- read.csv('Weather/humidity_cleaned.csv', header = TRUE)
+df4 <- read.csv('MentalHealth.csv',header = TRUE)
+
+```
+
+```{r}
+head(df1)
+head(df2)
+head(df3)
+head(df4)
+```
+
+```{r}
+library(zoo)
+
+# Convert year_month column in df1 to standardized "year-month" format
+df1$year_month <- as.yearmon(df1$year_month, "%Y-%m")
+df1$Year <- as.integer(df1$year_month)
+df1$Month <- substring(df1$year_month, 1, 3)
+
+df2$Month <- substring(df2$Month, 1, 3)
+df3$Month <- substring(df3$Month, 1, 3)
+df4$Month <- substring(df4$Month, 1, 3)
+
+
+head(df1)
+head(df2)
+head(df3)
+head(df4)
+```
+
+
+```{r}
+
+merged_df <- merge(merge(merge(df1, df2, by=c('Province_State', 'year_month'), all=TRUE),
+                         df3, by=c('State.Name', 'year_month'), all=TRUE),
+                   df4, by=c('State', 'year_month'), all=TRUE)
+
+
+```
+
+
+```{r}
+
+merged_df <- merged_df[, !(names(merged_df) %in% c('State.Name.x', 'State.Name.y', 'Year.x', 'Month.x', 'Year.y', 'Month.y', 'Year', 'Month'))]
+
+
+```
+
+```{r}
+
+colnames(merged_df) <- c('state', 'year_month', 'confirmed_cases', 'deaths')
+
+
+```
+
+```{r}
+merged_df <- merged_df[order(merged_df$year_month, merged_df$state),]
+```
