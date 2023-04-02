@@ -9,15 +9,15 @@ output: html_document
 df1 <- read.csv('Final_COV.csv', header = TRUE)
 df2 <- read.csv('Weather/airpress_cleaned.csv', header = TRUE)
 df3 <- read.csv('Weather/humidity_cleaned.csv', header = TRUE)
-df4 <- read.csv('mental.csv',header = TRUE)
+df4 <- read.csv('mental_cleaned.csv',header = TRUE)
 
 ```
 
 ```{r}
-head(df1)
-head(df2)
-head(df3)
-head(df4)
+df1
+df2
+df3
+df4
 ```
 
 ```{r}
@@ -55,7 +55,12 @@ merge3
 
 ```{r}
 
-merged_df <- merged_df[, !(names(merged_df) %in% c('State.Name.x', 'State.Name.y', 'Year.x', 'Month.x', 'Year.y', 'Month.y', 'Year', 'Month'))]
+merge3 <- merge3[, !(names(merge3) %in% c('Province_State', 'year_month', 'State.Name.x', 'State.Name.y'))]
 
+merge3
+summary(merge3)
+merge3 <- na.omit(merge3)
+merge3
 
+write.csv(merge3, "/Users/sophialeeman/Documents/BME 580/BME-580/All_Data.csv", row.names=FALSE)
 ```
