@@ -1,0 +1,41 @@
+---
+title: "Project_Draft1"
+author: "Isabella Wang"
+date: "2023-03-13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(corrplot)
+library(utils)
+library(MASS)
+library(ROCR)
+library(caret)
+library(gmodels)
+library(class) # Knn algorithm
+library(patchwork)
+library(psych)
+
+set.seed(580)
+```
+
+```{r}
+avg_temp <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/avg_temp.csv")
+temp = data.frame(avg_temp)
+temp = temp %>% dplyr::select(-X)
+
+temp_year_range <- dplyr::filter(temp, grepl('022020|022021|022022', CODE))
+summary(temp_year_range)
+```
+
+```{r}
+precip_raw <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/precip.csv")
+precip_raw$CODE<-as.character(precip_raw$CODE)
+precip = data.frame(precip_raw)
+precip = precip %>% dplyr::select(-X)
+
+precip_year_range <- dplyr::filter(temp, grepl('022020|022021|022022', CODE))
+summary(precip_year_range)
+```
