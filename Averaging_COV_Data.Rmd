@@ -1,0 +1,54 @@
+---
+title: "Mental Health"
+author: "Sophia Leeman"
+date: "2023-04-01"
+output: html_document
+---
+```{r}
+
+cov <- read.csv('Clean_COV.csv', header = TRUE)
+
+head(cov)
+```
+```{r}
+library(tidyverse)
+
+# Convert the date column to a proper date-time format
+cov$Last_Update <- lubridate::ymd_hms(cov$Last_Update)
+
+# Group by state and year_month, and calculate the mean of all other columns
+cov_avg <- cov %>%
+  mutate(year_month = format(cov$Last_Update, "%Y-%m")) %>%
+  group_by(Province_State, year_month) %>%
+  summarise(across(.cols = -c(Last_Update), .fns = mean), .groups = "drop")
+
+cov_avg
+
+summary(cov_avg)
+
+```
+
+```{r}
+
+# Find NAs in the Province_State column
+na_provinces <- cov_avg %>%
+  filter(is.na(Province_State))
+
+# Find NAs in the year_month column
+na_year_month <- cov_avg %>%
+  filter(is.na(year_month))
+
+# Print the results
+cat("NAs in Province_State column: ", nrow(na_provinces), "\n")
+cat("NAs in year_month column: ", nrow(na_year_month), "\n")
+
+# Remove rows with NAs in the Province_State and year_month columns
+cov_avg <- cov_avg %>%
+  filter(!is.na(Province_State) & !is.na(year_month))
+
+# Print the cleaned dataframe
+cov_avg
+
+write.csv(cov_avg, "/Users/sophialeeman/Documents/BME 580/BME-580/Final_COV.csv", row.names=FALSE)
+
+```
