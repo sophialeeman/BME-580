@@ -17,6 +17,7 @@ library(gmodels)
 library(class) # Knn algorithm
 library(patchwork)
 library(psych)
+library(R.utils)
 
 set.seed(580)
 ```
@@ -337,4 +338,26 @@ cleaned_humid_22$Year <- 2022
 
 cleaned_airpress <- rbind(cleaned_airpress_20, cleaned_airpress_21, cleaned_airpress_22)
 cleaned_humid <- rbind(cleaned_humid_20, cleaned_humid_21, cleaned_humid_22)
+```
+
+```{r}
+temp_new <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/temp_cleaned_new.csv")
+temp_new$MONTH <- tolower(temp_new$MONTH)
+temp_new$MONTH <- capitalize(temp_new$MONTH)
+colnames(temp_new)[1] = "Temp"
+colnames(temp_new)[2] = "Month"
+colnames(temp_new)[3] = "Year"
+colnames(temp_new)[4] = "State"
+write.csv(temp_new, "temp_cleaned_final.csv", row.names=FALSE)
+```
+
+```{r}
+precip_new <- read.csv("/Users/isabellawang/Documents/BME580/Project/BME-580/Weather/precip_cleaned_new.csv")
+precip_new$MONTH <- tolower(precip_new$MONTH)
+precip_new$MONTH <- capitalize(precip_new$MONTH)
+colnames(precip_new)[1] = "Precip"
+colnames(precip_new)[2] = "Month"
+colnames(precip_new)[3] = "Year"
+colnames(precip_new)[4] = "State"
+write.csv(precip_new, "precip_cleaned_final.csv", row.names=FALSE)
 ```
