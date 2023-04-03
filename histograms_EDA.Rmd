@@ -17,7 +17,7 @@ set.seed(2023)
 
 ```{r}
 
-combined_df <- read.csv("C:/Users/tulip/BME580/project/alldata.csv",
+combined_df <- read.csv("All_Data.csv",
          header = TRUE, stringsAsFactors = TRUE)
 
 str(combined_df)
