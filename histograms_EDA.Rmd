@@ -117,5 +117,83 @@ precip<- ggplot(combined_df, aes(x = Precip)) +
        x = "Precipitation (Inches)", 
        y = "Frequency")
 
-grid.arrange(total, deaths, incident, ratio, pressure, humidity, anxiety, depress, temp, precip)
+lat<- ggplot(combined_df, aes(x = Lat)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Latitude", 
+       x = "Latitude", 
+       y = "Frequency")
+
+long<- ggplot(combined_df, aes(x = Long_)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Longitude", 
+       x = "Longitude", 
+       y = "Frequency")
+
+grid.arrange(total, deaths, incident, ratio, pressure, humidity, anxiety, depress, temp, precip, lat, long)
+```
+
+Perform Data Transformations
+```{r}
+combined_df$Total_Test_Results <- log(combined_df$Total_Test_Results)
+total<- ggplot(combined_df, aes(x = Total_Test_Results)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Total Confirmed COVID-19 Cases", 
+       x = "Total Confirmed COVID-19 Cases", 
+       y = "Frequency")
+total
+```
+
+```{r}
+
+deaths<- ggplot(combined_df, aes(x = Deaths)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Deaths by COVID-19 Cases", 
+       x = "Total Confirmed Deaths", 
+       y = "Frequency")
+
+deaths
+
+combined_df$Deaths <- sqrt(combined_df$Deaths)
+
+
+deaths<- ggplot(combined_df, aes(x = Deaths)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Deaths by COVID-19 Cases", 
+       x = "Total Confirmed Deaths", 
+       y = "Frequency")
+
+deaths
+```
+
+```{r}
+
+combined_df$Incident_Rate <- sqrt(combined_df$Incident_Rate)
+
+
+incident<- ggplot(combined_df, aes(x = Incident_Rate)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Incident Rate", 
+       x = "Incident Rate", 
+       y = "Frequency")
+
+incident
+
+```
+
+```{r}
+library(nat)
+combined_df$Long_ <- flip(combined_df$Long_)
+long<- ggplot(combined_df, aes(x = Long_)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Longitude", 
+       x = "Longitude", 
+       y = "Frequency")
+long
 ```

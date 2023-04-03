@@ -77,5 +77,10 @@ summary(df)
 ```
 
 ```{r}
+
+
+```
+
+```{r}
 write.csv(df, "/Users/sophialeeman/Documents/BME 580/BME-580/Clean_COV.csv", row.names=FALSE)
 ```
