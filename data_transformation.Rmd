@@ -1,0 +1,374 @@
+---
+title: "transformed"
+output: html_document
+date: "2023-04-04"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse) # Remember from last homework that dplyr and ggplot2 are included in  tidyverse
+library(gridExtra)
+library(corrplot)
+library(patchwork)
+library(factoextra)
+library(psych)
+library(ggplot2)
+set.seed(2023)
+```
+
+```{r}
+combined_df <- read.csv("C:/Users/tulip/BME580/All_Data.csv",
+         header = TRUE, stringsAsFactors = TRUE)
+str(combined_df)
+# View the first few rows of the data
+head(combined_df,10)
+# View the last few rows of the data
+tail(combined_df,10)
+# Summary statistics of the data
+summary(combined_df)
+# Check for missing values
+sum(is.na(combined_df))
+# Remove rows with missing values
+combined_df <- na.omit(combined_df)
+# Histogram of variables
+total<- ggplot(combined_df, aes(x = Total_Test_Results)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Total Confirmed COVID-19 Cases", 
+       x = "Total Confirmed COVID-19 Cases", 
+       y = "Frequency")
+deaths<- ggplot(combined_df, aes(x = Deaths)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Deaths by COVID-19 Cases", 
+       x = "Total Confirmed Deaths", 
+       y = "Frequency")
+incident<- ggplot(combined_df, aes(x = Incident_Rate)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Incident Rate", 
+       x = "Incident Rate", 
+       y = "Frequency")
+ratio<- ggplot(combined_df, aes(x = Case_Fatality_Ratio)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Case Fatality Ratio", 
+       x = "Case Fatality Ratio", 
+       y = "Frequency")
+pressure<- ggplot(combined_df, aes(x = Atmospheric.Pressure)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Atmospheric Pressure", 
+       x = "Atmospheric Pressure", 
+       y = "Frequency")
+humidity<- ggplot(combined_df, aes(x = Humidity)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Humidity", 
+       x = "Humidity", 
+       y = "Frequency")
+anxiety_avg <- combined_df %>%
+  filter(Indicator == "Symptoms of Anxiety Disorder") %>%
+  summarise(Value = Value)
+# Plot a histogram of the average values
+anxiety<- ggplot(anxiety_avg, aes(x = Value)) +
+  geom_histogram(color = "black", fill = "white") +
+  ggtitle("Histogram of Anxiety Disorder") +
+  xlab("Average Value") +
+  ylab("Frequency")
+depression_avg <- combined_df %>%
+  filter(Indicator == "Symptoms of Depressive Disorder") %>%
+  summarise(Value = Value)
+depress<- ggplot(depression_avg, aes(x = Value)) +
+  geom_histogram(fill = "white", color = "black") +
+  labs(title = "Histogram of Depression", 
+       x = "Percentage of Depression", 
+       y = "Frequency")
+temp<- ggplot(combined_df, aes(x = Temp)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Avg Temp", 
+       x = "Temperature (F)", 
+       y = "Frequency")
+precip<- ggplot(combined_df, aes(x = Precip)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Precipitation", 
+       x = "Precipitation (Inches)", 
+       y = "Frequency")
+lat<- ggplot(combined_df, aes(x = Lat)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Latitude", 
+       x = "Latitude", 
+       y = "Frequency")
+long<- ggplot(combined_df, aes(x = Long_)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Longitude", 
+       x = "Longitude", 
+       y = "Frequency")
+grid.arrange(total, deaths, incident, ratio, pressure, humidity, anxiety, depress, temp, precip, lat, long)
+
+```
+
+Perform Data Transformations on the Covid-19 Data
+
+Skewness
+```{r}
+combined_df$Total_Test_Results <- log(combined_df$Total_Test_Results)
+total<- ggplot(combined_df, aes(x = Total_Test_Results)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Total Confirmed COVID-19 Cases", 
+       x = "Total Confirmed COVID-19 Cases", 
+       y = "Frequency")
+total
+```
+
+```{r}
+deaths<- ggplot(combined_df, aes(x = Deaths)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Deaths by COVID-19 Cases", 
+       x = "Total Confirmed Deaths", 
+       y = "Frequency")
+deaths
+combined_df$Deaths <- sqrt(combined_df$Deaths)
+deaths<- ggplot(combined_df, aes(x = Deaths)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Deaths by COVID-19 Cases", 
+       x = "Total Confirmed Deaths", 
+       y = "Frequency")
+deaths
+```
+
+```{r}
+combined_df$Incident_Rate <- sqrt(combined_df$Incident_Rate)
+incident<- ggplot(combined_df, aes(x = Incident_Rate)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Incident Rate", 
+       x = "Incident Rate", 
+       y = "Frequency")
+incident
+```
+```{r}
+combined_df$Case_Fatality_Ratio <- sqrt(combined_df$Case_Fatality_Ratio)
+ratio<- ggplot(combined_df, aes(x = Case_Fatality_Ratio)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Case Fatality Ratio", 
+       x = "Case Fatality Ratio", 
+       y = "Frequency")
+ratio
+```
+
+```{r}
+#Flip
+flip <- max(combined_df$Long_) + min(combined_df$Long_) - combined_df$Long_
+#Shift
+flip <- flip - min(flip) + 1
+# apply sqrt transformation
+sr <- sqrt(flip)
+#Shift
+sr <- sr + min(flip) - 1
+# flip the column back
+combined_df$Long_ <- max(sr) + min(sr) - sr
+long<- ggplot(combined_df, aes(x = Long_)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Longitude", 
+       x = "Longitude", 
+       y = "Frequency")
+long
+```
+```{r}
+# Weather Data Transformations
+# Humidity
+humidity<- ggplot(combined_df, aes(x = Humidity)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Humidity", 
+       x = "Relative Humidity", 
+       y = "Frequency")
+humidity
+combined_df$Humidity <- combined_df$Humidity^2
+humidity_sq <- ggplot(combined_df, aes(x = Humidity)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Humidity", 
+       x = "Relative Humidity Squared", 
+       y = "Frequency")
+humidity_sq
+```
+
+```{r}
+# Temperature
+avg_temp<- ggplot(combined_df, aes(x = Temp)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Temperature", 
+       x = "Temperature (F)", 
+       y = "Frequency")
+avg_temp
+combined_df$Temp <- combined_df$Temp^2
+avg_temp_sq <- ggplot(combined_df, aes(x = Temp)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Temperature", 
+       x = "Temperature Squared (F)", 
+       y = "Frequency")
+avg_temp_sq
+```
+
+```{r}
+# Precipitation
+precip <- ggplot(combined_df, aes(x = Precip)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Precipitation", 
+       x = "Precipitation (Inches)", 
+       y = "Frequency")
+precip
+combined_df$Precip <- sqrt(combined_df$Precip)
+precip_sqrt <- ggplot(combined_df, aes(x = Precip)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Precipitation", 
+       x = "Square Root of Precipitation (Inches)", 
+       y = "Frequency")
+precip_sqrt
+```
+
+```{r}
+# Atmospheric Pressure
+pressure<- ggplot(combined_df, aes(x = Atmospheric.Pressure)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Atmospheric Pressure", 
+       x = "Atmospheric Pressure (Millibars)", 
+       y = "Frequency")
+pressure
+pressure_realistic <- filter(combined_df, Atmospheric.Pressure<1500 & Atmospheric.Pressure>600)
+pressure_max = max(pressure_realistic$Atmospheric.Pressure)
+pressure_min = min(pressure_realistic$Atmospheric.Pressure)
+print(pressure_min)
+combined_df$Atmospheric.Pressure[combined_df$Atmospheric.Pressure>1500] <- pressure_max
+combined_df$Atmospheric.Pressure[combined_df$Atmospheric.Pressure<600] <- pressure_min
+combined_df$Atmospheric.Pressure <- combined_df$Atmospheric.Pressure^3
+pressure_cubed <- ggplot(combined_df, aes(x = Atmospheric.Pressure)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Atmospheric Pressure", 
+       x = "Cubed Atmospheric Pressure (Millibars)", 
+       y = "Frequency")
+pressure_cubed
+```
+Centering all data
+# ```{r}
+# numeric_cols <- sapply(combined_df, is.numeric)
+# # center numeric columns
+# combined_df[numeric_cols] <- lapply(combined_df[numeric_cols], function(x) x - mean(x))
+# head(combined_df)
+# ```
+
+Remove Outliers
+
+```{r}
+library(DescTools)
+summary(combined_df)
+low_quantile <- 0.05
+high_quantile <- 0.95
+combined_df[numeric_cols][] <- apply(combined_df[numeric_cols], 2, function(x) DescTools::Winsorize(x, probs=c(low_quantile, high_quantile)))
+```
+
+Scale Data/Centering all data
+```{r}
+combined_df[numeric_cols] <- as.data.frame(scale(combined_df[numeric_cols]))
+```
+
+Cleaned data
+```{r}
+total<- ggplot(combined_df, aes(x = Total_Test_Results)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Total Confirmed COVID-19 Cases", 
+       x = "Total Confirmed COVID-19 Cases", 
+       y = "Frequency")
+deaths<- ggplot(combined_df, aes(x = Deaths)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Deaths by COVID-19 Cases", 
+       x = "Total Confirmed Deaths", 
+       y = "Frequency")
+incident<- ggplot(combined_df, aes(x = Incident_Rate)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Incident Rate", 
+       x = "Incident Rate", 
+       y = "Frequency")
+ratio<- ggplot(combined_df, aes(x = Case_Fatality_Ratio)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Case Fatality Ratio", 
+       x = "Case Fatality Ratio", 
+       y = "Frequency")
+lat<- ggplot(combined_df, aes(x = Lat)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Latitude", 
+       x = "Latitude", 
+       y = "Frequency")
+long<- ggplot(combined_df, aes(x = Long_)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Longitude", 
+       x = "Longitude", 
+       y = "Frequency")
+temp<- ggplot(combined_df, aes(x = Temp)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Avg Temp", 
+       x = "Temperature (F)", 
+       y = "Frequency")
+precip<- ggplot(combined_df, aes(x = Precip)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Precipitation", 
+       x = "Precipitation (Inches)", 
+       y = "Frequency")
+pressure<- ggplot(combined_df, aes(x = Atmospheric.Pressure)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Atmospheric Pressure", 
+       x = "Atmospheric Pressure", 
+       y = "Frequency")
+humidity<- ggplot(combined_df, aes(x = Humidity)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Humidity", 
+       x = "Humidity", 
+       y = "Frequency")
+anxiety_avg <- combined_df %>%
+  filter(Indicator == "Symptoms of Anxiety Disorder") %>%
+  summarise(Value = Value)
+# Plot a histogram of the average values
+anxiety<- ggplot(anxiety_avg, aes(x = Value)) +
+  geom_histogram(color = "black", fill = "white") +
+  ggtitle("Histogram of Anxiety Disorder") +
+  xlab("Average Value") +
+  ylab("Frequency")
+depression_avg <- combined_df %>%
+  filter(Indicator == "Symptoms of Depressive Disorder") %>%
+  summarise(Value = Value)
+depress<- ggplot(depression_avg, aes(x = Value)) +
+  geom_histogram(fill = "lightgreen", color = "black") +
+  labs(title = "Histogram of Depression", 
+       x = "Percentage of Depression", 
+       y = "Frequency")
+grid.arrange(total, deaths, incident, ratio, lat, long, temp, precip, pressure, humidity, anxiety, depress)
+```
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
