@@ -187,6 +187,16 @@ incident<- ggplot(combined_df, aes(x = Incident_Rate)) +
 incident
 
 ```
+```{r}
+combined_df$Case_Fatality_Ratio <- sqrt(combined_df$Case_Fatality_Ratio)
+ratio<- ggplot(combined_df, aes(x = Case_Fatality_Ratio)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Case Fatality Ratio", 
+       x = "Case Fatality Ratio", 
+       y = "Frequency")
+ratio
+```
 
 ```{r}
 #Flip
@@ -221,6 +231,8 @@ combined_df[numeric_cols] <- lapply(combined_df[numeric_cols], function(x) x - m
 
 ```
 
+Remove Outliers
+
 ```{r}
 library(DescTools)
 summary(combined_df)
@@ -228,5 +240,59 @@ low_quantile <- 0.05
 high_quantile <- 0.95
 
 combined_df[numeric_cols] <- apply(combined_df[numeric_cols], 2, function(x) DescTools::Winsorize(x, probs=c(low_quantile, high_quantile)))
+
+```
+Scale Data
+```{r}
+
+combined_df[numeric_cols] <- as.data.frame(scale(combined_df[numeric_cols]))
+
+```
+
+Cleaned data
+```{r}
+total<- ggplot(combined_df, aes(x = Total_Test_Results)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Total Confirmed COVID-19 Cases", 
+       x = "Total Confirmed COVID-19 Cases", 
+       y = "Frequency")
+
+deaths<- ggplot(combined_df, aes(x = Deaths)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Deaths by COVID-19 Cases", 
+       x = "Total Confirmed Deaths", 
+       y = "Frequency")
+
+incident<- ggplot(combined_df, aes(x = Incident_Rate)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Incident Rate", 
+       x = "Incident Rate", 
+       y = "Frequency")
+
+ratio<- ggplot(combined_df, aes(x = Case_Fatality_Ratio)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Case Fatality Ratio", 
+       x = "Case Fatality Ratio", 
+       y = "Frequency")
+
+lat<- ggplot(combined_df, aes(x = Lat)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Latitude", 
+       x = "Latitude", 
+       y = "Frequency")
+
+long<- ggplot(combined_df, aes(x = Long_)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Longitude", 
+       x = "Longitude", 
+       y = "Frequency")
+
+grid.arrange(total, deaths, incident, ratio, lat, long)
 
 ```
