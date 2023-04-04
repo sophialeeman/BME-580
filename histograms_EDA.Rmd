@@ -187,8 +187,21 @@ incident
 ```
 
 ```{r}
-library(nat)
-combined_df$Long_ <- flip(combined_df$Long_)
+#Flip
+flip <- max(combined_df$Long_) + min(combined_df$Long_) - combined_df$Long_
+
+#Shift
+flip <- flip - min(flip) + 1
+
+# apply sqrt transformation
+sr <- sqrt(flip)
+
+#Shift
+sr <- sr + min(flip) - 1
+
+# flip the column back
+combined_df$Long_ <- max(sr) + min(sr) - sr
+
 long<- ggplot(combined_df, aes(x = Long_)) +
   geom_histogram(fill = "pink", color = "black") +
   scale_x_continuous(labels = scales::comma) +
