@@ -1,0 +1,72 @@
+---
+title: "PCA Full Data"
+author: "Sophia Leeman"
+date: "2023-04-04"
+output: html_document
+---
+
+```{r}
+library(factoextra)
+library(tidyverse)
+library(corrplot)
+```
+
+```{r}
+df <- read.csv("Transformed_Data.csv")
+```
+
+```{r}
+numeric_cols <- sapply(df, is.numeric)
+pca <- prcomp(df[numeric_cols])
+pca
+```
+
+```{r}
+graph <- fviz_eig(pca, addlabels = T) 
+graph
+```
+I would chose to use 4 dimensions by analysis of the location of the elbow in the graph.
+```{r}
+varPercent <- pca$sdev^2/sum(pca$sdev^2)*100
+cumVar <- sum(varPercent[1:4])
+cumVar
+```
+This accounts for about 70s% of the variance.
+
+```{r}
+loadings <- pca$rotation
+loadings <- as.data.frame(loadings[,1:4])
+loadings  %>% arrange(desc(.312*abs(PC1)+.176*abs(PC2)+.126*abs(PC3)+.08*abs(PC4)))
+
+```
+
+```{r}
+fviz_pca_ind(pca,
+             col.ind = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     
+             )
+```
+
+Visualize dimensions
+```{r, fig.align = "center", fig.height = 4, fig.width = 4 ,out.width = "4in"}
+fviz_pca_biplot(pca, col.var = "contrib", labelsize = 8, repel = TRUE) +
+    theme(text = element_text(size = 20),
+        axis.title = element_text(size = 20),
+        axis.text = element_text(size = 20))
+```
+
+```{r, fig.align = "center", fig.height = 4, fig.width = 4,out.width = "4in"}
+fviz_pca_var(pca,
+             col.var = "contrib", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE   
+             )
+```
+
+```{r, fig.align = "center", fig.height = 4, fig.width = 4 ,out.width = "4in"}
+fviz_pca_var(pca, col.var = "contrib", labelsize = 6, repel = TRUE) +
+    theme(text = element_text(size = 15),
+        axis.title = element_text(size = 15),
+        axis.text = element_text(size = 15))
+```
