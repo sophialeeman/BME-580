@@ -412,3 +412,6 @@ humidity<- ggplot(combined_df, aes(x = Humidity)) +
 grid.arrange(total, deaths, incident, ratio, lat, long, temp, precip, pressure, humidity)
 
 ```
+```{r}
+write.csv(combined_df, "Transformed_Data.csv", row.names=FALSE)
+```
