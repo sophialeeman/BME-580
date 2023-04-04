@@ -136,17 +136,6 @@ grid.arrange(total, deaths, incident, ratio, pressure, humidity, anxiety, depres
 
 Perform Data Transformations on the Covid-19 Data
 
-
-Centering all data
-```{r}
-
-numeric_cols <- sapply(combined_df, is.numeric)
-
-# center numeric columns
-combined_df[numeric_cols] <- lapply(combined_df[numeric_cols], function(x) x - mean(x))
-
-```
-
 Skewness
 ```{r}
 combined_df$Total_Test_Results <- log(combined_df$Total_Test_Results)
@@ -222,4 +211,22 @@ long<- ggplot(combined_df, aes(x = Long_)) +
        x = "Longitude", 
        y = "Frequency")
 long
+```
+Centering all data
+```{r}
+numeric_cols <- sapply(combined_df, is.numeric)
+
+# center numeric columns
+combined_df[numeric_cols] <- lapply(combined_df[numeric_cols], function(x) x - mean(x))
+
+```
+
+```{r}
+library(DescTools)
+summary(combined_df)
+low_quantile <- 0.05
+high_quantile <- 0.95
+
+combined_df[numeric_cols] <- apply(combined_df[numeric_cols], 2, function(x) DescTools::Winsorize(x, probs=c(low_quantile, high_quantile)))
+
 ```
