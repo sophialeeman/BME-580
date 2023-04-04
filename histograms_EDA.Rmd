@@ -222,6 +222,94 @@ long<- ggplot(combined_df, aes(x = Long_)) +
        y = "Frequency")
 long
 ```
+```{r}
+# Weather Data Transformations
+# Humidity
+humidity<- ggplot(combined_df, aes(x = Humidity)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Humidity", 
+       x = "Relative Humidity", 
+       y = "Frequency")
+humidity
+
+combined_df$Humidity <- combined_df$Humidity^2
+humidity_sq <- ggplot(combined_df, aes(x = Humidity)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Humidity", 
+       x = "Relative Humidity Squared", 
+       y = "Frequency")
+humidity_sq
+```
+
+```{r}
+# Temperature
+avg_temp<- ggplot(combined_df, aes(x = Temp)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Temperature", 
+       x = "Temperature (F)", 
+       y = "Frequency")
+avg_temp
+
+combined_df$Temp <- combined_df$Temp^2
+avg_temp_sq <- ggplot(combined_df, aes(x = Temp)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Temperature", 
+       x = "Temperature Squared (F)", 
+       y = "Frequency")
+avg_temp_sq
+```
+
+```{r}
+# Precipitation
+precip <- ggplot(combined_df, aes(x = Precip)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Precipitation", 
+       x = "Precipitation (Inches)", 
+       y = "Frequency")
+precip
+
+combined_df$Precip <- sqrt(combined_df$Precip)
+precip_sqrt <- ggplot(combined_df, aes(x = Precip)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Precipitation", 
+       x = "Square Root of Precipitation (Inches)", 
+       y = "Frequency")
+precip_sqrt
+```
+
+```{r}
+# Atmospheric Pressure
+pressure<- ggplot(combined_df, aes(x = Atmospheric.Pressure)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Atmospheric Pressure", 
+       x = "Atmospheric Pressure (Millibars)", 
+       y = "Frequency")
+pressure
+
+pressure_realistic <- filter(combined_df, Atmospheric.Pressure<1500 & Atmospheric.Pressure>600)
+pressure_max = max(pressure_realistic$Atmospheric.Pressure)
+pressure_min = min(pressure_realistic$Atmospheric.Pressure)
+print(pressure_min)
+
+combined_df$Atmospheric.Pressure[combined_df$Atmospheric.Pressure>1500] <- pressure_max
+combined_df$Atmospheric.Pressure[combined_df$Atmospheric.Pressure<600] <- pressure_min
+
+combined_df$Atmospheric.Pressure <- combined_df$Atmospheric.Pressure^3
+pressure_cubed <- ggplot(combined_df, aes(x = Atmospheric.Pressure)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Atmospheric Pressure", 
+       x = "Cubed Atmospheric Pressure (Millibars)", 
+       y = "Frequency")
+pressure_cubed
+```
 Centering all data
 ```{r}
 numeric_cols <- sapply(combined_df, is.numeric)
@@ -293,6 +381,34 @@ long<- ggplot(combined_df, aes(x = Long_)) +
        x = "Longitude", 
        y = "Frequency")
 
-grid.arrange(total, deaths, incident, ratio, lat, long)
+temp<- ggplot(combined_df, aes(x = Temp)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Avg Temp", 
+       x = "Temperature (F)", 
+       y = "Frequency")
+
+precip<- ggplot(combined_df, aes(x = Precip)) +
+  geom_histogram(fill = "pink", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Precipitation", 
+       x = "Precipitation (Inches)", 
+       y = "Frequency")
+
+pressure<- ggplot(combined_df, aes(x = Atmospheric.Pressure)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Atmospheric Pressure", 
+       x = "Atmospheric Pressure", 
+       y = "Frequency")
+
+humidity<- ggplot(combined_df, aes(x = Humidity)) +
+  geom_histogram(fill = "lightblue", color = "black") +
+  scale_x_continuous(labels = scales::comma) +
+  labs(title = "Histogram of Humidity", 
+       x = "Humidity", 
+       y = "Frequency")
+
+grid.arrange(total, deaths, incident, ratio, lat, long, temp, precip, pressure, humidity)
 
 ```
