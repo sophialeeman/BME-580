@@ -1,0 +1,34 @@
+---
+title: "Train_Test_Split.Rmd"
+author: "Isabella Wang"
+date: "2023-04-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(caret) # An extremely useful library, but here we'll just use it for splitting
+```
+
+## Creating Testing and Training Split - NOT TAKING INTO ACCOUNT TIME SERIES
+```{r}
+transformed_data <- read.csv('Transformed_Data.csv', header = TRUE)
+```
+
+```{r}
+# NOT taking into account time series for now
+split_ind_casefatality = createDataPartition(y =transformed_data$Case_Fatality_Ratio, p = .8, list = F)
+train_data_casefatality = transformed_data[split_ind_casefatality,]
+test_data_casefatality = transformed_data[-split_ind_casefatality,]
+
+split_ind_incident = createDataPartition(y =transformed_data$Incident_Rate, p = .8, list = F)
+train_data_incident = transformed_data[split_ind_incident,]
+test_data_incident = transformed_data[-split_ind_incident,]
+```
+
+```{r}
+# Output training and testing CSV files
+write.csv(train_data_casefatality, "TrainTestDatasets/Train_CaseFatality.csv", row.names=FALSE)
+write.csv(test_data_casefatality, "TrainTestDatasets/Test_CaseFatality.csv", row.names=FALSE)
+write.csv(train_data_incident, "TrainTestDatasets/Train_Incident.csv", row.names=FALSE)
+write.csv(test_data_incident, "TrainTestDatasets/Test_Incident.csv", row.names=FALSE)
+```

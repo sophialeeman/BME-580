@@ -1,0 +1,61 @@
+---
+title: "Linear_Regression"
+author: "Isabella Wang"
+date: "2023-04-05"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(MASS) # includes two pima data sets
+library(tidyverse)
+library(caret) # An extremely useful library, but here we'll just use it for splitting
+# training data
+library(corrplot)
+```
+
+# Importing Test and Train Datasets
+```{r}
+train_cf <- read.csv('TrainTestDatasets/Train_CaseFatality.csv', header = TRUE)
+test_cf <- read.csv('TrainTestDatasets/Test_CaseFatality.csv', header = TRUE)
+train_ir <- read.csv('TrainTestDatasets/Train_Incident.csv', header = TRUE)
+test_ir <- read.csv('TrainTestDatasets/Test_Incident.csv', header = TRUE)
+```
+
+# Linear Regression with All Predictors - Outcome: Case Fatality Ratio
+```{r}
+cf_linreg = lm(Case_Fatality_Ratio~., data = train_cf)
+cf_linreg
+
+plot(cf_linreg$residuals, col = 'red')
+```
+```{r}
+# Predict values
+lm_preds = predict(cf_linreg, test_cf)
+prediction_df = bind_cols("Actual" = test_cf$Case_Fatality_Ratio, 
+                          "Predictions" = lm_preds)
+prediction_df
+
+# Calculate the percent error
+percent_error_ir = (abs(prediction_df$Predictions-prediction_df$Actual)/prediction_df$Actual)*100
+mean(percent_error)
+print(percent_error)
+```
+# Linear Regression with All Predictors - Outcome: Incident Rate
+```{r}
+ir_linreg = lm(Incident_Rate~., data = train_ir)
+ir_linreg
+
+plot(ir_linreg$residuals, col = 'red')
+```
+```{r}
+# Predict values
+lm_preds_ir = predict(ir_linreg, test_ir)
+prediction_df_ir = bind_cols("Actual" = test_ir$Incident_Rate, 
+                             "Predictions" = lm_preds_ir)
+prediction_df_ir
+
+# Calculate the percent error
+percent_error_ir = (abs(prediction_df_ir$Predictions-prediction_df_ir$Actual)/prediction_df_ir$Actual)*100
+mean(percent_error_ir)
+print(percent_error_ir)
+```
