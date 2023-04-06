@@ -110,4 +110,14 @@ PCAtest(df_i[numeric_cols_i], 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot
 })
 cat(output2, file = "significance_PCA_i.txt")
 ```
+```{r}
+df_f <- cbind(df_f, pca_f$x[,1:3])
+
+df_i <- cbind(df_i, pca_i$x[,1:4])
+
+write.csv(df_f, "TrainTestDatasets/Train_CaseFatality_PCA.csv", row.names=FALSE)
+write.csv(df_i, "TrainTestDatasets/Train_Incident_PCA.csv", row.names=FALSE)
+
+
+```
 
