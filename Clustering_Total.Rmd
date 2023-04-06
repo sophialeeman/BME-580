@@ -1,0 +1,29 @@
+---
+title: "Clustering_Total"
+author: "Sophia Leeman"
+date: "2023-04-06"
+output: html_document
+---
+
+Perform Hierarchical Clustering on the dataset cleaned in PCA_Total.rmd
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+df_f <- read.csv("TrainTestDatasets/Train_CaseFatality_PCA.csv")
+df_i <- read.csv("TrainTestDatasets/Train_Incident_PCA.csv")
+```
+
+```{r}
+numeric_cols_f <- sapply(df_f, is.numeric)
+clusters <- hclust(dist(subset(df_f[numeric_cols_f], select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate))))
+plot(clusters)
+```
+
+```{r}
+numeric_cols_i <- sapply(df_i, is.numeric)
+clusters2 <- hclust(dist(subset(df_i[numeric_cols_i], select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate))))
+plot(clusters2)
+
+```
