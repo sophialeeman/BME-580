@@ -12,36 +12,60 @@ library(corrplot)
 ```
 
 ```{r}
-df <- read.csv("Transformed_Data.csv")
+df_f <- read.csv("TrainTestDatasets/Train_CaseFatality.csv")
+df_i <- read.csv("TrainTestDatasets/Train_Incident.csv")
+
+df_f <- subset(df_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate))
+df_i <- subset(df_i, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate))
 ```
 
 ```{r}
-numeric_cols <- sapply(df, is.numeric)
-pca <- prcomp(df[numeric_cols])
-pca
+numeric_cols_f <- sapply(df_f, is.numeric)
+pca_f <- prcomp(df_f[numeric_cols_f])
+pca_f
+
+numeric_cols_i <- sapply(df_i, is.numeric)
+pca_i <- prcomp(df_i[numeric_cols_i])
+pca_i
 ```
 
 ```{r}
-graph <- fviz_eig(pca, addlabels = T) 
-graph
+graph_f <- fviz_eig(pca_f, addlabels = T) 
+graph_f
+graph_i <- fviz_eig(pca_i, addlabels = T) 
+graph_i
 ```
 I would chose to use 4 dimensions by analysis of the location of the elbow in the graph.
 ```{r}
-varPercent <- pca$sdev^2/sum(pca$sdev^2)*100
-cumVar <- sum(varPercent[1:4])
-cumVar
+varPercent_f <- pca_f$sdev^2/sum(pca_f$sdev^2)*100
+cumVar_f <- sum(varPercent_f[1:4])
+cumVar_f
+
+varPercent_i <- pca_i$sdev^2/sum(pca_i$sdev^2)*100
+cumVar_i <- sum(varPercent_i[1:4])
+cumVar_i
 ```
-This accounts for about 70s% of the variance.
+This accounts for about 70% of the variance.
 
 ```{r}
-loadings <- pca$rotation
-loadings <- as.data.frame(loadings[,1:4])
-loadings  %>% arrange(desc(.312*abs(PC1)+.176*abs(PC2)+.126*abs(PC3)+.08*abs(PC4)))
+loadings_f <- pca_f$rotation
+loadings_f <- as.data.frame(loadings_f[,1:4])
+loadings_f  %>% arrange(desc(.312*abs(PC1)+.176*abs(PC2)+.126*abs(PC3)+.08*abs(PC4)))
+
+loadings_i <- pca_i$rotation
+loadings_i <- as.data.frame(loadings_i[,1:4])
+loadings_i  %>% arrange(desc(.312*abs(PC1)+.176*abs(PC2)+.126*abs(PC3)+.08*abs(PC4)))
 
 ```
 
 ```{r}
-fviz_pca_ind(pca,
+fviz_pca_ind(pca_f,
+             col.ind = "cos2",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE     
+             )
+
+fviz_pca_ind(pca_i,
              col.ind = "cos2",
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE     
@@ -50,14 +74,17 @@ fviz_pca_ind(pca,
 
 Visualize dimensions
 ```{r, fig.align = "center", fig.height = 4, fig.width = 4 ,out.width = "4in"}
-fviz_pca_biplot(pca, col.var = "contrib", labelsize = 8, repel = TRUE) +
-    theme(text = element_text(size = 20),
-        axis.title = element_text(size = 20),
-        axis.text = element_text(size = 20))
+fviz_pca_biplot(pca_f, col.var = "contrib", repel = TRUE) 
+fviz_pca_biplot(pca_i, col.var = "contrib", repel = TRUE) 
 ```
 
 ```{r, fig.align = "center", fig.height = 4, fig.width = 4,out.width = "4in"}
-fviz_pca_var(pca,
+fviz_pca_var(pca_f,
+             col.var = "contrib", 
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE   
+             )
+fviz_pca_var(pca_i,
              col.var = "contrib", 
              gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
              repel = TRUE   
@@ -65,8 +92,6 @@ fviz_pca_var(pca,
 ```
 
 ```{r, fig.align = "center", fig.height = 4, fig.width = 4 ,out.width = "4in"}
-fviz_pca_var(pca, col.var = "contrib", labelsize = 6, repel = TRUE) +
-    theme(text = element_text(size = 15),
-        axis.title = element_text(size = 15),
-        axis.text = element_text(size = 15))
+fviz_pca_var(pca_f, col.var = "contrib", repel = TRUE) 
+fviz_pca_var(pca_i, col.var = "contrib", repel = TRUE)
 ```
