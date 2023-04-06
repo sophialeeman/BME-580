@@ -35,17 +35,17 @@ graph_f
 graph_i <- fviz_eig(pca_i, addlabels = T) 
 graph_i
 ```
-I would chose to use 4 dimensions by analysis of the location of the elbow in the graph.
+I would chose to use 6 dimensions by analysis of the location of the elbow in the graph.
 ```{r}
 varPercent_f <- pca_f$sdev^2/sum(pca_f$sdev^2)*100
-cumVar_f <- sum(varPercent_f[1:4])
+cumVar_f <- sum(varPercent_f[1:6])
 cumVar_f
 
 varPercent_i <- pca_i$sdev^2/sum(pca_i$sdev^2)*100
-cumVar_i <- sum(varPercent_i[1:4])
+cumVar_i <- sum(varPercent_i[1:6])
 cumVar_i
 ```
-This accounts for about 70% of the variance.
+This accounts for about 88% of the variance.
 
 ```{r}
 loadings_f <- pca_f$rotation
@@ -95,3 +95,19 @@ fviz_pca_var(pca_i,
 fviz_pca_var(pca_f, col.var = "contrib", repel = TRUE) 
 fviz_pca_var(pca_i, col.var = "contrib", repel = TRUE)
 ```
+
+The first 3 PC axes are significant and account for 58.5% of the total variation for the first dataset, and the first 4 PC axes are significant and account for 71.3% of the total variation for the second dataset. 
+```{r}
+library(PCAtest)
+
+output <- capture.output({
+PCAtest(df_f[numeric_cols_f], 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
+})
+cat(output, file = "significance_PCA_f.txt")
+
+output2 <- capture.output({
+PCAtest(df_i[numeric_cols_i], 100, 100, 0.05, varcorr=FALSE, counter=FALSE, plot=TRUE)
+})
+cat(output2, file = "significance_PCA_i.txt")
+```
+
