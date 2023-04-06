@@ -23,7 +23,7 @@ test_ir <- read.csv('TrainTestDatasets/Test_Incident.csv', header = TRUE)
 
 # Linear Regression with All Predictors - Outcome: Case Fatality Ratio
 ```{r}
-cf_linreg = lm(Case_Fatality_Ratio~., data = train_cf)
+cf_linreg = lm(Case_Fatality_Ratio~., data = subset(train_cf, select = -c(Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate)))
 cf_linreg
 
 plot(cf_linreg$residuals, col = 'red')
@@ -42,7 +42,7 @@ print(percent_error)
 ```
 # Linear Regression with All Predictors - Outcome: Incident Rate
 ```{r}
-ir_linreg = lm(Incident_Rate~., data = train_ir)
+ir_linreg = lm(Incident_Rate~., data = subset(train_cf, select = -c(Case_Fatality_Ratio, Confirmed, Deaths, Total_Test_Results, Testing_Rate)))
 ir_linreg
 
 plot(ir_linreg$residuals, col = 'red')
