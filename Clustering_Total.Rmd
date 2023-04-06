@@ -41,3 +41,21 @@ outcome_colors <- ifelse(outcome_var > mean(outcome_var), "red", "blue")
 rect.hclust(clusters2, k = 3, border = outcome_colors)
 
 ```
+
+Looking deeper into the Case Fatality Ratio
+```{r}
+library(plotly)
+# Plot the data with plotly
+fig <- plot_ly(df_f, x = ~PC1, y = ~PC2, z = ~PC3,
+               color = ~Case_Fatality_Ratio, colors = "Blues",
+               type = "scatter3d", mode = "markers")
+
+# Set axis labels
+fig <- fig %>% layout(scene = list(xaxis = list(title = "PC 1"),
+                                   yaxis = list(title = "PC 2"),
+                                   zaxis = list(title = "PC 3")))
+
+# Show the plot
+fig
+
+```
