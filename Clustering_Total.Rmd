@@ -19,11 +19,25 @@ df_i <- read.csv("TrainTestDatasets/Train_Incident_PCA.csv")
 numeric_cols_f <- sapply(df_f, is.numeric)
 clusters <- hclust(dist(subset(df_f[numeric_cols_f], select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate))))
 plot(clusters)
+# Define colors based on outcome variable
+outcome_var <- df_f$Case_Fatality_Ratio
+outcome_colors <- ifelse(outcome_var > mean(outcome_var), "red", "blue") 
+rect.hclust(clusters, k = 3, border = outcome_colors)
+
+
+
+
+
+
 ```
 
 ```{r}
 numeric_cols_i <- sapply(df_i, is.numeric)
 clusters2 <- hclust(dist(subset(df_i[numeric_cols_i], select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate))))
 plot(clusters2)
+# Define colors based on outcome variable
+outcome_var <- df_i$Incident_Rate
+outcome_colors <- ifelse(outcome_var > mean(outcome_var), "red", "blue") 
+rect.hclust(clusters2, k = 3, border = outcome_colors)
 
 ```
