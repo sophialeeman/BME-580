@@ -22,7 +22,7 @@ plot(clusters)
 # Define colors based on outcome variable
 outcome_var <- df_f$Case_Fatality_Ratio
 outcome_colors <- ifelse(outcome_var > mean(outcome_var), "red", "blue") 
-rect.hclust(clusters, k = 3, border = outcome_colors)
+rect.hclust(clusters, k = 2, border = outcome_colors)
 
 
 
@@ -38,7 +38,7 @@ plot(clusters2)
 # Define colors based on outcome variable
 outcome_var <- df_i$Incident_Rate
 outcome_colors <- ifelse(outcome_var > mean(outcome_var), "red", "blue") 
-rect.hclust(clusters2, k = 3, border = outcome_colors)
+rect.hclust(clusters2, k = 2, border = outcome_colors)
 
 ```
 
