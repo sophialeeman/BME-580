@@ -15,8 +15,10 @@ data <- data[,2:ncol(data)]
 ```
 
 ```{r, fig.align = "center", fig.height = 8, fig.width = 8,out.width = "8.5in"}
+library(corrplot)
+colnames(data) <- c("Diastolic BP", "Systolic BP", "Heart Rate", "BPM", "Mean RR", "MxDMn", "SDNN", "rMSSD", "PNN50", "Moda", "AMo50", "LF", "HF", "VLF", "LF/HF", "Total Power", "Height", "Weight", "Age Range", "Mental Health Severity", "Temperature", "Atmospheric Pressure", "Precipitation Intensity", "Humidity", "Clouds")
 C = cor(data)
-corrplot(C, tl.cex = 3)
+corrplot(C, tl.cex = 2.5)
 
 ```
 ```{r, fig.align = "center", fig.height = 8, fig.width = 8,out.width = "8.5in"}
