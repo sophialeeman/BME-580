@@ -106,6 +106,7 @@ write.csv(ag, "/Users/sophialeeman/Documents/BME 580/BME-580/Aggregate_Data.csv"
 Scaling the data and computing PCA
 ```{r}
 ag_scale <- ag[ -c(1) ]
+colnames(ag_scale) <- c("Diastolic BP", "Systolic BP", "Heart Rate", "BPM", "Mean RR", "MxDMn", "SDNN", "rMSSD", "PNN50", "Moda", "AMo50", "LF", "HF", "VLF", "LF/HF", "Total Power", "Height", "Weight", "Age Range", "Symptom Severity", "Temperature", "Atmospheric Pressure", "Precipitation Intensity", "Humidity", "Clouds")
 pca <- prcomp(ag_scale, center = TRUE, scale=TRUE)
 pca
 ```
