@@ -15,8 +15,8 @@ library(corrplot)
 df_f <- read.csv("TrainTestDatasets/Train_CaseFatality.csv")
 df_i <- read.csv("TrainTestDatasets/Train_Incident.csv")
 
-df_f <- subset(df_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate))
-df_i <- subset(df_i, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate))
+df_f <- subset(df_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year))
+df_i <- subset(df_i, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year))
 ```
 
 ```{r}
@@ -96,7 +96,9 @@ fviz_pca_var(pca_f, col.var = "contrib", repel = TRUE)
 fviz_pca_var(pca_i, col.var = "contrib", repel = TRUE)
 ```
 
-The first 3 PC axes are significant and account for 58.5% of the total variation for the first dataset, and the first 4 PC axes are significant and account for 71.3% of the total variation for the second dataset. 
+"PC 1 is significant and accounts for 28.1% (95%-CI:27.4-28.8) of the total variation PC 2 is significant and accounts for 20.5% (95%-CI:20-21) of the total variation PC 3 is significant and accounts for 15.1% (95%-CI:14.6-15.8) of the total variation  The first 3 PC axes are significant and account for 63.7% of the total variation  Variables 2, 3, and 4 have significant loadings on PC 1 Variables 1, and 6 have significant loadings on PC 2 Variables , and 5 have significant loadings on PC 3"
+
+"PC 1 is significant and accounts for 28% (95%-CI:27.3-28.9) of the total variation PC 2 is significant and accounts for 20.6% (95%-CI:20-21.2) of the total variation PC 3 is significant and accounts for 15.4% (95%-CI:14.7-16.1) of the total variation  The first 3 PC axes are significant and account for 63.9% of the total variation  Variables 2, 3, and 4 have significant loadings on PC 1 Variables 1, and 6 have significant loadings on PC 2 Variables , and 5 have significant loadings on PC 3"
 ```{r}
 library(PCAtest)
 
@@ -116,7 +118,7 @@ df_i <- read.csv("TrainTestDatasets/Train_Incident.csv")
 
 df_f <- cbind(df_f, pca_f$x[,1:3])
 
-df_i <- cbind(df_i, pca_i$x[,1:4])
+df_i <- cbind(df_i, pca_i$x[,1:3])
 
 write.csv(df_f, "TrainTestDatasets/Train_CaseFatality_PCA.csv", row.names=FALSE)
 write.csv(df_i, "TrainTestDatasets/Train_Incident_PCA.csv", row.names=FALSE)
