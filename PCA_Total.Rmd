@@ -15,12 +15,16 @@ library(corrplot)
 df_f <- read.csv("TrainTestDatasets/Train_CaseFatality.csv")
 df_i <- read.csv("TrainTestDatasets/Train_Incident.csv")
 
-df_f <- subset(df_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year))
-df_i <- subset(df_i, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year))
+df_f <- subset(df_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year, Indicator))
+df_i <- subset(df_i, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year, Indicator))
+
+df_f <- df_f %>% rename('Mental_Health' = 'Value')
+df_i <- df_i %>% rename('Mental_Health' = 'Value')
 ```
 
 ```{r}
 numeric_cols_f <- sapply(df_f, is.numeric)
+head(df_f[numeric_cols_f])
 pca_f <- prcomp(df_f[numeric_cols_f])
 pca_f
 
@@ -123,6 +127,49 @@ df_i <- cbind(df_i, pca_i$x[,1:3])
 write.csv(df_f, "TrainTestDatasets/Train_CaseFatality_PCA.csv", row.names=FALSE)
 write.csv(df_i, "TrainTestDatasets/Train_Incident_PCA.csv", row.names=FALSE)
 
+
+```
+
+```{r}
+
+# Load required libraries
+library(dplyr)
+library(magrittr)
+library(caret)
+
+tf_f <- read.csv("TrainTestDatasets/Test_CaseFatality.csv")
+
+tf_f <- subset(tf_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year, Indicator))
+
+tf_f <- tf_f %>% rename('Mental_Health' = 'Value')
+
+# Calculate the first three principal components for the test data based on the PCs from the training data
+
+numeric_cols_tf <- sapply(tf_f, is.numeric)
+
+head(tf_f[numeric_cols_tf])
+
+test_pcs <- predict(prcomp(tf_f[numeric_cols_tf]), newdata = pca_f$x)[, 1:3]
+
+# Add the new column to the test dataframe
+tf_f <- read.csv("TrainTestDatasets/Test_CaseFatality.csv")
+tf_f <- tf_f %>% mutate(PC1 = test_pcs[, 1], PC2 = test_pcs[, 2], PC3 = test_pcs[, 3])
+
+tf_i <- read.csv("TrainTestDatasets/Test_IncidentRate.csv")
+tf_i <- subset(tf_i, select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year, Indicator))
+
+tf_i <- tf_i %>% rename('Mental_Health' = 'Value')
+
+# Calculate the first three principal components for the test data based on the PCs from the training data
+numeric_cols_ti <- sapply(tf_i, is.numeric)
+test_pcs <- predict(prcomp(tf_i[numeric_cols_ti]), newdata = pca_i$x[,1:3])[, 1:3]
+
+# Add the new column to the test dataframe
+tf_i <- read.csv("TrainTestDatasets/Test_IncidentRate.csv")
+tf_i <- tf_i %>% mutate(PC1 = test_pcs[, 1], PC2 = test_pcs[, 2], PC3 = test_pcs[, 3])
+
+write.csv(tf_f, "TrainTestDatasets/Test_CaseFatality_PCA.csv", row.names=FALSE)
+write.csv(tf_i, "TrainTestDatasets/Test_IncidentRate_PCA.csv", row.names=FALSE)
 
 ```
 
