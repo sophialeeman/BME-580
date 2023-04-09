@@ -1,0 +1,61 @@
+---
+title: "KNN"
+author: "Sophia Leeman"
+date: "2023-04-09"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(caret)
+library(pROC)
+```
+
+```{r}
+# Load the training and test dataframes
+train_df <- read.csv("TrainTestDatasets/Train_CaseFatality_PCA.csv")
+test_df <- read.csv("TrainTestDatasets/Test_CaseFatality_PCA.csv")
+
+train_df <- subset(train_df, select = -c(State, Year, Month, Confirmed, Deaths, Incident_Rate, Total_Test_Results, Testing_Rate))
+mean_val <- mean(train_df$Case_Fatality_Ratio)
+train_df$Case_Fatality_Ratio <- as.factor(ifelse(train_df$Case_Fatality_Ratio > mean_val, 1, 0))
+test_df <- subset(test_df, select = -c(State, Year, Month, Confirmed, Deaths, Incident_Rate, Total_Test_Results, Testing_Rate))
+test_df$Case_Fatality_Ratio <- as.factor(ifelse(test_df$Case_Fatality_Ratio > mean_val, 1, 0))
+
+```
+
+```{r}
+# Split the training data into training and validation sets
+trainIndex <- createDataPartition(train_df$Case_Fatality_Ratio, p = 0.8, list = FALSE)
+train <- train_df[trainIndex, ]
+validation <- train_df[-trainIndex, ]
+
+```
+
+```{r}
+# Set up the KNN model
+ctrl <- trainControl(method = "cv", number = 5)
+knn_model <- train(Case_Fatality_Ratio ~ ., data = train, method = "knn", trControl = ctrl, tuneLength = 10)
+
+```
+
+```{r}
+# Use the KNN model to predict the test data
+
+test_preds <- predict(knn_model, newdata = test_df, type = "prob")[,2]
+
+# Compute the AUC ROC curve on the test data
+roc <- roc(test_df$Case_Fatality_Ratio, test_preds)
+plot(roc)
+print(auc(roc))
+
+predicted <- as.factor(ifelse(test_preds > 0.5, 1, 0))
+
+# Create a confusion matrix
+confusion_matrix <- table(test_df$Case_Fatality_Ratio, predicted)
+confusion_matrix
+
+```
