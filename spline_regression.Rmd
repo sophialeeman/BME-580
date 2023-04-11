@@ -1,0 +1,80 @@
+---
+title: "Spline Regression"
+output: html_document
+date: "2023-04-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(splines)
+library(ggplot2)
+library(caret)
+```
+
+```{r}
+train_cf <- read.csv('C:/Users/tulip/BME580/project/Train_CaseFatality.csv', header = TRUE)
+test_cf <- read.csv('C:/Users/tulip/BME580/project/Test_CaseFatality.csv', header = TRUE)
+train_ir <- read.csv('C:/Users/tulip/BME580/project/Train_Incident.csv', header = TRUE)
+test_ir <- read.csv('C:/Users/tulip/BME580/project/Test_Incident.csv', header = TRUE)
+```
+
+# Cubic w/ DOF of 4 Regression with Predictors - Outcome: Case Fatality Ratio
+```{r}
+# predictors <- c("State", "Year", "Month", "Lat", "Long_", "Incident_Rate", "Total_Test_Results", "Testing_Rate", "Atmospheric.Pressure", "Humidity", "Indicator", "Value", "Temp", "Precip")
+# predictors_to_exclude <- c("Incident_Rate", "Confirmed", "Deaths", "Total_Test_Results", "Testing_Rate")
+# predictors <- predictors[!predictors %in% predictors_to_exclude]
+# 
+# model <- lm(Case_Fatality_Ratio ~ ns(Lat, df=4) + ns(Long_, df=4) + ns(Temp, df=4) + ns(Humidity, df=4) + ns(Atmospheric.Pressure, df=4) + ns(Value, df=4) + ns(Precip, df=4) + State + Year + Month, data=train_cf)
+# 
+# ggplot(test_cf, a)
+# 
+# predictions <- predict(model, newdata=test_cf)
+# 
+# percent_error <- 100 * abs(test_cf$Case_Fatality_Ratio - predictions) / test_cf$Case_Fatality_Ratio
+# mean_percent_error <- mean(percent_error)
+# 
+# ggplot(data = data.frame(residuals = resid(model, type = "response"), predicted = predict(model_2, type = "response")), aes(x = predicted, y = residuals)) + 
+#   geom_point() + 
+#   geom_smooth(method = "loess", se = FALSE) + 
+#   labs(title = "Residuals Plot", x = "Predicted Values", y = "Residuals")
+# 
+# # Print mean percent error
+# cat("Mean percent error:", mean_percent_error, "%")
+model <- lm(Case_Fatality_Ratio ~ ns(Lat, df=4) + ns(Long_, df=4) + ns(Temp, df=4) + ns(Humidity, df=4) + ns(Atmospheric.Pressure, df=4) + ns(Value, df=4) + ns(Precip, df=4) + State + Year + Month, data=train_cf)
+
+predictions <- predict(model, newdata = test_cf)
+
+percent_error <- abs((test_cf$Case_Fatality_Ratio - predictions) / test_cf$Case_Fatality_Ratio) * 100
+
+rmse <- sqrt(mean((test_cf$Case_Fatality_Ratio - predictions)^2))
+
+ggplot(train_cf, aes(x = State, y = Case_Fatality_Ratio)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", formula = y ~ ns(x, df = 4), color = "red", se = FALSE) +
+  ggtitle("Spline Regression Model Over the Data") +
+  xlab("State") +
+  ylab("Case Fatality Ratio")
+
+ggplot(model, aes(x = predict(model), y = residuals(model))) +
+  geom_point(alpha = 0.5) +
+  ggtitle("Residuals Plot") +
+  xlab("Predictions") +
+  ylab("Residuals")
+
+# Print percent error and RMSE
+cat("Percent error:", round(mean(percent_error), 2), "%\n")
+cat("RMSE:", round(rmse, 2))
+```
+# Cubic w/ DOF of 4 Regression with Predictors - Outcome: Incident Rate
+```{r}
+model_2 <- lm(Incident_Rate ~ ns(Case_Fatality_Ratio, df = 4) + ns(Confirmed, df = 4) + ns(Deaths, df = 4) + ns(Total_Test_Results, df = 4) + ns(Testing_Rate, df = 4), data = train_ir)
+predictions_2 <- predict(model_2, newdata = test_ir)
+RMSE <- sqrt(mean((test_ir$Case_Fatality_Ratio - predictions_2)^2))
+PE <- mean(abs(test_ir$Case_Fatality_Ratio - predictions_2)/test_ir$Case_Fatality_Ratio)*100
+cat("RMSE:", RMSE, "\n")
+cat("Percent error:", PE, "%\n")
+ggplot(data = data.frame(residuals = resid(model_2, type = "response"), predicted = predict(model_2, type = "response")), aes(x = predicted, y = residuals)) + 
+  geom_point() + 
+  geom_smooth(method = "loess", se = FALSE) + 
+  labs(title = "Residuals Plot", x = "Predicted Values", y = "Residuals")
+```
