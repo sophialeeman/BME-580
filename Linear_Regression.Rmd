@@ -29,16 +29,28 @@ cf_linreg
 plot(cf_linreg$residuals, col = 'red')
 ```
 ```{r}
-# Predict values
+# Predict values - Test Error
 lm_preds = predict(cf_linreg, test_cf)
 prediction_df = bind_cols("Actual" = test_cf$Case_Fatality_Ratio, 
                           "Predictions" = lm_preds)
 prediction_df
 
-# Calculate the percent error
-percent_error_ir = (abs(prediction_df$Predictions-prediction_df$Actual)/prediction_df$Actual)*100
+# Calculate the percent error - Test Error
+percent_error = (abs(prediction_df$Predictions-prediction_df$Actual)/prediction_df$Actual)*100
 mean(percent_error)
 print(percent_error)
+```
+```{r}
+# Predictive Model - Training
+lm_preds_train = predict(cf_linreg, train_cf)
+prediction_df_train = bind_cols("Actual" = train_cf$Case_Fatality_Ratio, 
+                          "Predictions" = lm_preds_train)
+prediction_df_train
+
+# Calculate the percent error - Training Error
+percent_error_train = (abs(prediction_df_train$Predictions-prediction_df_train$Actual)/prediction_df_train$Actual)*100
+mean(percent_error_train)
+print(percent_error_train)
 ```
 # Linear Regression with All Predictors - Outcome: Incident Rate
 ```{r}
@@ -47,6 +59,7 @@ ir_linreg
 
 plot(ir_linreg$residuals, col = 'red')
 ```
+
 ```{r}
 # Predict values
 lm_preds_ir = predict(ir_linreg, test_ir)
@@ -58,4 +71,93 @@ prediction_df_ir
 percent_error_ir = (abs(prediction_df_ir$Predictions-prediction_df_ir$Actual)/prediction_df_ir$Actual)*100
 mean(percent_error_ir)
 print(percent_error_ir)
+```
+```{r}
+# Predictive Model - Training
+lm_preds_train_2 = predict(ir_linreg, train_ir)
+prediction_df_train_2 = bind_cols("Actual" = train_ir$Incident_Rate, 
+                                  "Predictions" = lm_preds_train_2)
+prediction_df_train_2
+
+# Calculate the percent error - Training Error
+percent_error_train_2 = (abs(prediction_df_train_2$Predictions-prediction_df_train_2$Actual)/prediction_df_train_2$Actual)*100
+mean(percent_error_train_2)
+print(percent_error_train_2)
+```
+
+# Linear Regression with All Predictors - Outcome: Case Fatality Ratio - No State, Month, Year
+
+```{r}
+# Using datasets with PC's and removing year + month
+train_cf_2 <- read.csv('TrainTestDatasets/Train_CaseFatality_PCA.csv', header = TRUE)
+test_cf_2 <- read.csv('TrainTestDatasets/Test_CaseFatality_PCA.csv', header = TRUE)
+train_ir_2 <- read.csv('TrainTestDatasets/Train_Incident_PCA.csv', header = TRUE)
+test_ir_2 <- read.csv('TrainTestDatasets/Test_IncidentRate_PCA.csv', header = TRUE)
+```
+
+```{r}
+cf_linreg_nostatemonthyear = lm(Case_Fatality_Ratio~., data = subset(train_cf_2, select = -c(Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year)))
+cf_linreg_nostatemonthyear
+
+plot(cf_linreg_nostatemonthyear$residuals, col = 'red')
+```
+
+```{r}
+# Predict values
+lm_preds_3 = predict(cf_linreg_nostatemonthyear, test_cf_2)
+prediction_df_3 = bind_cols("Actual" = test_cf_2$Case_Fatality_Ratio, 
+                            "Predictions" = lm_preds_3)
+prediction_df_3
+
+# Calculate the percent error
+percent_error_3 = (abs(prediction_df_3$Predictions-prediction_df_3$Actual)/prediction_df_3$Actual)*100
+mean(percent_error_3)
+print(percent_error_3)
+```
+
+```{r}
+# Predict values - training error
+lm_preds_train_3 = predict(cf_linreg_nostatemonthyear, train_cf_2)
+prediction_df_train_3 = bind_cols("Actual" = train_cf_2$Case_Fatality_Ratio, 
+                                  "Predictions" = lm_preds_train_3)
+prediction_df_train_3
+
+# Calculate the percent error - training error
+percent_error_train_3 = (abs(prediction_df_train_3$Predictions-prediction_df_train_3$Actual)/prediction_df_train_3$Actual)*100
+mean(percent_error_train_3)
+print(percent_error_train_3)
+```
+
+# Linear Regression with All Predictors - Outcome: Incident Rate - No State, Month, Year
+
+```{r}
+ir_linreg_nostatemonthyear = lm(Incident_Rate~., data = subset(train_ir_2, select = -c(Case_Fatality_Ratio, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year)))
+ir_linreg_nostatemonthyear
+
+plot(ir_linreg_nostatemonthyear$residuals, col = 'red')
+```
+```{r}
+# Predict values
+lm_preds_4 = predict(ir_linreg_nostatemonthyear, test_ir_2)
+prediction_df_4 = bind_cols("Actual" = test_ir_2$Incident_Rate, 
+                            "Predictions" = lm_preds_4)
+prediction_df_4
+
+# Calculate the percent error
+percent_error_4 = (abs(prediction_df_4$Predictions-prediction_df_4$Actual)/prediction_df_4$Actual)*100
+mean(percent_error_4)
+print(percent_error_4)
+```
+
+```{r}
+# Predict values - training error
+lm_preds_train_4 = predict(ir_linreg_nostatemonthyear, train_ir_2)
+prediction_df_train_4 = bind_cols("Actual" = train_ir_2$Incident_Rate, 
+                                  "Predictions" = lm_preds_train_4)
+prediction_df_train_4
+
+# Calculate the percent error - training error
+percent_error_train_4 = (abs(prediction_df_train_4$Predictions-prediction_df_train_4$Actual)/prediction_df_train_4$Actual)*100
+mean(percent_error_train_4)
+print(percent_error_train_4)
 ```
