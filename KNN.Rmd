@@ -19,15 +19,19 @@ library(pROC)
 train_df <- read.csv("TrainTestDatasets/Train_CaseFatality_PCA.csv")
 test_df <- read.csv("TrainTestDatasets/Test_CaseFatality_PCA.csv")
 
-train_df <- subset(train_df, select = -c(State, Year, Month, Confirmed, Deaths, Incident_Rate, Total_Test_Results, Testing_Rate))
+train_df
+test_df
+
+train_df <- subset(train_df, select = -c(Incident_Rate, Year, Indicator, State, Month))
 numeric_cols <- sapply(train_df, is.numeric)
 train_df <- train_df[numeric_cols]
-mean_val <- mean(train_df$Case_Fatality_Ratio)
+mean_val <- 0
 train_df$Case_Fatality_Ratio <- as.factor(ifelse(train_df$Case_Fatality_Ratio > mean_val, 1, 0))
-test_df <- subset(test_df, select = -c(State, Year, Month, Confirmed, Deaths, Incident_Rate, Total_Test_Results, Testing_Rate))
+test_df <- subset(test_df, select = -c(Incident_Rate, Year, Indicator, State, Month))
 numeric_cols <- sapply(test_df, is.numeric)
 test_df <- test_df[numeric_cols]
 test_df$Case_Fatality_Ratio <- as.factor(ifelse(test_df$Case_Fatality_Ratio > mean_val, 1, 0))
+test_df
 
 ```
 
@@ -78,18 +82,4 @@ top_vars <- row.names(importance$importance[1:2,])
 
 train_df <- read.csv("TrainTestDatasets/Train_CaseFatality_PCA.csv")
 test_df <- read.csv("TrainTestDatasets/Test_CaseFatality_PCA.csv")
-
-
-
-# Combine the test data with the predicted class labels and the PC3 variable
-results_df <- cbind(test_df[,c("Long_", "PC2", "Case_Fatality_Ratio")], Predicted = test_preds)
-
-# Create a 3D scatter plot of the data points, colored by their predicted class label
-p <- plot_ly(results_df, x = ~Long_, y = ~PC2, z = ~Case_Fatality_Ratio, color = ~Predicted, colors = c("blue", "red"))
-
-# Add a title and labels to the plot
-p <- p %>% layout(scene = list(xaxis = list(title = "Longitude"), yaxis = list(title = "PC2"), zaxis = list(title = "Case_Fatality_Ratio")))
-
-# Show the plot
-p
 ```

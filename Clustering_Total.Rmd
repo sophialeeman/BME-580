@@ -19,7 +19,7 @@ head(df_f)
 
 ```{r}
 numeric_cols_f <- sapply(df_f, is.numeric)
-clusters <- hclust(dist(subset(df_f[numeric_cols_f], select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, Year))))
+clusters <- hclust(dist(subset(df_f[numeric_cols_f], select = -c(Case_Fatality_Ratio, Incident_Rate, Year))))
 plot(clusters)
 # Define colors based on outcome variable
 outcome_var <- df_f$Case_Fatality_Ratio
@@ -35,7 +35,7 @@ rect.hclust(clusters, k = 2, border = outcome_colors)
 
 ```{r}
 numeric_cols_i <- sapply(df_i, is.numeric)
-clusters2 <- hclust(dist(subset(df_i[numeric_cols_i], select = -c(Case_Fatality_Ratio, Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, Year))))
+clusters2 <- hclust(dist(subset(df_i[numeric_cols_i], select = -c(Case_Fatality_Ratio, Incident_Rate, Year))))
 plot(clusters2)
 # Define colors based on outcome variable
 outcome_var <- df_i$Incident_Rate
@@ -48,14 +48,14 @@ Looking deeper into the Case Fatality Ratio
 ```{r}
 library(plotly)
 # Plot the data with plotly
-fig <- plot_ly(df_f, x = ~PC1, y = ~PC2, z = ~PC3,
+fig <- plot_ly(df_f, x = ~Temp, y = ~Atmospheric.Pressure, z = ~Value,
                color = ~Case_Fatality_Ratio, colors = "Blues",
                type = "scatter3d", mode = "markers")
 
 # Set axis labels
-fig <- fig %>% layout(scene = list(xaxis = list(title = "PC 1"),
-                                   yaxis = list(title = "PC 2"),
-                                   zaxis = list(title = "PC 3")))
+fig <- fig %>% layout(scene = list(xaxis = list(title = "Temperature"),
+                                   yaxis = list(title = "Atmospheric Pressure"),
+                                   zaxis = list(title = "Value")))
 
 # Show the plot
 fig
@@ -65,7 +65,7 @@ fig
 ```{r}
 library(plotly)
 # Plot the data with plotly
-fig <- plot_ly(df_i, x = ~PC1, y = ~PC2, z = ~PC3,
+fig <- plot_ly(df_i, x = ~Temp, y = ~Atmospheric.Pressure, z = ~Value,
                color = ~Incident_Rate, colors = "Blues",
                type = "scatter3d", mode = "markers")
 
