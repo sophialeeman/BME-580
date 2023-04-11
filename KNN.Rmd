@@ -110,19 +110,3 @@ confusion_matrix <- table(test_df$Case_Fatality_Ratio, predicted)
 confusion_matrix
 
 ```
-
-```{r}
-library(ggplot2)
-library(plotly)
-
-# get the variable importance scores from the KNN model
-importance <- varImp(knn_model, scale = FALSE)
-
-importance
-
-# get the names of the top two important variables
-top_vars <- row.names(importance$importance[1:2,])
-
-train_df <- read.csv("TrainTestDatasets/Train_CaseFatality_PCA.csv")
-test_df <- read.csv("TrainTestDatasets/Test_CaseFatality_PCA.csv")
-```
