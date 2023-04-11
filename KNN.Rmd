@@ -22,14 +22,20 @@ test_df <- read.csv("TrainTestDatasets/Test_CaseFatality_PCA.csv")
 train_df
 test_df
 
-train_df <- subset(train_df, select = -c(Incident_Rate, Year, Indicator, State, Month))
-numeric_cols <- sapply(train_df, is.numeric)
-train_df <- train_df[numeric_cols]
+train_df$State <- as.factor(train_df$State)
+train_df$Month <- as.factor(train_df$Month)
+test_df$State <- as.factor(test_df$State)
+test_df$Month <- as.factor(test_df$Month)
+
+train_df <- subset(train_df, select = -c(Incident_Rate, Year))
+#numeric_cols <- sapply(train_df, is.numeric)
+#train_df <- train_df[numeric_cols]
+train_df
 mean_val <- 0
 train_df$Case_Fatality_Ratio <- as.factor(ifelse(train_df$Case_Fatality_Ratio > mean_val, 1, 0))
-test_df <- subset(test_df, select = -c(Incident_Rate, Year, Indicator, State, Month))
-numeric_cols <- sapply(test_df, is.numeric)
-test_df <- test_df[numeric_cols]
+test_df <- subset(test_df, select = -c(Incident_Rate, Year))
+#numeric_cols <- sapply(test_df, is.numeric)
+#test_df <- test_df[numeric_cols]
 test_df$Case_Fatality_Ratio <- as.factor(ifelse(test_df$Case_Fatality_Ratio > mean_val, 1, 0))
 test_df
 
@@ -67,13 +73,50 @@ confusion_matrix <- table(test_df$Case_Fatality_Ratio, predicted)
 confusion_matrix
 
 ```
+```{r}
+f1_score <- function(threshold, pred, labels) {
+  preds <- as.integer(pred > threshold)
+  tp <- sum(preds == 1 & labels == 1)
+  fp <- sum(preds == 1 & labels == 0)
+  fn <- sum(preds == 0 & labels == 1)
+  precision <- tp / (tp + fp)
+  recall <- tp / (tp + fn)
+  f1 <- 2 * precision * recall / (precision + recall)
+  return(f1)
+}
+
+# define a sequence of thresholds to try
+thresholds <- seq(0, 1, by = 0.01)
+
+# calculate F1 scores for each threshold
+f1_scores <- sapply(thresholds, f1_score, pred = test_preds, labels = test_df$Case_Fatality_Ratio)
+
+# find the optimal threshold that maximizes F1 score
+opt_threshold <- thresholds[which.max(f1_scores)]
+opt_f1 <- max(f1_scores)
+
+plot(thresholds, f1_scores, type = "l", xlab = "Threshold", ylab = "F1 Score",
+     main = paste0("Optimal threshold = ", round(opt_threshold, 2), ", F1 score = ", round(opt_f1, 2)))
+abline(v = opt_threshold, lty = 2, col = "red")
+
+
+```
+
+```{r}
+predicted <- as.factor(ifelse(test_preds > 0.86, 1, 0))
+
+# Create a confusion matrix
+confusion_matrix <- table(test_df$Case_Fatality_Ratio, predicted)
+confusion_matrix
+
+```
 
 ```{r}
 library(ggplot2)
 library(plotly)
 
 # get the variable importance scores from the KNN model
-importance <- varImp(knn_model)
+importance <- varImp(knn_model, scale = FALSE)
 
 importance
 

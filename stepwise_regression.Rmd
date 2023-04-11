@@ -13,12 +13,12 @@ library(caret)
 set.seed(123)
 ```
 ```{r}
-train_cf <- read.csv('C:/Users/tulip/BME580/project/Train_CaseFatality.csv', header = TRUE)
-test_cf <- read.csv('C:/Users/tulip/BME580/project/Test_CaseFatality.csv', header = TRUE)
-train_ir <- read.csv('C:/Users/tulip/BME580/project/Train_Incident.csv', header = TRUE)
-train_ir<-train_ir[,-14]
-test_ir <- read.csv('C:/Users/tulip/BME580/project/Test_Incident.csv', header = TRUE)
-test_ir<-test_ir[,-14]
+train_cf <- read.csv('TrainTestDatasets/Train_CaseFatality_PCA.csv', header = TRUE)
+test_cf <- read.csv('TrainTestDatasets/Test_CaseFatality_PCA.csv', header = TRUE)
+train_ir <- read.csv('TrainTestDatasets/Train_Incident_PCA.csv', header = TRUE)
+train_ir<-subset(train_ir, select = -c(Year, Case_Fatality_Ratio, Indicator))
+test_ir <- read.csv('TrainTestDatasets/Test_IncidentRate_PCA.csv', header = TRUE)
+test_ir<-subset(test_ir, select = -c(Year, Case_Fatality_Ratio, Indicator))
 
 head(train_ir, 10)
 test_ir
@@ -26,6 +26,7 @@ train_ir$State <- as.factor(train_ir$State)
 train_ir$Month <- as.factor(train_ir$Month)
 test_ir$State <- as.factor(test_ir$State)
 test_ir$Month <- as.factor(test_ir$Month)
+train_ir
 ```
 
 ```{r}

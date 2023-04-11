@@ -15,10 +15,13 @@ library(corrplot)
 df_f <- read.csv("TrainTestDatasets/Train_CaseFatality.csv")
 df_i <- read.csv("TrainTestDatasets/Train_Incident.csv")
 
-df_f
+df_f<-subset(df_f, select = -c(Year, Incident_Rate, Case_Fatality_Ratio, Indicator))
+df_i<-subset(df_i, select = -c(Year, Case_Fatality_Ratio, Incident_Rate, Indicator))
 
-df_f <- subset(df_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Year, Indicator, State, Month))
-df_i <- subset(df_i, select = -c(Case_Fatality_Ratio, Incident_Rate, State, Month, Year, Indicator))
+df_f$State <- as.factor(df_f$State)
+df_f$Month <- as.factor(df_f$Month)
+df_i$State <- as.factor(df_i$State)
+df_i$Month <- as.factor(df_i$Month)
 
 df_f <- df_f %>% rename('Mental_Health' = 'Value')
 df_i <- df_i %>% rename('Mental_Health' = 'Value')
@@ -51,7 +54,7 @@ varPercent_i <- pca_i$sdev^2/sum(pca_i$sdev^2)*100
 cumVar_i <- sum(varPercent_i[1:3])
 cumVar_i
 ```
-This accounts for about 65% of the variance.
+This accounts for 65% of the variance.
 
 ```{r}
 loadings_f <- pca_f$rotation
@@ -138,7 +141,10 @@ library(magrittr)
 library(caret)
 
 tf_f <- read.csv("TrainTestDatasets/Test_CaseFatality.csv")
-tf_f <- subset(tf_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Year, Indicator, State, Month))
+tf_f <- subset(tf_f, select = -c(Year, Incident_Rate, Case_Fatality_Ratio, Indicator))
+tf_f$State <- as.factor(tf_f$State)
+tf_f$Month <- as.factor(tf_f$Month)
+
 numeric_cols_tf <- sapply(tf_f, is.numeric)
 tf_f <- tf_f[numeric_cols_tf]
 pca_mat <- as.matrix(pca_f$rotation)
@@ -161,7 +167,10 @@ tf_f <- read.csv("TrainTestDatasets/Test_CaseFatality.csv")
 tf_f <- cbind(tf_f, pca_df)
 
 tf_i <- read.csv("TrainTestDatasets/Test_Incident.csv")
-tf_i <- subset(tf_i, select = -c(Case_Fatality_Ratio, Incident_Rate, Year, Indicator, State, Month))
+tf_i <- subset(tf_i, select = -c(Year, Incident_Rate, Case_Fatality_Ratio, Indicator))
+tf_i$State <- as.factor(tf_i$State)
+tf_i$Month <- as.factor(tf_i$Month)
+
 numeric_cols_ti <- sapply(tf_i, is.numeric)
 tf_i <- tf_i[numeric_cols_ti]
 pca_mat <- as.matrix(pca_i$rotation)
