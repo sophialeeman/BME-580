@@ -1,0 +1,44 @@
+---
+title: "Logistic_Regression"
+author: "Isabella Wang"
+date: "2023-04-08"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(MASS) # includes two pima data sets
+library(tidyverse)
+library(caret) # An extremely useful library, but here we'll just use it for splitting
+# training data
+library(corrplot)
+```
+
+```{r}
+# Using datasets with PC's and removing year + month
+train_cf <- read.csv('TrainTestDatasets/Train_CaseFatality_PCA.csv', header = TRUE, stringsAsFactors=T)
+test_cf <- read.csv('TrainTestDatasets/Test_CaseFatality_PCA.csv', header = TRUE)
+train_cf$Case_Fatality_Ratio[train_cf$Case_Fatality_Ratio < 0] <- 0
+train_cf$Case_Fatality_Ratio[train_cf$Case_Fatality_Ratio > 0] <- 1
+train_cf$Case_Fatality_Ratio <- as.factor(train_cf$Case_Fatality_Ratio)
+test_cf$Case_Fatality_Ratio[test_cf$Case_Fatality_Ratio < 0] <- 0
+test_cf$Case_Fatality_Ratio[test_cf$Case_Fatality_Ratio > 0] <- 1
+test_cf$Case_Fatality_Ratio <- as.factor(test_cf$Case_Fatality_Ratio)
+```
+
+# Logistic regression - Case Fatality Ratio
+```{r}
+logModel = glm(Case_Fatality_Ratio~., family = binomial, data = subset(train_cf, select = -c(Incident_Rate, Confirmed, Deaths, Total_Test_Results, Testing_Rate, State, Month, Year)))
+summary(logModel)
+```
+
+```{r}
+# Our predictions here will output a probability value when type = 'response'
+log.fit = predict(logModel, newdata = test_cf, type='response')
+
+# We then decide a threshold with which we set the predictions equal to yes and no
+log.fit = ifelse(log.fit > 0.5, 'Yes', 'No')
+# Later in the class, we'll use ROC curves to determine optimal cutoffs
+
+misclassification = sum(log.fit != test_cf$Case_Fatality_Ratio)/length(test_cf$Case_Fatality_Ratio)
+print(paste(1-misclassification))
+```
