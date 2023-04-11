@@ -18,13 +18,15 @@ head(df_f)
 ```
 
 ```{r}
-numeric_cols_f <- sapply(df_f, is.numeric)
-clusters <- hclust(dist(subset(df_f[numeric_cols_f], select = -c(Case_Fatality_Ratio, Incident_Rate, Year))))
+#numeric_cols_f <- sapply(df_f, is.numeric)
+df_f$State <- as.factor(df_f$State)
+df_f$Month <- as.factor(df_f$Month)
+clusters <- hclust(dist(subset(df_f, select = -c(Case_Fatality_Ratio, Incident_Rate, Year))))
 plot(clusters)
 # Define colors based on outcome variable
 outcome_var <- df_f$Case_Fatality_Ratio
 outcome_colors <- ifelse(outcome_var > mean(outcome_var), "red", "blue") 
-rect.hclust(clusters, k = 2, border = outcome_colors)
+rect.hclust(clusters, k = 5, border = outcome_colors)
 
 
 
@@ -34,13 +36,15 @@ rect.hclust(clusters, k = 2, border = outcome_colors)
 ```
 
 ```{r}
-numeric_cols_i <- sapply(df_i, is.numeric)
-clusters2 <- hclust(dist(subset(df_i[numeric_cols_i], select = -c(Case_Fatality_Ratio, Incident_Rate, Year))))
+#numeric_cols_i <- sapply(df_i, is.numeric)
+df_i$State <- as.factor(df_i$State)
+df_i$Month <- as.factor(df_i$Month)
+clusters2 <- hclust(dist(subset(df_i, select = -c(Case_Fatality_Ratio, Incident_Rate, Year))))
 plot(clusters2)
 # Define colors based on outcome variable
 outcome_var <- df_i$Incident_Rate
 outcome_colors <- ifelse(outcome_var > mean(outcome_var), "red", "blue") 
-rect.hclust(clusters2, k = 3, border = outcome_colors)
+rect.hclust(clusters2, k = 5, border = outcome_colors)
 
 ```
 
