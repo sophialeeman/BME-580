@@ -1,0 +1,119 @@
+---
+title: "Linear_Regression_New.Rmd"
+author: "Isabella Wang"
+date: "2023-04-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(MASS) # includes two pima data sets
+library(tidyverse)
+library(caret) # An extremely useful library, but here we'll just use it for splitting
+# training data
+library(corrplot)
+```
+
+# Importing Test and Train Datasets - CFR & IR
+```{r}
+train_cfr <- read.csv("TrainTestDatasets/Train_CaseFatality_PCA.csv")
+test_cfr <- read.csv("TrainTestDatasets/Test_CaseFatality_PCA.csv")
+train_ir <- read.csv("TrainTestDatasets/Train_Incident_PCA.csv")
+test_ir <- read.csv("TrainTestDatasets/Test_IncidentRate_PCA.csv")
+```
+
+# Data Processing - CFR & IR
+```{r}
+# Case Fatality Ratio
+train_cfr$State <- as.factor(train_cfr$State)
+train_cfr$Month <- as.factor(train_cfr$Month)
+test_cfr$State <- as.factor(test_cfr$State)
+test_cfr$Month <- as.factor(test_cfr$Month)
+
+train_cfr <- subset(train_cfr, select = -c(Incident_Rate, Year))
+test_cfr <- subset(test_cfr, select = -c(Incident_Rate, Year))
+
+# Incident Rate
+train_ir$State <- as.factor(train_ir$State)
+train_ir$Month <- as.factor(train_ir$Month)
+test_ir$State <- as.factor(test_ir$State)
+test_ir$Month <- as.factor(test_ir$Month)
+
+train_ir <- subset(train_ir, select = -c(Case_Fatality_Ratio, Year))
+test_ir <- subset(test_ir, select = -c(Case_Fatality_Ratio, Year))
+```
+
+# Creating Validation Dataset from Training Dataset - CFR & IR
+```{r}
+train_index_cfr <- createDataPartition(train_cfr$Case_Fatality_Ratio, p = 0.8, list = FALSE)
+trainset_cfr <- train_cfr[train_index_cfr, ]
+validset_cfr <- train_cfr[-train_index_cfr, ]
+
+train_index_ir <- createDataPartition(train_ir$Incident_Rate, p = 0.8, list = FALSE)
+trainset_ir <- train_ir[train_index_ir, ]
+validset_ir <- train_ir[-train_index_ir, ]
+```
+
+# Linear Regression Model - Case Fatality Ratio
+```{r}
+# Linear Regression Model - CFR
+cfr_linreg = lm(Case_Fatality_Ratio~., data = subset(trainset_cfr))
+cfr_linreg
+
+# Residual Plot - CFR
+plot(cfr_linreg$residuals, col = 'red')
+```
+```{r}
+# Prediction - Validation Error
+cfr_pred_val = predict(cfr_linreg, validset_cfr)
+cfr_val_df = bind_cols("Actual" = validset_cfr$Case_Fatality_Ratio, 
+                       "Predictions" = cfr_pred_val)
+cfr_val_df
+
+# Percent Error - Validation Error
+cfr_pe_val = (abs(cfr_val_df$Predictions-cfr_val_df$Actual)/cfr_val_df$Actual)*100
+mean(cfr_pe_val)
+```
+```{r}
+# Prediction - Test Error
+cfr_pred_test = predict(cfr_linreg, test_cfr)
+cfr_test_df = bind_cols("Actual" = test_cfr$Case_Fatality_Ratio, 
+                        "Predictions" = cfr_pred_test)
+cfr_test_df
+
+# Percent Error - Test Error
+cfr_pe_test = (abs(cfr_test_df$Predictions-cfr_test_df$Actual)/cfr_test_df$Actual)*100
+print(mean(cfr_pe_test))
+```
+
+# Linear Regression Model - Incident Rate
+```{r}
+# Linear Regression Model - IR
+ir_linreg = lm(Incident_Rate~., data = subset(trainset_ir))
+ir_linreg
+
+# Residual Plot - IR
+plot(ir_linreg$residuals, col = 'red')
+```
+
+```{r}
+# Prediction - Validation Error
+ir_pred_val = predict(ir_linreg, validset_ir)
+ir_val_df = bind_cols("Actual" = validset_ir$Incident_Rate, 
+                      "Predictions" = ir_pred_val)
+ir_val_df
+
+# Percent Error - Validation Error
+ir_pe_val = (abs(ir_val_df$Predictions-ir_val_df$Actual)/ir_val_df$Actual)*100
+mean(ir_pe_val)
+```
+```{r}
+# Prediction - Test Error
+ir_pred_test = predict(cfr_linreg, test_ir)
+ir_test_df = bind_cols("Actual" = test_ir$Incident_Rate, 
+                        "Predictions" = ir_pred_test)
+ir_test_df
+
+# Percent Error - Test Error
+ir_pe_test = (abs(ir_test_df$Predictions-ir_test_df$Actual)/ir_test_df$Actual)*100
+print(mean(ir_pe_test))
+```

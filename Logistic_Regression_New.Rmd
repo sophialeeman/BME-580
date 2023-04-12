@@ -1,0 +1,68 @@
+---
+title: "Logistic_Regression_New.Rmd"
+author: "Isabella Wang"
+date: "2023-04-12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(MASS) # includes two pima data sets
+library(tidyverse)
+library(caret) # An extremely useful library, but here we'll just use it for splitting
+# training data
+library(corrplot)
+```
+
+# Importing Test and Train Datasets - CFR
+```{r}
+train_cfr <- read.csv("TrainTestDatasets/Train_CaseFatality_PCA.csv")
+test_cfr <- read.csv("TrainTestDatasets/Test_CaseFatality_PCA.csv")
+```
+
+# Data Processing - CFR
+```{r}
+# Case Fatality Ratio
+train_cfr$State <- as.factor(train_cfr$State)
+train_cfr$Month <- as.factor(train_cfr$Month)
+test_cfr$State <- as.factor(test_cfr$State)
+test_cfr$Month <- as.factor(test_cfr$Month)
+
+train_cfr <- subset(train_cfr, select = -c(Incident_Rate, Year))
+test_cfr <- subset(test_cfr, select = -c(Incident_Rate, Year))
+mean_val <- 0
+train_cfr$Case_Fatality_Ratio <- as.factor(ifelse(train_cfr$Case_Fatality_Ratio > mean_val, 1, 0))
+test_cfr$Case_Fatality_Ratio <- as.factor(ifelse(test_cfr$Case_Fatality_Ratio > mean_val, 1, 0))
+```
+
+# Creating Validation Dataset from Training Dataset - CFR
+```{r}
+train_index_cfr <- createDataPartition(train_cfr$Case_Fatality_Ratio, p = 0.8, list = FALSE)
+trainset_cfr <- train_cfr[train_index_cfr, ]
+validset_cfr <- train_cfr[-train_index_cfr, ]
+```
+
+# Logistic Regression - CFR
+```{r}
+# Logistic Regression Model
+cfr_log_model = glm(Case_Fatality_Ratio~., family = binomial, data = trainset_cfr)
+summary(cfr_log_model)
+```
+
+```{r}
+# Logistic Regression - Validation Set
+log_predictions_val = predict(cfr_log_model, newdata = validset_cfr, type='response')
+
+log_predictions_val = ifelse(log_predictions_val > 0.5, 1, 0)
+
+misclass_val = sum(log_predictions_val != validset_cfr$Case_Fatality_Ratio)/length(validset_cfr$Case_Fatality_Ratio)
+print(paste(1-misclass_val))
+```
+```{r}
+# Logistic Regression - Test Set
+log_predictions_test = predict(cfr_log_model, newdata = test_cfr, type='response')
+
+log_predictions_test = ifelse(log_predictions_test > 0.5, 1, 0)
+
+misclass_test = sum(log_predictions_test != test_cfr$Case_Fatality_Ratio)/length(test_cfr$Case_Fatality_Ratio)
+print(paste(1-misclass_test))
+```
