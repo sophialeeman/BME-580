@@ -1,0 +1,59 @@
+---
+title: "Stepwise_Regress"
+output: html_document
+date: "2023-04-11"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(MASS)
+library(ggplot2)
+library(caret)
+set.seed(123)
+```
+```{r}
+train_cf <- read.csv('C:/Users/tulip/BME580/project/Train_CaseFatality.csv', header = TRUE)
+test_cf <- read.csv('C:/Users/tulip/BME580/project/Test_CaseFatality.csv', header = TRUE)
+train_ir <- read.csv('C:/Users/tulip/BME580/project/Train_Incident.csv', header = TRUE)
+test_ir <- read.csv('C:/Users/tulip/BME580/project/Test_Incident.csv', header = TRUE)
+```
+
+```{r}
+train_cf<-subset(train_cf, select = -c(Year, Incident_Rate, Indicator))
+test_cf<-subset(test_cf, select = -c(Year, Incident_Rate, Indicator))
+train_ir<-subset(train_ir, select = -c(Year, Case_Fatality_Ratio, Indicator))
+test_ir<-subset(test_ir, select = -c(Year, Case_Fatality_Ratio, Indicator))
+head(train_ir, 10)
+test_ir
+train_ir$State <- as.factor(train_ir$State)
+train_ir$Month <- as.factor(train_ir$Month)
+test_ir$State <- as.factor(test_ir$State)
+test_ir$Month <- as.factor(test_ir$Month)
+```
+
+```{r}
+model <- lm(Incident_Rate ~ ., data = train_ir)
+model
+plot(model$residuals)
+median(model$residuals)
+hist(model$residuals)
+model$residuals
+mean((model$residuals)^2)
+step_model <- step(model, direction = "both", k = log(13))
+summary(step_model)
+test_pred <- predict(step_model, newdata = test_ir)
+summary(test_pred)
+train_pred <- predict(step_model, newdata = train_ir)
+test_error <- mean((test_ir$Incident_Rate - test_pred)^2)
+test_error
+prediction_df = bind_cols("Actual" = test_ir$Incident_Rate, 
+                          "Predictions" = test_pred)
+prediction_train=bind_cols("Actual"= train_ir$Incident_Rate,
+                           "Predictions" = train_pred)
+prediction_df
+percent_error = (abs(prediction_df$Actual-prediction_df$Predictions)/prediction_df$Predictions)*100
+mean(percent_error)
+percent_train = (abs(prediction_train$Actual-prediction_train$Predictions)/prediction_train$Predictions)*100
+mean(percent_train)
+```
