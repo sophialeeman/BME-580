@@ -52,14 +52,14 @@ Looking deeper into the Case Fatality Ratio
 ```{r}
 library(plotly)
 # Plot the data with plotly
-fig <- plot_ly(df_f, x = ~Temp, y = ~Atmospheric.Pressure, z = ~Value,
+fig <- plot_ly(df_f, x = ~PC1, y = ~PC2, z = ~PC3,
                color = ~Case_Fatality_Ratio, colors = "Blues",
                type = "scatter3d", mode = "markers")
 
 # Set axis labels
-fig <- fig %>% layout(scene = list(xaxis = list(title = "Temperature"),
-                                   yaxis = list(title = "Atmospheric Pressure"),
-                                   zaxis = list(title = "Value")))
+fig <- fig %>% layout(scene = list(xaxis = list(title = "PC1"),
+                                   yaxis = list(title = "PC2"),
+                                   zaxis = list(title = "PC3")))
 
 # Show the plot
 fig
