@@ -42,17 +42,9 @@ test_df
 ```
 
 ```{r}
-# Split the training data into training and validation sets
-trainIndex <- createDataPartition(train_df$Case_Fatality_Ratio, p = 0.8, list = FALSE)
-train <- train_df[trainIndex, ]
-validation <- train_df[-trainIndex, ]
-
-```
-
-```{r}
 # Set up the KNN model
 ctrl <- trainControl(method = "cv", number = 5)
-knn_model <- train(Case_Fatality_Ratio ~ ., data = train, method = "knn", trControl = ctrl, tuneLength = 10)
+knn_model <- train(Case_Fatality_Ratio ~ ., data = train_df, method = "knn", trControl = ctrl, tuneLength = 10)
 
 ```
 

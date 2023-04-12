@@ -28,8 +28,9 @@ test_data_casefatality = transformed_data[transformed_data$Year == 2022, ]
 #train_data_incident = transformed_data[split_ind_incident,]
 #test_data_incident = transformed_data[-split_ind_incident,]
 
-train_data_incident = transformed_data[transformed_data$Year == 2022, ]
-test_data_incident = transformed_data[transformed_data$Year != 2022, ]
+train_data_incident = transformed_data[transformed_data$Year != 2022, ]
+test_data_incident = transformed_data[transformed_data$Year == 2022, ]
+head(test_data_incident)
 ```
 
 ```{r}
